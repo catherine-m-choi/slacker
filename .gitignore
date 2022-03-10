@@ -1,0 +1,37 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+/node_modules
+node_modules/
+**/node_modules
+
+/yarn-error.log
+yarn-error.log*
+yarn-debug.log*
+
+npm-debug.log
+npm-debug.log*
+
+/public/assets
+.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+
+# Miscellaneous
+bundle.js
+bundle.js.map
