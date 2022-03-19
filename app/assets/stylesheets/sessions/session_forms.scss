@@ -1,0 +1,104 @@
+.SessionForm {
+  font-size: 18px;
+  color: #454245;
+  font-weight: 400;
+}
+
+.SessionForm strong {
+  font-weight: bold;
+}
+
+.link-bold {
+  color: #1264A3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.SessionForm__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 48px 0 40px;
+}
+
+.SessionForm__header {
+  text-align: center;
+}
+
+.SessionForm__right-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.SessionForm__right-col div {
+  padding-right: 40px;
+  text-align: end;
+  font-size: 13px;
+}
+
+.SessionForm__right-col p {
+  color: #616061;
+}
+
+.SessionForm__subheading {
+  margin-bottom: 32px;
+}
+
+.SessionForm__content-container {
+  display: flex;
+  justify-content: center;
+}
+
+.SessionForm__content {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.SessionForm__content h1 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #1d1c1d;;
+  max-width: 700px;
+  letter-spacing: -.75px;
+  margin-bottom: 10px;
+}
+
+.SessionForm__form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.SessionForm__form input {
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  border: 1px solid rgba(29,28,29,.3);
+  border-radius: 5px;
+}
+
+.SessionForm__form .btn {
+  color: #fff;
+  font-size: 18px;
+  background-color: #4A154B;
+  border: none;
+  padding: 0px 16px;
+  height: 44px;
+  border-radius: 5px;
+}
+
+.SessionForm__demo {
+  display: flex;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: rgba(29, 28, 29, 0.05);
+  border-radius: 5px;
+  padding: 12px 24px;
+}
+
+.SessionForm__center-col img {
+  height: 34px;
+}
