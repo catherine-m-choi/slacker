@@ -1,6 +1,6 @@
 .SessionForm {
   font-size: 18px;
-  color: #454245;
+  color: $text-gray;
   font-weight: 400;
 }
 
@@ -9,9 +9,17 @@
 }
 
 .link-bold {
-  color: #1264A3;
+  color: $link-blue;
   text-decoration: none;
   font-weight: bold;
+}
+
+.btn {
+  font-size: 18px;
+  border: none;
+  padding: 0px 16px;
+  height: 44px;
+  border-radius: 5px;
 }
 
 .SessionForm__header {
@@ -36,7 +44,7 @@
 }
 
 .SessionForm__right-col p {
-  color: #616061;
+  color: $text--light-gray;
 }
 
 .SessionForm__subheading {
@@ -46,6 +54,10 @@
 .SessionForm__content-container {
   display: flex;
   justify-content: center;
+}
+
+.SessionForm__forms {
+  max-width: 400px;
 }
 
 .SessionForm__content {
@@ -60,7 +72,7 @@
 .SessionForm__content h1 {
   font-size: 45px;
   font-weight: bold;
-  color: #1d1c1d;;
+  color: $text-black;
   max-width: 700px;
   letter-spacing: -.75px;
   margin-bottom: 10px;
@@ -76,29 +88,75 @@
   padding: 12px;
   margin-bottom: 20px;
   font-size: 18px;
-  border: 1px solid rgba(29,28,29,.3);
+  border: 1px solid $border-gray;
   border-radius: 5px;
 }
 
 .SessionForm__form .btn {
-  color: #fff;
-  font-size: 18px;
-  background-color: #4A154B;
-  border: none;
-  padding: 0px 16px;
-  height: 44px;
-  border-radius: 5px;
+  color: $main-white;
+  background-color: $main-purple;
+}
+
+.SessionForm__oauth-btn {
+  // border-radius: 5px;
+  border: 2px solid $button-blue;
+  color: $button-blue;
+  background-color: $main-white;
+  font-weight: 600;
+  width: 400px;
 }
 
 .SessionForm__demo {
   display: flex;
   font-size: 16px;
   font-weight: 300;
-  background-color: rgba(29, 28, 29, 0.05);
+  background-color: $callout-box-gray;
   border-radius: 5px;
   padding: 12px 24px;
 }
 
 .SessionForm__center-col img {
   height: 34px;
+}
+
+.SessionForm__login-separator {
+  margin: 24px 0px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.SessionForm__login-separator-content {
+  padding: 0px 20px;
+}
+
+hr {
+  width: 200px;
+  overflow-x: hidden;
+  margin-left:0;
+  margin-right:0;
+}
+
+.SessionForm__oauth-btn img {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+}
+
+.SessionForm__oauth-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.SessionForm__oauth-btn:hover {
+  box-shadow: 0px 1px 2px 1px rgba(29, 28, 29, 0.2);
+  transition: height .5s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus  {
+  outline: .3px solid $text--light-gray;
+  box-shadow: 0px 0px 0px 4px rgba(0, 144, 237, 0.4);
+  transition: height .5s;
 }

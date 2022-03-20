@@ -6,6 +6,11 @@ function SignupForm(props) {
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState(props.errors)
   
+  useEffect(()=> {
+    const unlisten = props.history.listen(props.clearSessionErrors);
+    return unlisten;
+  }, [])
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = Object.assign({}, {email, password});
@@ -25,11 +30,17 @@ function SignupForm(props) {
         break;
     }
   }
-  
-  useEffect(()=> {
-    const unlisten = props.history.listen(props.clearSessionErrors);
-    return unlisten;
-  }, [])
+
+  const demoSubmit = () => {
+    const demoUser = {
+      email: 'fake_cat23@gmail.com',
+      password: "password"
+    }
+
+    props.login(demoUser).then( () => props.history.push('/') , () => {
+      setErrors(props.errors);
+    })
+  }
 
   return (
     <div className="SessionForm">
@@ -45,28 +56,48 @@ function SignupForm(props) {
             <h1>First, enter your email</h1>
             <div className="SessionForm__subheading">We suggest using the <strong>email address you use at work.</strong></div>
 
-            <form className="SessionForm__form" onSubmit={handleSubmit}>
-              <label>Email:</label>
-                <input 
-                  type="text" 
-                  value={email} 
-                  onChange={handleInput('email')} 
-                  className="SessionForm__form-password"
-                  placeholder="name@work-email.com"
-                />
-              <label>Password:</label>
-                <input 
-                  type="password" 
-                  value={password} 
-                  onChange={handleInput('password')} 
-                />
+            <div className="SessionForm__forms">
+              <div className="SessionForm__oauth">
+                <a href="/users/auth/google_oauth2" data-method="POST" rel="nofollow">
+                <button className="btn SessionForm__oauth-btn"><img src={window.sessionForm__googleLogo} />Sign in with Google</button>
+                </a>
+              </div>
 
-              <input className="btn" type="submit" value="Create an account" />
+              <div className="SessionForm__login-separator">
+                <hr></hr>
+                <span className="SessionForm__login-separator-content">OR</span>
+                <hr></hr>
+              </div>
 
-              {props.errors.length > 0 && props.errors.map((error, idx) => (
-                <li key={idx} className="SessionForm__errors">{error}</li>
-                ))}
-            </form>
+              <form className="SessionForm__form" onSubmit={handleSubmit}>
+                <label>Email:</label>
+                  <input 
+                    type="text" 
+                    value={email} 
+                    onChange={handleInput('email')} 
+                    className="SessionForm__form-password"
+                    placeholder="name@work-email.com"
+                  />
+                <label>Password:</label>
+                  <input 
+                    type="password" 
+                    value={password} 
+                    onChange={handleInput('password')} 
+                  />
+
+                <input className="btn" type="submit" value="Create an account" />
+
+                {props.errors.length > 0 && props.errors.map((error, idx) => (
+                  <li key={idx} className="SessionForm__errors">{error}</li>
+                  ))}
+
+                <div className="SessionForm__demo">
+                  <p>&#10024;</p>
+                  <p><Link to="/demo" className="link-bold" onClick={demoSubmit}>Log in as a demo user</Link> for a hassle free tour of what Slacker has to offer.</p>
+                </div>
+                  
+              </form>
+            </div>
           </div>
         </div>
       </div>

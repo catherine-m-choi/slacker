@@ -42,3 +42,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+	text-decoration: none;
+}
+
+button:hover, .btn:hover {
+	cursor: pointer;
+}

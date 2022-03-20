@@ -9,13 +9,12 @@
     <%= javascript_include_tag 'application' %>
 
     <script type="text/javascript">
-      window.sessionForm__slackLogo = "<%= image_url('slack_logo-ebd02d1.svg') %>";
+      window.sessionForm__slackLogo = "<%= image_url('slack_logo.svg') %>";
+      window.sessionForm__googleLogo = "<%= image_url('google_g_logo.svg') %>";
     </script>
   </head>
 
   <body>
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
-    <%# /users/auth/google_oauth2 %>
 
     <%= yield %>
   </body>
