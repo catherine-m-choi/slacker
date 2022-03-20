@@ -86,10 +86,16 @@
 
 .SessionForm__form input {
   padding: 12px;
-  margin-bottom: 20px;
   font-size: 18px;
   border: 1px solid $border-gray;
   border-radius: 5px;
+}
+
+.SessionForm__form input[type="text"]{
+  margin-bottom: 10px;
+}
+.SessionForm__form input[type="submit"]{
+  margin: 20px 0px;
 }
 
 .SessionForm__form .btn {
@@ -120,7 +126,7 @@
 }
 
 .SessionForm__login-separator {
-  margin: 24px 0px;
+  margin: 20px 0px 16px 0px;
   font-size: 15px;
   display: flex;
   align-items: center;
@@ -135,6 +141,9 @@ hr {
   overflow-x: hidden;
   margin-left:0;
   margin-right:0;
+  height: 1px;
+  background-color: $border-light-gray;
+  border: none;
 }
 
 .SessionForm__oauth-btn img {
@@ -151,12 +160,12 @@ hr {
 }
 
 .SessionForm__oauth-btn:hover {
-  box-shadow: 0px 1px 2px 1px rgba(29, 28, 29, 0.2);
+  box-shadow: 0px 1px 2px 1px $box-shadow-gray;
   transition: height .5s;
 }
 
 input[type="text"]:focus, input[type="password"]:focus  {
   outline: .3px solid $text--light-gray;
-  box-shadow: 0px 0px 0px 4px rgba(0, 144, 237, 0.4);
+  box-shadow: 0px 0px 0px 4px $box-shadow-blue;
   transition: height .5s;
 }
