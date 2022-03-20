@@ -92,11 +92,14 @@ function LoginForm(props) {
                   onChange={handleInput('password')} 
                 />
 
-                <input className="btn" type="submit" value="Sign In with Email" />
-
-                {props.errors.length > 0 && props.errors.map((error, idx) => (
-                  <li key={idx} className="SessionForm__errors">{error}</li>
-                  ))}
+                <div className={`SessionForm__signin-btn-errors ${(props.errors.length > 0 ) ? "has-errors" : ""}`}>
+                  <input className="btn" type="submit" value="Sign In with Email" />
+                  <div className="SessionForm__errors">
+                    {props.errors.length > 0 && props.errors.map((error, idx) => (
+                      <li key={idx} ><i className="SessionForm__warning">&#x26A0;</i> {error}</li>
+                      ))}
+                  </div>
+                </div>
 
               <div className="SessionForm__demo">
                 <p>&#10024;</p>

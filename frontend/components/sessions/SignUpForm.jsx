@@ -57,7 +57,7 @@ function SignupForm(props) {
             <div className="SessionForm__subheading">We suggest using the <strong>email address you use at work.</strong></div>
 
             <div className="SessionForm__forms">
-              <div className="SessionForm__oauth">
+              {/* <div className="SessionForm__oauth">
                 <a href="/users/auth/google_oauth2" data-method="POST" rel="nofollow">
                 <button className="btn SessionForm__oauth-btn"><img src={window.sessionForm__googleLogo} />Sign in with Google</button>
                 </a>
@@ -67,7 +67,7 @@ function SignupForm(props) {
                 <hr></hr>
                 <span className="SessionForm__login-separator-content">OR</span>
                 <hr></hr>
-              </div>
+              </div> */}
 
               <form className="SessionForm__form" onSubmit={handleSubmit}>
                 <label>Email:</label>
@@ -85,11 +85,16 @@ function SignupForm(props) {
                     onChange={handleInput('password')} 
                   />
 
-                <input className="btn" type="submit" value="Create an account" />
+                {/* <input className="btn" type="submit" value="Create an account" /> */}
 
-                {props.errors.length > 0 && props.errors.map((error, idx) => (
-                  <li key={idx} className="SessionForm__errors">{error}</li>
-                  ))}
+                <div className={`SessionForm__signin-btn-errors ${(props.errors.length > 0 ) ? "has-errors" : ""}`}>
+                  <input className="btn" type="submit" value="Create an account" />
+                  <div className="SessionForm__errors">
+                    {props.errors.length > 0 && props.errors.map((error, idx) => (
+                      <li key={idx} ><i className="SessionForm__warning">&#x26A0;</i> {error}</li>
+                      ))}
+                  </div>
+                </div>
 
                 <div className="SessionForm__demo">
                   <p>&#10024;</p>
