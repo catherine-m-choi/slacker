@@ -50,6 +50,8 @@ gem 'omniauth-google-oauth2'
 # Hide sensitive info
 gem "figaro"
 
+# Faker
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -58,7 +60,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'faker'
 end
 
 group :development do
