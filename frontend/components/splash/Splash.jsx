@@ -1,13 +1,11 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import { AuthRoute, ProtectedRoute } from '../../util/route_utils'
 
 import MainNavBarContainer from "./MainNavBarContainer";
 import SplashLoggedIn from "./SplashLoggedIn";
 import SplashLoggedOut from "./SplashLoggedOut";
 
 const Splash = (props) => (
-  <div className="Splash">
+  <div className={`Splash ${(props.currentUser) ? "logged-in" : "logged-out"}`}>
     <div className="Splash__nav-wrapper">
       <MainNavBarContainer />
       <div className="BillboardV2__background-decoration"></div>
@@ -15,7 +13,7 @@ const Splash = (props) => (
 
     
     <div className="Splash__body-container">
-      {(props.currentUser) ? (<SplashLoggedIn />) : (<SplashLoggedOut />)}
+      {(props.currentUser) ? (<SplashLoggedIn currentUser={props.currentUser} />) : (<SplashLoggedOut />)}
     </div>
   </div>
 );

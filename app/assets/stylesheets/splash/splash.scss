@@ -1,4 +1,13 @@
 
+// Temporary:
+.Splash.logged-out {
+  background-color: $splash-background
+}
+
+.Splash.logged-in {
+  background-color: $main-purple-hover;
+}
+
 .Splash__body-container {
   display: flex;
   align-items: center;

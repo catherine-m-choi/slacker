@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import React from "react"
 
 // import BillboardV1 from "./BillboardV1";
 import BillboardV2 from "./BillboardV2";
