@@ -16,7 +16,7 @@
   border-radius: 10rem 0 0 10rem;
   position: absolute;
   left: 45%;
-  bottom: 15rem;
+  top: 205px;
   height: 260px;
   width: 55%;
   z-index: 1;
@@ -33,7 +33,7 @@
 
 .BillboardV2__content img {
   height: 345px;
-  width: 600px;
+  width: 560px;
   z-index: 2;
 }
 
@@ -106,6 +106,8 @@
   border: 2px solid $button-blue;
   margin-left: 0px;
   margin-right: 0px;
+  padding-left: 21px;
+  padding-right: 21px;
 }
 
 .BillboardV2__oauth-btn img {

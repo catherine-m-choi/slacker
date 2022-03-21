@@ -16,19 +16,25 @@
 .SplashStats ul {
   display: flex;
   justify-content: space-around;
-  width: 1230px;
+  max-width: 1230px;
+  flex-wrap: wrap;
 }
 
 .SplashStats li {
   width: 180px;
+  margin-top: 2rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 .SplashStats h3 {
   font-size: 3.125rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: bold;
   letter-spacing: -.8px;
   line-height: 1.12;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .SplashStats_stat {

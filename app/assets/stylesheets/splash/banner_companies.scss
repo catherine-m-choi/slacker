@@ -1,14 +1,17 @@
 .BannerCompanies {
-  // 92.500
   display: flex;
-  // background-color: red;
   justify-content: space-between;
   align-items: center;
   height: 92px;
   padding-top: 40px;
   padding-bottom: 32px;
+  // flex-wrap: wrap;
+  // overflow-wrap:break-word;
 }
 
 .BannerCompanies img {
   height: 35px;
+  // min-width: 10px;
+  margin: 10px;
 }
+
