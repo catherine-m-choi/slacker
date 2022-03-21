@@ -3,7 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  username               :string           default("")
+#  username               :string
 #  email                  :string           not null
 #  password_digest        :string           not null
 #  session_token          :string           not null
@@ -21,6 +21,9 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
 #  provider               :string
 #  uid                    :string
 #
