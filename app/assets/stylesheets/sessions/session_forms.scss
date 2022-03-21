@@ -15,7 +15,6 @@
 }
 
 .btn {
-  font-size: 18px;
   border: none;
   padding: 0px 16px;
   height: 44px;
@@ -30,6 +29,10 @@
 
 .SessionForm__header {
   text-align: center;
+}
+
+.SessionForm__center-col img {
+  height: 34px;
 }
 
 .SessionForm__right-col {
@@ -58,6 +61,49 @@
 
 .SessionForm__forms {
   max-width: 400px;
+}
+
+.SessionForm__oauth-btn {
+  border: 2px solid $button-blue;
+  color: $button-blue;
+  background-color: $main-white;
+  font-weight: 600;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SessionForm__oauth-btn img {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+}
+
+.SessionForm__oauth-btn:hover {
+  box-shadow: 0px .8px 2.5px 1.5px $box-shadow-gray;
+  transition: height .5s;
+}
+
+.SessionForm__login-separator {
+  margin: 20px 0px 16px 0px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.SessionForm__login-separator-content {
+  padding: 0px 20px;
+}
+
+hr {
+  width: 200px;
+  overflow-x: hidden;
+  margin-left:0;
+  margin-right:0;
+  height: 1px;
+  background-color: $border-light-gray;
+  border: none;
 }
 
 .SessionForm__content {
@@ -94,17 +140,28 @@
 .SessionForm__form input[type="text"]{
   margin-bottom: 10px;
 }
+
+
+input[type="text"]:focus, input[type="password"]:focus  {
+  outline: .3px solid $text--light-gray;
+  box-shadow: 0px 0px 0px 4px $box-shadow-blue;
+  transition: height .5s;
+}
+
 .SessionForm__form input[type="submit"]{
   color: $main-white;
   background-color: $main-purple;
   z-index: 2;
 }
 
+.SessionForm__form input[type="submit"]:hover {
+  background-color: $main-purple-hover;
+}
+
 .SessionForm__signin-btn-errors {
   margin: 20px 0px;
   display: flex;
   flex-direction: column;
-  // height: 44px;
 }
 
 .has-errors input[type="submit"] {
@@ -114,15 +171,15 @@
 
 .has-errors .SessionForm__warning {
   margin-right: 8px;
-  color:rgba(224,30,90,.8);
+  color:$error-text-red;
 }
 
 .has-errors .SessionForm__errors {
   list-style: none;
   font-size: 14px;
   padding: 12px 20px;
-  background-color: rgba(224,30,90,.1);
-  border: 1px solid rgba(224,30,90,.4);
+  background-color: $error-background;
+  border: 1px solid $error-border;
   margin-top: -5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -133,17 +190,6 @@
   text-align: left;
 }
 
-
-
-.SessionForm__oauth-btn {
-  // border-radius: 5px;
-  border: 2px solid $button-blue;
-  color: $button-blue;
-  background-color: $main-white;
-  font-weight: 600;
-  width: 400px;
-}
-
 .SessionForm__demo {
   display: flex;
   font-size: 16px;
@@ -152,53 +198,4 @@
   border-radius: 5px;
   padding: 12px 24px;
   margin-bottom: 40px;
-}
-
-.SessionForm__center-col img {
-  height: 34px;
-}
-
-.SessionForm__login-separator {
-  margin: 20px 0px 16px 0px;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.SessionForm__login-separator-content {
-  padding: 0px 20px;
-}
-
-hr {
-  width: 200px;
-  overflow-x: hidden;
-  margin-left:0;
-  margin-right:0;
-  height: 1px;
-  background-color: $border-light-gray;
-  border: none;
-}
-
-.SessionForm__oauth-btn img {
-  margin-right: 12px;
-  width: 18px;
-  height: 18px;
-}
-
-.SessionForm__oauth-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.SessionForm__oauth-btn:hover {
-  box-shadow: 0px .8px 2.5px 1.5px $box-shadow-gray;
-  transition: height .5s;
-}
-
-input[type="text"]:focus, input[type="password"]:focus  {
-  outline: .3px solid $text--light-gray;
-  box-shadow: 0px 0px 0px 4px $box-shadow-blue;
-  transition: height .5s;
 }

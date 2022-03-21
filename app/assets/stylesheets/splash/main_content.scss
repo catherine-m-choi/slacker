@@ -1,0 +1,34 @@
+.MainContent video {
+  width: 600px;
+}
+
+.MainContent__section {
+  display: flex;
+}
+
+.MainContent__video-left {
+  margin-right: 150px;
+}
+
+.MainContent__video-right {
+  margin-left: 150px;
+}
+
+.MainContent__section-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.MainContent__section-copy h2 {
+  font-size: 3.125rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  letter-spacing: -.8px;
+  line-height: 1.12;
+}
+
+.MainContent__section-copy p {
+  font-size: 1.1rem;
+}

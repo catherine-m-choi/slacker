@@ -1,0 +1,128 @@
+.Splash__nav-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.MainNavBar {
+  max-width: 1288px;
+  width: 100%;
+  z-index: 2;
+}
+
+.MainNavBar__content-container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0px 30px;
+  // margin: 0px 14px;
+}
+
+.MainNavBar__logo {
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+
+.MainNavBar img {
+  height: 25px;
+  margin-top: 6px;
+}
+
+.MainNavBar__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.MainNavBar__left-menu {
+  display: flex;
+  align-items: center;
+}
+
+.MainNavBar__right-menu {
+  display: flex;
+  align-items: center;
+}
+
+.MainNavBar__left-menu li {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.MainNavBar__left-menu li:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.purple-solid {
+  color: $main-white;
+  background-color: $main-purple;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.purple-solid:hover {
+  background-color: $main-purple-hover;
+}
+
+.purple-transparent {
+  color: $main-purple;
+  background-color: transparent;
+  border: 1px solid $main-purple;
+  margin-right: 20px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .05em;
+}
+
+.purple-transparent:hover {
+  margin-right: 19px;
+  border: 2px solid $main-purple;
+  transition: all .1s ease-in-out;
+}
+
+// Temporary:
+.Splash {
+  min-height: 2000px;
+  background-color: $splash-background
+}
+
+.MainNavBar {
+  transition: transform 0.4s;
+}
+
+.sticky-nav {
+  position: fixed;
+  top: 10px;
+  width: 100%;
+}
+
+.MainNavBar.sticky-nav {
+  background-color: transparent;
+}
+
+.sticky-nav .MainNavBar__content-container {
+  border-radius: 40px;
+  background-color: $main-white;
+  box-shadow: 0px 0px 30px 5px $box-shadow-gray;
+}
+
+.Splash__nav-wrapper {
+  height: 80px;
+}
+
+.MainNavBar.sticky-nav.scroll-down {
+  transform: translate3d(0, 0, 0);
+  transition: transform .8s ease;
+}
+
+.MainNavBar.sticky-nav.out-view.scroll-up {
+  transform: translate3d(0, -150%, 0);
+  transition: transform .8s ease;
+}

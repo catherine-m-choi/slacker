@@ -1,0 +1,110 @@
+.BillboardV2__container {
+  background-color: $main-purple;
+  color: $main-white;
+  // width: 100%;
+  width: 100vw;
+  position: relative;
+  margin-top: -120px;
+  padding-top: 120px;
+  left: calc(-50vw + 50%);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.BillboardV2__background-decoration {
+  background-color: $main-purple-hover;
+  border-radius: 10rem 0 0 10rem;
+  position: absolute;
+  left: 45%;
+  bottom: 15rem;
+  height: 260px;
+  width: 55%;
+  z-index: 1;
+}
+
+.BillboardV2__content {
+  min-width: 1230px;
+  display: grid;
+  grid-template-columns: 40% 55%;
+  column-gap: 10%;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.BillboardV2__content img {
+  height: 345px;
+  width: 600px;
+  z-index: 2;
+}
+
+.BillboardV2__content header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 492px;
+}
+
+.BillboardV2__content h1 {
+  font-size: 4rem; 
+  font-weight: 700;
+  line-height: 1.0625;
+  letter-spacing: -1.5px;
+  margin-bottom: 1rem;
+}
+
+.BillboardV2__content h1 span {
+  color: $main-yellow;
+}
+
+.BillboardV2_header-copy {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.333;
+  letter-spacing: -.2px;
+  margin-top: 0;
+}
+
+.BillboardV2__content .btn {
+  height: 50px;
+}
+
+.BillboardV2__buttons {
+  display: flex;
+  height: auto;
+}
+
+.BillboardV2__content .purple-solid {
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: 600;
+  letter-spacing: .05rem;
+  margin-left: -15px;
+  margin-right: 10px;
+}
+
+.BillboardV2__oauth-btn {
+  color: $button-blue;
+  background-color: $main-white;
+  border: 2px solid $main-white;
+  font-weight: 600;
+  letter-spacing: .05rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BillboardV2__oauth-btn:hover {
+  border: 2px solid $button-blue;
+}
+
+.BillboardV2__oauth-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.BillboardV2__oauth-btn img {
+  margin-right: 12px;
+}

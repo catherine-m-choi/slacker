@@ -1,0 +1,77 @@
+.BillboardV1__content {
+  // margin: 40px 0px 0px 0px;
+  margin-top: 40px;
+  max-height: 345px;
+  display: grid;
+  grid-template-columns: 40% 55%;
+  column-gap: 10%;
+}
+
+.BillboardV1__content img {
+  height: 345px;
+  width: 600px;
+}
+
+.BillboardV1__content header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 492px;
+}
+
+.BillboardV1__content h1 {
+  font-size: 4rem; 
+  font-weight: 700;
+  line-height: 1.0625;
+  letter-spacing: -1.5px;
+  margin-bottom: 1rem;
+}
+
+.BillboardV1_header-copy {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.333;
+  letter-spacing: -.2px;
+  margin-top: 0;
+}
+
+.BillboardV1__buttons {
+  display: flex;
+  height: auto;
+}
+
+.BillboardV1__content .purple-solid {
+  padding-left: 40px;
+  padding-right: 40px;
+  font-weight: 600;
+  letter-spacing: .05rem;
+  margin-left: -15px;
+  margin-right: 10px;
+}
+
+.BillboardV1__oauth-btn {
+  color: $main-white ;
+  background-color: $button-blue;
+  font-weight: 600;
+  letter-spacing: .05rem;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.BillboardV1__oauth-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.Splash__google-logo-container {
+  background-color: $main-white;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-right: 12px;
+}
