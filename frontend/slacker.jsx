@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  // const store = configureStore();
   ReactDOM.render(<Root store={store} />, root);
 
   // start testing
