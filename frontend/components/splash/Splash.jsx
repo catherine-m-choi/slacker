@@ -7,6 +7,10 @@ import BillboardV1 from "./BillboardV1";
 import BillboardV2 from "./BillboardV2";
 import BannerCompanies from "./BannerCompanies";
 import MainContent from "./MainContent";
+import SplashStats from "./SplashStats";
+import SplashCard from "./SplashCards";
+import SplashBottomCTA from "./BottomCTA";
+import SplashFooter from "./Footer";
 
 const Splash = () => (
   <div className="Splash">
@@ -24,12 +28,15 @@ const Splash = () => (
         </div>
         <BannerCompanies />
         <MainContent />
+        <SplashStats />
+        <SplashCard />
+        <SplashBottomCTA />
+        <SplashFooter />
 
         {/* Temp instead of React Components */}
-        <div className="SplashStats"></div>
-        <div className="SplashCards"></div>
-        <div className="SplashBottomCTA"></div>
-        <div className="Footer"></div>
+        {/* <div className="SplashCards"><h2>Test</h2></div> */}
+        {/* <div className="SplashBottomCTA"><h2>Test</h2></div> */}
+        {/* <div className="Footer"><h2>Test</h2></div> */}
 
       </section>
     </div>

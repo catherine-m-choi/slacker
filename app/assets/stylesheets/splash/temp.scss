@@ -1,0 +1,176 @@
+// .SplashStats {
+//   background-color: $main-white;
+//   color: $text-black;
+//   width: 100vw;
+//   position: relative;
+//   margin-top: 60px;
+//   padding: 100px 0px;
+//   left: calc(-50vw + 50%);
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .SplashStats ul {
+//   display: flex;
+//   justify-content: space-around;
+//   width: 1230px;
+// }
+
+// .SplashStats li {
+//   width: 180px;
+// }
+
+// .SplashStats h3 {
+//   font-size: 3.125rem;
+//   margin-bottom: 1rem;
+//   font-weight: bold;
+//   letter-spacing: -.8px;
+//   line-height: 1.12;
+// }
+
+// .SplashStats_stat {
+//   font-size: 3.5rem;
+//   font-weight: bold;
+//   color: $main-purple;
+//   margin-bottom: .3rem;
+//   letter-spacing: -.8px;
+//   line-height: 1.12;
+// }
+
+// .SplashStats_stat-copy {
+//   font-size: .98rem;
+//   font-weight: bold;
+// }
+
+
+
+
+// .SplashCard {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 60px 0px 40px 0px;
+// }
+
+// .SplashCard h3 {
+//   font-size: 2rem;
+//   margin-bottom: 1rem;
+//   font-weight: bold;
+//   letter-spacing: -.8px;
+// }
+
+// .SplashCard__card-container {
+//   display: flex;
+//   width: 100%;
+//   justify-content: space-between;
+// }
+
+// .SplashCard__card {
+//   background-color: $main-white;
+//   padding: 12px;
+//   box-shadow: 0px 0px 25px 5px $box-shadow-gray;
+//   width: 265px;
+//   height: 420px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   cursor: pointer;
+// }
+
+// .SplashCard__card:hover {
+//   transform: scale(1.05);
+//   transition: transform .3s ease;
+// }
+
+// .SplashCard__card img{
+//   height: 184px;
+//   background-color: lightpink;
+// }
+
+// .SplashCard__card-genre {
+//   padding-top: 10px;
+//   color: $text-gray;
+//   font-size: .9rem;
+// }
+
+// .SplashCard__card-title {
+//   font-size: 1.5rem;
+//   margin-bottom: 1rem;
+//   font-weight: bold;
+// }
+
+// .SplashCard__card-footer {
+//   color: $link-blue;
+// }
+
+
+
+
+
+.SplashBottomCTA {
+  background-color: $main-purple;
+  color: $main-white;
+  width: 100vw;
+  position: relative;
+  margin-top: 60px;
+  padding: 100px 0px;
+  left: calc(-50vw + 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // border-bottom-left-radius: 70% 50%;
+  // border-bottom-right-radius: 70% 50%;
+  clip-path: ellipse(75% 100% at center top);
+  z-index: 1;
+}
+
+.SplashBottomCTA h3 {
+  font-size: 3.125rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  letter-spacing: -.8px;
+  line-height: 1.12;
+}
+
+// Placeholder color blocking footer for now:
+
+.SplashFooter {
+  background-color: $main-white;
+  color: $text-black;
+  width: 100vw;
+  position: relative;
+  margin-top: -100px;
+  margin-bottom: -20px;
+  padding-top: 160px; // really just 60 after negative top margin
+  padding-bottom: 70px; // really just 50 after negative top margin
+  left: calc(-50vw + 50%);
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.SplashFooter_content {
+  width: 850px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.SplashFooter_content span {
+  font-weight: bold;
+  font-size: .9rem;
+  cursor: pointer;
+}
+
+.SplashFooter_content li:nth-child(2) {
+  margin-top: .5rem;
+}
+
+.SplashFooter_content li {
+  font-size: .9rem;
+  min-height: 30px;
+  cursor: pointer;
+}

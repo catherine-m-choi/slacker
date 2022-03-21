@@ -1,0 +1,61 @@
+
+
+.SplashCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0px 40px 0px;
+}
+
+.SplashCard h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  letter-spacing: -.8px;
+}
+
+.SplashCard__card-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.SplashCard__card {
+  background-color: $main-white;
+  padding: 12px;
+  box-shadow: 0px 0px 25px 5px $box-shadow-gray;
+  width: 265px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.SplashCard__card:hover {
+  transform: scale(1.05);
+  transition: transform .3s ease;
+}
+
+.SplashCard__card img{
+  height: 184px;
+  background-color: lightpink;
+}
+
+.SplashCard__card-genre {
+  padding-top: 10px;
+  color: $text-gray;
+  font-size: .9rem;
+}
+
+.SplashCard__card-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.SplashCard__card-footer {
+  color: $link-blue;
+}
+

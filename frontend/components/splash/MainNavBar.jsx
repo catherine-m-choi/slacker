@@ -42,12 +42,12 @@ function MainNavBar(props) {
 
   const display = (props.currentUser) ? (
     <div className="MainNavBar__right-menu">
-      <button className="btn purple-solid" onClick={props.logout}>Log out</button>
+      <button className="btn purple-transparent" onClick={props.logout}>Log out</button>
     </div>
   ) : (
     <div className="MainNavBar__right-menu">
-      <Link to="/signup"><button className="btn purple-transparent" >SIGN UP</button></Link>
-      <Link to="/login"><button className="btn purple-solid" >LOG IN</button></Link>
+      <Link to="/signup"><button className="btn purple-solid" >SIGN UP</button></Link>
+      <Link to="/login"><button className="btn purple-transparent" >LOG IN</button></Link>
     </div>
   )
 
