@@ -23,7 +23,7 @@ function BillboardV1(props) {
 
         </div>
       </header>
-      <img src={splash__billboardHero} alt="Team discussing work in the Slack app" />
+      {/* <img src={splash__billboardHero} alt="Team discussing work in the Slack app" /> */}
 
     </div>
   )
