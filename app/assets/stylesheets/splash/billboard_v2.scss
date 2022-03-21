@@ -82,12 +82,19 @@
   margin-right: 10px;
 }
 
+.BillboardV2__content .purple-solid:hover {
+  margin-left: -16px;
+  margin-right: 9px;
+}
+
 .BillboardV2__oauth-btn {
   color: $button-blue;
   background-color: $main-white;
   border: 2px solid $main-white;
   font-weight: 600;
   letter-spacing: .05rem;
+  margin-left: 1px;
+  margin-right: 1px;
   padding-left: 20px;
   padding-right: 20px;
   display: flex;
@@ -97,6 +104,8 @@
 
 .BillboardV2__oauth-btn:hover {
   border: 2px solid $button-blue;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .BillboardV2__oauth-btn img {
