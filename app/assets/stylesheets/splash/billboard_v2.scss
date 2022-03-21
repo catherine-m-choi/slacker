@@ -32,7 +32,7 @@
 }
 
 .BillboardV2__content img {
-  height: 345px;
+  height: 382px;
   width: 560px;
   z-index: 2;
 }
@@ -49,6 +49,7 @@
   font-weight: 700;
   line-height: 1.0625;
   letter-spacing: -1.5px;
+  margin-top: 30px;
   margin-bottom: 1rem;
 }
 
@@ -71,6 +72,7 @@
 .BillboardV2__buttons {
   display: flex;
   height: auto;
+  margin-bottom: 30px;
 }
 
 .BillboardV2__content .purple-solid {
@@ -83,7 +85,7 @@
 }
 
 .BillboardV2__content .purple-solid:hover {
-  margin-left: -16px;
+  margin-left: -14px;
   margin-right: 9px;
 }
 

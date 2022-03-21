@@ -58,7 +58,7 @@
   text-underline-offset: 0.2em;
 }
 
-.purple-transparent {
+.purple-solid {
   color: $main-purple;
   background-color: $main-white;
   border: 2px solid $main-white;
@@ -68,12 +68,12 @@
   letter-spacing: .05em;
 }
 
-.purple-transparent:hover {
+.purple-solid:hover {
   border: 2px solid $main-purple;
   transition: all .1s ease-in-out;
 }
 
-.purple-solid {
+.purple-transparent {
   color: $main-white;
   background-color: transparent;
   border: 1px solid $main-white;
@@ -84,7 +84,7 @@
   letter-spacing: .05em;
 }
 
-.purple-solid:hover {
+.purple-transparent:hover {
   margin-right: 19px;
   border: 2px solid $main-white;
   transition: all .1s ease-in-out;
@@ -133,21 +133,21 @@
 }
 
 // font color and button color change when sticky
-.MainNavBar.sticky-nav .purple-transparent {
+.MainNavBar.sticky-nav .purple-solid {
   color: $main-white;
   background-color: $main-purple;
 }
 
-.MainNavBar.sticky-nav .purple-transparent:hover {
+.MainNavBar.sticky-nav .purple-solid:hover {
   background-color: $main-purple-hover;
 }
 
-.MainNavBar.sticky-nav .purple-solid {
+.MainNavBar.sticky-nav .purple-transparent {
   color: $main-purple;
   border: 1px solid $main-purple;
 }
 
-.MainNavBar.sticky-nav .purple-solid:hover {
+.MainNavBar.sticky-nav .purple-transparent:hover {
   border: 2px solid $main-purple;
 }
 
