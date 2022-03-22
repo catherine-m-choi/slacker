@@ -3,6 +3,14 @@ import * as MessageAPIUtil from '../util/message_api_util'
 export const ADD_MESSAGE = "message/addMessage";
 export const UPDATE_MESSAGE = "message/updateMessage";
 export const DELETE_MESSAGE = "message/deleteMessage";
+export const FETCH_MESSAGES = "message/fetchMessages";
+
+const allMessages = (messages) => {
+  return {
+    type: FETCH_MESSAGES,
+    payload: messages
+  }
+}
 
 const addMessage = (message) => {
   return {
@@ -24,6 +32,16 @@ const destroyMessage = (messageId) => {
   }
 }
 
+// chatInfo should be structured like: 
+// {
+//   chat_id: 1,
+//   chat_type: "Conversation" // Or "Channel"
+// }
+
+export const fetchMessages = (chatInfo) => dispatch => {
+  return MessageAPIUtil.fetchMessages(chatInfo)
+    .then((messages) => dispatch(allMessages(messages)))
+}
 
 export const createMessage = (message) => dispatch => {
   return MessageAPIUtil.createMessage(message)

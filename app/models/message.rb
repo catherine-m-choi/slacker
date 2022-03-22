@@ -15,7 +15,7 @@ class Message < ApplicationRecord
   validates :body, :messageable_type, :messageable_id, :user_id, presence: true
 
   belongs_to :messageable, polymorphic: true
-  
+
   belongs_to :user, 
     class_name: 'User', 
     foreign_key: :user_id
@@ -28,4 +28,14 @@ class Message < ApplicationRecord
     class_name: 'Message', 
     foreign_key: :parent_message_id, 
     optional: true
+
+  def chat
+    if (self.messageable_type == "Conversation")
+      @chat = Conversation.find_by(id: self.messageable_id)
+    elsif (self.messageable_type == "Channel")
+      @chat = Channel.find_by(id: self.messageable_id)
+    end
+    return @chat
+  end
+  
 end

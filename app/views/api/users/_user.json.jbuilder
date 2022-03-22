@@ -10,4 +10,5 @@ json.extract! user,
   :status_text, 
   :status_emoji, 
   :status_expiration, 
-  :profile_picture_url
+  :profile_picture_url,
+  :email

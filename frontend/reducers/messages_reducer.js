@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, UPDATE_MESSAGE, DELETE_MESSAGE } from "../actions/message_actions";
+import { ADD_MESSAGE, UPDATE_MESSAGE, DELETE_MESSAGE, FETCH_MESSAGES } from "../actions/message_actions";
 
 const messagesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -12,6 +12,8 @@ const messagesReducer = (state = {}, action) => {
       nextState = Object.assign({}, state);
       delete nextState[action.payload.id];
       return nextState;
+    case FETCH_MESSAGES:
+      return action.payload
     default:
       return state;
   }

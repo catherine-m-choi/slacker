@@ -4,7 +4,8 @@ import configureStore from "./store/store";
 import Root from "./components/Root";
 
 // start testing
-import {createMessage, patchMessage, deleteMessage} from "./actions/message_actions"
+import {createMessage, patchMessage, deleteMessage, fetchMessages} from "./actions/message_actions"
+import { fetchUsers } from "./actions/user_actions"
 // end testing
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -32,5 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createMessage = createMessage; 
   window.patchMessage = patchMessage; 
   window.deleteMessage = deleteMessage; 
+  window.fetchMessages = fetchMessages; 
+  window.fetchUsers = fetchUsers; 
   // end testing
 });

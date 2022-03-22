@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   # For omniauth
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  # devise_scope :user do
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
+  
+  # To listen for WebSocket requests
+  mount ActionCable.server => '/cable'
 
   root :to => "static_pages#root"
   namespace :api, defaults: {format: :json} do 
-    resources :users, only: :create
+    resources :users, only: [:index, :create]
     resource :session, only: [:create, :destroy]
-    resource :messages, only: [:create, :update, :destroy]
+    resources :messages, only: [:index, :create, :update, :destroy]
   end
 end

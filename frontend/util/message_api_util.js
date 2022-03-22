@@ -1,3 +1,17 @@
+// chatInfo should be structured like: 
+// {
+//   chat_id: 1,
+//   chat_type: "Conversation" // Or "Channel"
+// }
+
+export const fetchMessages = (chatInfo) => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/messages",
+    data: chatInfo
+  })
+}
+
 export const createMessage = (message) => {
   return $.ajax({
     method: "POST" ,

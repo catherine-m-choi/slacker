@@ -1,7 +1,25 @@
 class Api::MessagesController < ApplicationController
+  def index
+    if params[:chat_type] === "Conversation"
+      convo = Conversation.find_by(id: params[:chat_id])
+      @messages = convo.messages
+      render :index
+    elsif params[:chat_type] === "Channel"
+      channel = Channel.find_by(id: params[:chat_id])
+      @messages = channel.messages
+      render :index
+    else
+      render json: ["Conversation or channel must be selected"], status: 422
+    end
+  end
+  
   def create
     @message = Message.new(message_params)
     if @message.save
+      
+      # Broadcasting message to chat when message is routed to create
+      @chat = @message.chat
+      ChatsChannel.broadcast_to(@chat, @message)
       render :show
     else
       render json: @message.errors.full_messages , status: 401
@@ -36,7 +54,9 @@ class Api::MessagesController < ApplicationController
       :body, 
       :messageable_id, 
       :messageable_type,
-      :parent_message_id
+      :parent_message_id,
+      :chat_id,
+      :chat_type
     )
   end
 end
