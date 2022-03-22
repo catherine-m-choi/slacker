@@ -4,6 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/Root";
 
 // start testing
+import {createMessage, patchMessage, deleteMessage} from "./actions/message_actions"
 // end testing
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       session: { id: window.currentUser.id }
     };
     store = configureStore(preloadedState);
-    // delete window.currentUser;
+    delete window.currentUser;
   } else {
     store = configureStore();
   }
@@ -28,5 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // start testing
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
+  window.createMessage = createMessage; 
+  window.patchMessage = patchMessage; 
+  window.deleteMessage = deleteMessage; 
   // end testing
 });

@@ -15,4 +15,17 @@ class Message < ApplicationRecord
   validates :body, :messageable_type, :messageable_id, :user_id, presence: true
 
   belongs_to :messageable, polymorphic: true
+  
+  belongs_to :user, 
+    class_name: 'User', 
+    foreign_key: :user_id
+
+  has_many :child_messages, 
+    class_name: 'Message', 
+    foreign_key: :parent_message_id
+
+  belongs_to :parent_message, 
+    class_name: 'Message', 
+    foreign_key: :parent_message_id, 
+    optional: true
 end

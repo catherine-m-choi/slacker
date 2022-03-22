@@ -28,18 +28,21 @@
 #  uid                    :string
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  devise :registerable,
-          :recoverable, :rememberable, :confirmable
+  
+  # For google auth
+  devise :registerable, :recoverable, :rememberable, :confirmable
   devise :omniauthable, :omniauth_providers => [:google_oauth2]
-
+  
+  # For user auth (not using devise for non-google log in)
   attr_reader :password
   
+  # Validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: {minimum: 8, allow_nil: true}
+
+  # Associatons
+  has_many :messages, inverse_of: 'user'
 
   after_initialize :ensure_session_token!
 
@@ -68,30 +71,12 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
-  # For oauth
-  # def self.find_or_create_by_google_oauth(auth)
-  #   user = User.where(:provider => auth.provider, :uid => auth.uid).first
-
-  #   unless user
-  #     user = User.create!(
-  #     provider: auth.provider,
-  #     uid: auth.uid,
-  #     email: auth.info.email,
-  #     password: Devise.friendly_token[0,20]
-  #   )
-  #   end
-
-  #   user
-  # end
-
   def self.from_omniauth(auth)
     User.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.display_name = auth.info.name   # assuming the user model has a name
       # user.image = auth.info.image # assuming the user model has an image
-      # If you are using confirmable and the provider(s) you use validate emails, 
-      # uncomment the line below to skip the confirmation emails.
       user.skip_confirmation!
     end
   end
