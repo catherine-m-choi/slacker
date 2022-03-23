@@ -13,7 +13,7 @@ User.destroy_all
 Conversation.destroy_all
 
 # Test user
-User.create(
+user1 = User.create(
   username: 'this_is_cat',
   email: 'fake_cat23@gmail.com',
   password: "password",
@@ -26,7 +26,7 @@ User.create(
   profile_picture_url: nil
 )
 
-User.create(
+user2 = User.create(
   username: 'banana_person',
   email: 'catherine@test.com',
   password: "password",
@@ -39,24 +39,24 @@ User.create(
   profile_picture_url: 'https://images.newscientist.com/wp-content/uploads/2019/01/31134057/gettyimages-86304874.jpg?crop=4:3,smart&width=1200&height=900&upscale=true'
 )
 
-Conversation.create(
+convo1 = Conversation.create(
   name: 'My first conversation',
   topic: 'Heroku testing',
   purpose: nil
 )
 
-Message.create(
-  user_id: 1,
+msg1 = Message.create(
+  user_id: user1.id,
   body: "Welcome to Slack(er)! Type a message in the chat to begin",
   messageable_type: 'Conversation',
-  messageable_id: 1,
+  messageable_id: convo1.id,
   parent_message_id: nil,
 )
 
-Message.create(
-  user_id: 2,
+msg2 = Message.create(
+  user_id: user2.id,
   body: "Hiiii, this is fun",
   messageable_type: 'Conversation',
-  messageable_id: 1,
+  messageable_id: convo1.id,
   parent_message_id: nil,
 )
