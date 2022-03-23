@@ -30,7 +30,7 @@
 class User < ApplicationRecord
   
   # For google auth
-  devise :registerable, :recoverable, :rememberable, :confirmable
+  devise :registerable, :recoverable, :rememberable
   devise :omniauthable, :omniauth_providers => [:google_oauth2]
   
   # For user auth (not using devise for non-google log in)
