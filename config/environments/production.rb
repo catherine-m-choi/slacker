@@ -92,4 +92,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configuring action_cable
+  config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
+
+  config.action_cable.allowed_request_origins = [
+    'https://cat-slacker.herokuapp.com', 
+    'http://cat-slacker.herokuapp.com/']
 end

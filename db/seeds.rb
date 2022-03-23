@@ -8,7 +8,9 @@
 
 # require 'faker'
 
+Message.destroy_all
 User.destroy_all
+Conversation.destroy_all
 
 # Test user
 User.create(
@@ -22,4 +24,39 @@ User.create(
   status_text: nil,
   status_expiration: nil,
   profile_picture_url: nil
+)
+
+User.create(
+  username: 'banana_person',
+  email: 'catherine@test.com',
+  password: "password",
+  title: 'Banana Salesperson',
+  phone: nil,
+  skype: nil,
+  display_name: 'Banana Bob',
+  status_text: nil,
+  status_expiration: nil,
+  profile_picture_url: 'https://images.newscientist.com/wp-content/uploads/2019/01/31134057/gettyimages-86304874.jpg?crop=4:3,smart&width=1200&height=900&upscale=true'
+)
+
+Conversation.create(
+  name: 'My first conversation',
+  topic: 'Heroku testing',
+  purpose: nil
+)
+
+Message.create(
+  user_id: 1,
+  body: "Welcome to Slack(er)! Type a message in the chat to begin",
+  messageable_type: 'Conversation',
+  messageable_id: 1,
+  parent_message_id: nil,
+)
+
+Message.create(
+  user_id: 2,
+  body: "Hiiii, this is fun",
+  messageable_type: 'Conversation',
+  messageable_id: 1,
+  parent_message_id: nil,
 )
