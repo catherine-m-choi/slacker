@@ -36,7 +36,7 @@ function TempChatRoom(props) {
     })
     
     // setting up websocket:
-    const cable = createConsumer("ws://cat-slacker.herokuapp.com/cable")
+    const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
 
     // hard coding to test for now
     // channel is necessary for connection to be established. category and id are params 
