@@ -14,10 +14,11 @@ function LoginForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = Object.assign({}, {email, password});
-    // Prob need to change redirect to App home page
-    props.login(user).then( () => props.history.push('/') , () => {
-      setErrors(props.errors);
-    })
+    props.login(user)
+      .then( () => props.history.push('/') , () => {
+        setErrors(props.errors);
+      }
+    )
   }
 
   const handleInput = (type) =>{

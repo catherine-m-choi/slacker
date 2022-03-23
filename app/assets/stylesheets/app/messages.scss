@@ -1,0 +1,106 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.AppTopNav__container {
+  background-color: $monument-top-nav-bg;
+  color: $monument-top-nav-text;
+  height: 5vh;
+}
+
+.App__content {
+  display: flex;
+}
+
+.AppLeftBar__container {
+  background-color: $monument-column-bg;
+  color: $monument-text-color;
+  width: 20vw;
+}
+
+.App__center-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+.ChatRoom__container {
+  height: 75vh;
+  overflow: auto; 
+  display: flex; 
+  flex-direction: column-reverse;
+}
+
+.MessageForm__float {
+  height: 20vh;
+}
+
+.MessageForm__container {
+  height: 16vh;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  padding: 2vh 2vw 2vh 2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.MessageForm {
+  background-color: blanchedalmond;
+  width: 56vw;
+  border-radius: 10px;
+}
+
+.AppRightBar__container {
+  width: 20vw;
+  border-left: 1px solid $border-light-gray;
+}
+
+
+.MessageItem {
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.ChatRoom .MessageItem:last-child {
+  padding-bottom: 1vh;
+}
+
+.ChatRoom .MessageItem:hover {
+  background-color: $light-message-hover;
+}
+
+
+.MessageItem {
+  display: flex;
+}
+
+.MessageItem__info {
+  display: flex;
+}
+
+.MessageItem__sender-profile-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.MessageItem__sender-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.MessageItem__time {
+  font-size: .8rem;
+  color: $text--light-gray;
+}
+
+.MessageItem__body {
+  font-size: .9rem;
+}

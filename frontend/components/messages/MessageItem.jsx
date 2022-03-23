@@ -6,13 +6,16 @@ function MessageItem({message, sender}) {
   
   // debugger
   return (
-    <ul>
-      <li>{message.userId}</li>
-      <li>{(sender.profilePictureUrl) ? sender.profilePictureUrl: "<default image>"}</li>
-      <li>{(sender.displayName) ? sender.displayName : sender.email }</li>
-      <li>{message.body}</li>
-      <li>{message.createdAt}</li>
-    </ul>
+    <div className="MessageItem">
+      <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl: "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+      <ul>
+        <div className="MessageItem__info">
+          <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+          <li className="MessageItem__time">{message.createdAt}</li>
+        </div>
+        <li className="MessageItem__body">{message.body}</li>
+      </ul>
+    </div>
   )
 }
 

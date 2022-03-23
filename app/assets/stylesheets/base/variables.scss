@@ -26,11 +26,13 @@ $error-border: rgba(224,30,90,.4);
 $box-border-transparent-opaque: rgba(255,255,255,.2);
 $box-background-light-purple: #ecdeec;;
 
+// Main light theme:
+$light-message-hover: rgba(29, 28, 29, 0.03);
 
 // App Themes:
 
 // Monument:
-$monument-column-bg :#0D7E83;
+$monument-column-bg:#0D7E83;
 $monument-active-item :#F79F66;
 $monument-active-item-text :#FFFFFF;
 $monument-hover-item :#D37C71;

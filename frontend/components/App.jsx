@@ -10,14 +10,17 @@ import AppTopNav from "./temp_app_bars/AppTopNav";
 const App = () => (
   <div className="App">
     <AppTopNav />
-    <AppLeftBar />
-    
-    <div className="App__center-content">
-      <TempChatRoomContainer />
-      <MessageFormContainer />
-    </div>
+    <div className="App__content">
+      <AppLeftBar />
+      
+      <div className="App__center-content">
+        <TempChatRoomContainer />
+        <div className="MessageForm__float"></div>
+        <MessageFormContainer />
+      </div>
 
-    <AppRightBar />
+      <AppRightBar />
+    </div>
   </div>
 );
 

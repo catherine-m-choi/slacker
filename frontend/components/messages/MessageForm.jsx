@@ -30,10 +30,14 @@ function MessageForm({message, currentUser, messageAction}) {
   }
   
   return (
-    <form>
-      <input type="text" value={body} onChange={(e) => setBody(e.target.value) }/>
-      <button onClick={handleSubmit}>Send</button>
-    </form>
+    <div className="MessageForm__container">
+      <form className="MessageForm">
+        [This is the textbox area]
+        <br />
+        <input type="text" value={body} onChange={(e) => setBody(e.target.value) }/>
+        <button onClick={handleSubmit}>Send</button>
+      </form>
+    </div>
   )
 }
 

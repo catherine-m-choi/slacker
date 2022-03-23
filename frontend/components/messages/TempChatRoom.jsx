@@ -62,17 +62,18 @@ function TempChatRoom(props) {
   
   const displayMessages = chatMessages.map((msg) => {
     return (
-      // <li key={msg.id}>{msg.body}</li>
       <MessageItemContainer key={msg.id} message={msg} />
     )
   })
 
   return (
-    <div>
-      [Chat Room]
-      <ul>
-        {displayMessages}
-      </ul>
+    <div className="ChatRoom__container">
+      <div className="ChatRoom">
+        [Chat Room]
+        <ul>
+          {displayMessages}
+        </ul>
+      </div>
     </div>
   )
 }
