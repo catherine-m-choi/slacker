@@ -4,13 +4,18 @@ const messagesReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState;
   switch (action.type) {
-    case ADD_MESSAGE, UPDATE_MESSAGE:
+    case ADD_MESSAGE:
+      // debugger
+      nextState = Object.assign({}, state);
+      nextState[action.payload.id] = action.payload;
+      return nextState;
+    case UPDATE_MESSAGE:
       nextState = Object.assign({}, state);
       nextState[action.payload.id] = action.payload;
       return nextState;
     case DELETE_MESSAGE:
       nextState = Object.assign({}, state);
-      delete nextState[action.payload.id];
+      delete nextState[action.payload];
       return nextState;
     case FETCH_MESSAGES:
       return action.payload

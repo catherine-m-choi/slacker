@@ -5,9 +5,21 @@ import MessageItemContainer from "./MessageItemContainer";
 function TempChatRoom(props) {
 
   // maybe props.messages should be a selector slice of state?
-  const [chatMessages, setChatMessages] = useState([])
+  const [chatMessages, setChatMessages] = useState(props.messages)
   
+  // const Create = ({ match: {params: {id} } }) => {    
+
+  //   useEffect(() => {
+  //     setParcelType('paper');
+  //   }, [props.match.params.id]);
+
   useEffect(() => {
+    setChatMessages(props.messages);
+  }, [props.messages])
+
+  useEffect(() => {
+    let isMounted = true;       
+
     // Fetching users so that we can send them to message index items later
     props.fetchUsers();
     
@@ -19,8 +31,8 @@ function TempChatRoom(props) {
     }
     
     // Grab prev messages when component mounts
-    props.fetchMessages(chatInfo).then((res) => {
-      setChatMessages(Object.values(res.payload))
+    props.fetchMessagesDB(chatInfo).then((res) => {
+      setChatMessages(res.payload)
     })
     
     // setting up websocket:
@@ -42,51 +54,75 @@ function TempChatRoom(props) {
         console.log("connected to websocket");
         // Need to broadcast that I joined, so that 
       },
-      disconnected() {
+      disconnected: () => {
         // Called when the subscription has been terminated by the server
       },
-      received(data) {
+      received: (data) => {
         // Called when there's incoming data on the websocket for this channel
-        switch (data.action) {
-          case 'subscribed':
-            // When new used has joined chat, fetch user
-            props.fetchUsers()
-            break;
-          case 'typing':
-            console.log("someone is typing...")
-          default:
-            break;
-        }
-        console.log(data)
         console.log("websocket received data!")
-        // debugger
-        if (chatMessages.length !== 0) {
-          setChatMessages(chatMessages.concat(data))
-        } else {
-          props.fetchMessages(chatInfo).then((res) => {
-            setChatMessages(Object.values(res.payload))
-          })
+        console.log(data)
+
+        // Preventing repeated action for user who broadcasts, since they will
+        // also receive the data they themselves broadcast out.
+        switch (data.action) {
+          case "subscribed":
+            // When new used has joined chat, fetch user
+            // props.fetchUsers()
+            break;
+          case "create":
+            if (data.message.user_id === props.currentUser.id) return;
+            props.receiveMessage(camelizeMessage(data.message))
+            break;
+          case "delete":
+            props.deleteMessage(data.message.id)
+            break;
+          case "update":
+            props.patchMessage(camelizeMessage(data.message))
+            break;
         }
       }
     })
 
+    const camelizeMessage = (message) => {
+      return {
+        body: message.body,
+        id: message.id,
+        userId: message.user_id,
+        parentMessageId: message.parent_message_id,
+        messageableId: message.messageable_id,
+        messageableType: message.messageable_type,
+        createdAt: message.created_at,
+        updatedAt: message.updated_at,
+      }
+    }
+
     // cleaning up when component is unmounted
-    return () => chat.unsubscribe();
+    return () => {
+      chat.unsubscribe();
+      isMounted = false; 
+    };
   }, [])
   
   // Showing date above message only when it's a different date than previous msg
   let prevDate = 0;
-  const displayMessages = chatMessages.map((msg) => {
+  const displayMessages = Object.values(chatMessages).map((msg) => {
     let date = new Date(msg.createdAt)
     let dateNoHours = date.setHours(0,0,0,0)
     let displayDate = false;
     // debugger
-    if (prevDate.valueOf() !== date.valueOf()) {
-      prevDate = date
+    if (prevDate.valueOf() !== dateNoHours.valueOf()) {
+      prevDate = dateNoHours;
       displayDate = true;
     }
+    // debugger
     return (
-      <MessageItemContainer key={msg.id} message={msg} displayDate={displayDate}/>
+      <MessageItemContainer 
+        key={msg.id} 
+        message={msg} 
+        displayDate={displayDate} 
+        deleteMessageDB={props.deleteMessageDB}
+        patchMessageDB={props.patchMessageDB}
+      />
     )
   })
 

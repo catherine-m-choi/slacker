@@ -28,32 +28,46 @@ const updateMessage = (message) => {
 
 const destroyMessage = (messageId) => {
   return {
-    type: DELETE_MESSAGE
+    type: DELETE_MESSAGE,
+    payload: messageId
   }
 }
 
-// chatInfo should be structured like: 
-// {
-//   chat_id: 1,
-//   chat_type: "Conversation" // Or "Channel"
-// }
 
-export const fetchMessages = (chatInfo) => dispatch => {
+// Ajax thunk action creators
+
+export const fetchMessagesDB = (chatInfo) => dispatch => {
   return MessageAPIUtil.fetchMessages(chatInfo)
     .then((messages) => dispatch(allMessages(messages)))
 }
 
-export const createMessage = (message) => dispatch => {
+export const createMessageDB = (message) => dispatch => {
   return MessageAPIUtil.createMessage(message)
     .then((message) => dispatch(addMessage(message)))
 }
 
-export const patchMessage = (message) => dispatch => {
+export const patchMessageDB = (message) => dispatch => {
   return MessageAPIUtil.patchMessage(message)
     .then((message) => dispatch(updateMessage(message)))
 }
 
-export const deleteMessage = (messageId) => dispatch => {
+export const deleteMessageDB = (messageId) => dispatch => {
   return MessageAPIUtil.deleteMessage(messageId)
     .then(() => dispatch(destroyMessage(messageId)))
+}
+
+
+// Non AJAX actions creators (aka just to change state in frontend)
+
+export const receiveMessage = (message) => dispatch => {
+  // debugger
+  return dispatch(addMessage(message));
+}
+
+export const deleteMessage = (messageId) => dispatch => {
+  return dispatch(destroyMessage(messageId));
+}
+
+export const patchMessage = (message) => dispatch => {
+  return dispatch(updateMessage(message));
 }

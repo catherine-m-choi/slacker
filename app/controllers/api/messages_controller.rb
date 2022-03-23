@@ -19,7 +19,8 @@ class Api::MessagesController < ApplicationController
       
       # Broadcasting message to chat when message is routed to create
       @chat = @message.chat
-      ChatsChannel.broadcast_to(@chat, @message)
+      broadcast_hash = {action: "create", message: @message}
+      ChatsChannel.broadcast_to(@chat, broadcast_hash)
       render :show
     else
       render json: @message.errors.full_messages , status: 401
@@ -31,6 +32,9 @@ class Api::MessagesController < ApplicationController
     if @message.nil?
       render json: ["Message does not exist"], status: 404
     elsif @message.update(message_params)
+      @chat = @message.chat
+      broadcast_hash = {action: "update", message: @message}
+      ChatsChannel.broadcast_to(@chat, broadcast_hash)
       render :show
     else
       render json: @message.errors.full_messages , status: 422
@@ -40,6 +44,9 @@ class Api::MessagesController < ApplicationController
   def destroy
     @message = Message.find_by(id: params[:id])
     if @message
+      @chat = @message.chat
+      broadcast_hash = {action: "delete", message: @message}
+      ChatsChannel.broadcast_to(@chat, broadcast_hash)
       @message.destroy
       render json: ["Message successfully deleted"], status: 200
     else

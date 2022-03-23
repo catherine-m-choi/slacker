@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import EditMessageForm from "./EditMessageForm";
 
-function MessageItem({message, sender, displayDate}) {
+function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB}) {
+  const [editStatus, setEditStatus] = useState(false);
+  
+  if (!message) return;
   
   const date = new Date(message.createdAt);
   const currentYear = new Date().getFullYear();
@@ -48,42 +52,46 @@ function MessageItem({message, sender, displayDate}) {
   const msgDate = date.toLocaleDateString('en-US', dateOptions)
   const prettyDate = [msgDate, nth(dayOfMonth) ].join("")
   const msgTime = new Intl.DateTimeFormat("en-US", timeOptions).format(date);
-  
-  // debugger
+
   return (
-    <div className={`MessageItem__container ${displayDate && "has-date"}`}>
-      {displayDate && 
-        <div className="MessageItem__date-container">
-          <div className="MessageItem__date">
-            {prettyDate}
+    (!editStatus) ? (
+      <div className={`MessageItem__container ${displayDate && "has-date"}`}>
+        {displayDate && 
+          <div className="MessageItem__date-container">
+            <div className="MessageItem__date">
+              {prettyDate}
+            </div>
+          </div>
+        }
+
+        <div className="MessageItem__actions-container">
+          <div className="MessageItem__actions">
+            <i className="material-icons-outlined">add_reaction</i>
+            <i className="material-icons-outlined">push_pin</i>
+            <i className="material-icons-outlined">chat</i>
+            <i className="material-icons-outlined">bookmark_border</i>
+            <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
+            <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
           </div>
         </div>
-      }
 
-      <div className="MessageItem__actions-container">
-        <div className="MessageItem__actions">
-          <i className="material-icons-outlined">add_reaction</i>
-          <i className="material-icons-outlined">push_pin</i>
-          <i className="material-icons-outlined">chat</i>
-          <i className="material-icons-outlined">bookmark_border</i>
-          <i className="material-icons-outlined">edit</i>
-          <i className="material-icons-outlined">delete</i>
+        <div className="MessageItem">
+          
+          <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl: "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+          <ul>
+            <div className="MessageItem__info">
+              <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+              <li className="MessageItem__time">{msgTime}</li>
+            </div>
+            <li className="MessageItem__body">{message.body}</li>
+          </ul>
         </div>
-      </div>
 
-      <div className="MessageItem">
-        
-        <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl: "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
-        <ul>
-          <div className="MessageItem__info">
-            <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
-            <li className="MessageItem__time">{msgTime}</li>
-          </div>
-          <li className="MessageItem__body">{message.body}</li>
-        </ul>
       </div>
-
-    </div>
+    ) : (
+      // <div>Yo</div>
+      <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
+    )
   )
 }
 

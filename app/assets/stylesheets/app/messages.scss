@@ -28,12 +28,14 @@
 
 .ChatRoom__container {
   height: 75vh;
-  overflow: auto; 
+  // overflow: auto; 
+  overflow-y: scroll;
   display: flex; 
   flex-direction: column-reverse;
 }
 .ChatRoom__container:hover {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 // To keep scrollbar in main area always showing
@@ -98,6 +100,11 @@
 
 .MessageItem__info {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.MessageItem__sender-name {
+  word-break: break-all;
 }
 
 .MessageItem__sender-profile-img {
@@ -167,8 +174,6 @@
   align-items: center;
   justify-content: space-evenly;
   background-color: $main-white;
-  // Fix width later
-  width:12vw;
   z-index: 2;
 }
 

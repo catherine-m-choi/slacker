@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import MessageForm from "./MessageForm";
-import {createMessage, patchMessage} from "../../actions/message_actions"
+import {createMessageDB } from "../../actions/message_actions"
 
 const mapStateToProps = (state) => {
   return {
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    messageAction: (message) => dispatch(createMessage(message)),
+    messageAction: (message) => dispatch(createMessageDB(message)),
     // patchMessage: (message) => dispatch(patchMessage(message)),
   }
 }

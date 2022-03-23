@@ -26,7 +26,7 @@ export const createMessage = (message) => {
 export const patchMessage = (message) => {
   return $.ajax({
     method: "PATCH",
-    url: "/api/messages",
+    url: `/api/messages/${message.id}`,
     data: {
         message: message
     }
@@ -36,9 +36,6 @@ export const patchMessage = (message) => {
 export const deleteMessage = (messageId) => {
   return $.ajax({
     method: "DELETE",
-    url: "/api/messages",
-    data: {
-      id: messageId
-    }
+    url: `/api/messages/${messageId}`
   })
 }
