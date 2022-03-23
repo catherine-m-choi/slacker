@@ -24,9 +24,18 @@ class ChatsChannel < ApplicationCable::Channel
     end
 
     stream_for @chat
+    # ActionCable.server.broadcast 'someidentifier', action: 'subscribed', user_id: current_user.id
+    broadcastParams = {action: 'subscribed'}
+    ChatsChannel.broadcast_to(@chat, broadcastParams)
   end
 
   def unsubscribed
     # Any cleanup needed when ChatsChannel is unsubscribed
   end
+
+  def typing
+    # Add user_id: current_user.id as a param when I've set this up later
+    ChatsChannel.broadcast_to(@chat, action: 'typing') 
+  end
+  
 end

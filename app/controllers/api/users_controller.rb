@@ -3,6 +3,15 @@ class Api::UsersController < ApplicationController
     @users = User.all
     render :index
   end
+
+  def show
+    @user = User.find_by(params: params[:id])
+    if @user
+      render :index
+    else 
+      render json: @user.errors.full_messages , status: 422
+    end
+  end
   
   def create
     @user = User.new(user_params)
@@ -10,7 +19,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render :show
     else
-      render json: @user.errors.full_messages , status: 401
+      render json: @user.errors.full_messages , status: 422
     end
   end
 

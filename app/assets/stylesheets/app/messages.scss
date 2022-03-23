@@ -32,6 +32,22 @@
   display: flex; 
   flex-direction: column-reverse;
 }
+.ChatRoom__container:hover {
+  overflow-y: scroll;
+}
+
+// To keep scrollbar in main area always showing
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+// 
 
 .MessageForm__float {
   height: 20vh;
@@ -70,13 +86,14 @@
   padding-bottom: 1vh;
 }
 
-.ChatRoom .MessageItem:hover {
+.MessageItem__container:hover .MessageItem {
   background-color: $light-message-hover;
 }
 
 
 .MessageItem {
   display: flex;
+  position: relative;
 }
 
 .MessageItem__info {
@@ -87,6 +104,7 @@
   height: 40px;
   width: 40px;
   border-radius: 5px;
+  margin-top: 5px;
   margin-right: 10px;
 }
 
@@ -103,4 +121,69 @@
 
 .MessageItem__body {
   font-size: .9rem;
+}
+
+.MessageItem__date-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.MessageItem__date {
+  background-color: $main-white;
+  padding: .5rem 1.3rem;
+  border-radius: 20px;
+  font-size: .9rem;
+  font-weight: 500;
+  border: 1px solid $border-light-gray;
+}
+
+.MessageItem__date-container::after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background: $border-light-gray;
+  display: block;
+  position: relative;
+  top: -1.15rem;
+  z-index: -1;
+}
+
+.MessageItem__actions-container {
+  height: 2rem;
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+  margin-right: .5rem;
+  display: flex;
+  justify-content: flex-end;
+  display: none;
+}
+
+.MessageItem__actions {
+  border: 1px solid $border-light-gray;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $main-white;
+  // Fix width later
+  width:12vw;
+  z-index: 2;
+}
+
+.MessageItem__actions i {
+  font-size: 1.1rem;
+  padding: 4px;
+  margin: 2px 0px;
+  color: $text--light-gray;
+  cursor: pointer;
+}
+
+.MessageItem__actions i:hover {
+  background-color: $light-message-hover;
+}
+
+.MessageItem__container:hover .MessageItem__actions-container { 
+  display: flex; 
 }

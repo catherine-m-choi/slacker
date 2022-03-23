@@ -38,11 +38,25 @@ function TempChatRoom(props) {
 
     // creating actual subscription
     const chat = cable.subscriptions.create(chatParams, {
-      connected: (data) => {
-        console.log("connected to websocket")
+      connected: () => {
+        console.log("connected to websocket");
+        // Need to broadcast that I joined, so that 
+      },
+      disconnected() {
+        // Called when the subscription has been terminated by the server
       },
       received(data) {
         // Called when there's incoming data on the websocket for this channel
+        switch (data.action) {
+          case 'subscribed':
+            // When new used has joined chat, fetch user
+            props.fetchUsers()
+            break;
+          case 'typing':
+            console.log("someone is typing...")
+          default:
+            break;
+        }
         console.log(data)
         console.log("websocket received data!")
         // debugger
@@ -60,9 +74,19 @@ function TempChatRoom(props) {
     return () => chat.unsubscribe();
   }, [])
   
+  // Showing date above message only when it's a different date than previous msg
+  let prevDate = 0;
   const displayMessages = chatMessages.map((msg) => {
+    let date = new Date(msg.createdAt)
+    let dateNoHours = date.setHours(0,0,0,0)
+    let displayDate = false;
+    // debugger
+    if (prevDate.valueOf() !== date.valueOf()) {
+      prevDate = date
+      displayDate = true;
+    }
     return (
-      <MessageItemContainer key={msg.id} message={msg} />
+      <MessageItemContainer key={msg.id} message={msg} displayDate={displayDate}/>
     )
   })
 
