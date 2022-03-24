@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
-import TempChatRoom from "./TempChatRoom";
+import { withRouter } from "react-router-dom";
+import ChatRoom from "./ChatRoom";
 import { 
   fetchMessagesDB, 
   receiveMessage, 
@@ -30,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TempChatRoom)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatRoom));

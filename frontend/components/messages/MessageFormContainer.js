@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import MessageForm from "./MessageForm";
 import {createMessageDB } from "../../actions/message_actions"
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     message: {
       body: ""
@@ -11,16 +12,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-// id: 1
-// body: "my first message"
-// userId: 3
-// parentMessageId: null
-// messageableId: 1
-// messageableType: "Conversation"
-
-// updatedAt: "2022-03-21T23:49:32.883Z"
-// createdAt: "2022-03-21T23:49:32.883Z"
-
 const mapDispatchToProps = (dispatch) => {
   return {
     messageAction: (message) => dispatch(createMessageDB(message)),
@@ -28,4 +19,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessageForm));

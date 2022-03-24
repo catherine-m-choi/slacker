@@ -1,5 +1,6 @@
 import React from "react";
-import TempChatRoomContainer from "./messages/TempChatRoomContainer";
+import { Route } from "react-router-dom";
+import ChatRoomContainer from "./messages/ChatRoomContainer";
 import MessageFormContainer from "./messages/MessageFormContainer";
 
 // temp for placeholder styling
@@ -13,11 +14,14 @@ const App = () => (
     <div className="App__content">
       <AppLeftBar />
       
-      <div className="App__center-content">
-        <TempChatRoomContainer />
-        <div className="MessageForm__float"></div>
-        <MessageFormContainer />
-      </div>
+      <Route path="/app/conversations/:id" >
+        <div className="App__center-content">
+          <ChatRoomContainer />
+            <div className="MessageForm__float">
+            </div>
+          <MessageFormContainer />
+        </div>
+      </Route>
 
       <AppRightBar />
     </div>

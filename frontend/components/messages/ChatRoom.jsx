@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { createConsumer } from "@rails/actioncable"
 import MessageItemContainer from "./MessageItemContainer";
 
-function TempChatRoom(props) {
+function ChatRoom(props) {
 
   // maybe props.messages should be a selector slice of state?
   const [chatMessages, setChatMessages] = useState(props.messages)
   
-  // const Create = ({ match: {params: {id} } }) => {    
+  useEffect(() => {
+    const chatInfo = {
+      chat_id: props.match.params.id,
+      chat_type: "Conversation"
+    }
 
-  //   useEffect(() => {
-  //     setParcelType('paper');
-  //   }, [props.match.params.id]);
+    props.fetchMessagesDB(chatInfo).then( (res) => {
+      const currentMsgs = Object.values(res).filter((msg) => msg.messageableId === props.match.params.id )
+      setChatMessages(currentMsgs);
+    })
 
+  }, [props.match.params.id])
+  
   useEffect(() => {
     setChatMessages(props.messages);
   }, [props.messages])
@@ -21,16 +29,11 @@ function TempChatRoom(props) {
     let isMounted = true;       
 
     // Fetching users so that we can send them to message index items later
+    // Later change this to only fetch users in the chat
     props.fetchUsers();
-    
-    // Fetching past messages: 
-    // Hard coded for now; need to change later.
-    // const chatInfo = {
-    //   chat_id: 1,
-    //   chat_type: "Conversation"
-    // }
+
     const chatInfo = {
-      chat_id: 4,
+      chat_id: props.match.params.id,
       chat_type: "Conversation"
     }
     
@@ -40,24 +43,23 @@ function TempChatRoom(props) {
     })
     
     // setting up websocket:
-    // switch for production!
+    // switch later for production!!!
     // const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
     const cable = createConsumer("ws://localhost:3000/cable")
 
-    // hard coding to test for now
     // channel is necessary for connection to be established. category and id are params 
     // passed to ChatChannel
     const chatParams = {
       channel: "ChatsChannel", 
       chat_type: "Conversation",
-      chat_id: 1
+      chat_id: props.match.params.id
     }
 
     // creating actual subscription
     const chat = cable.subscriptions.create(chatParams, {
       connected: () => {
         console.log("connected to websocket");
-        // Need to broadcast that I joined, so that 
+        // Broadcast that I joined
       },
       disconnected: () => {
         // Called when the subscription has been terminated by the server
@@ -143,4 +145,4 @@ function TempChatRoom(props) {
   )
 }
 
-export default TempChatRoom
+export default ChatRoom;
