@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import SearchResults from "./SearchResults";
 
 function ConversationModal(props) {
-  const [currentConvo, setcurrentConvo] = useState(props.conversation);
   const [searchQuery, setSearchQuery] = useState("");
 
   let memberNames = []
@@ -19,7 +18,7 @@ function ConversationModal(props) {
 
       <div>SEARCH BAR</div>
       <input type="text" placeholder="Find members" onChange={(e) => setSearchQuery(e.target.value) } />
-      <SearchResults searchQuery={searchQuery} users={props.users} members={props.filteredUsers} />
+      <SearchResults searchQuery={searchQuery} users={props.users} members={props.filteredUsers} addMember={props.addMember} convoId={props.conversation.id} />
 
       <br />
       <br />

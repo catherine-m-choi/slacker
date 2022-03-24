@@ -4,7 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/Root";
 
 // start testing
-import { fetchConvos, addConvo, updateConvo, deleteConvo } from "./actions/conversation_actions"
+import { fetchConvos, addConvo, updateConvo, deleteConvo, addMember } from "./actions/conversation_actions"
 // end testing
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -34,5 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addConvo = addConvo;
   window.updateConvo = updateConvo;
   window.deleteConvo = deleteConvo;
+  window.addMember = addMember;
   // end testing
 });

@@ -38,7 +38,7 @@ function SearchResults(props) {
       <ul>
         {(filteredUsersNotInChat.length > 0 ) && <li>Not in this channel</li> }
         {filteredUsersNotInChat.map((user) => (
-            <li key={user.id}>{user.email} <button>Add</button></li>
+            <li key={user.id}>{user.email} <button onClick={(e) => props.addMember(user.id, props.convoId)} >Add</button></li>
         ))}
       </ul>
     </div>

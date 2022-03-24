@@ -5,7 +5,7 @@ export const FETCH_CONVOS = "conversation/fetchConvos"
 export const ADD_CONVO = "conversation/addConvo"
 export const UPDATE_CONVO = "conversation/updateConvo"
 export const DELETE_CONVO = "conversation/deleteConvo"
-
+export const ADD_MEMBER = "conversation/addMember"
 
 // Action creators
 const fetchConvosAction = (convos) => {
@@ -36,6 +36,16 @@ const deleteConvoAction = (convoId) => {
   }
 }
 
+const addMemberAction = (userId, convoId) => {
+  return {
+    type: ADD_MEMBER,
+    payload: {
+      userId: userId, 
+      conversationId: convoId,
+    }
+  }
+}
+
 
 // Thunk action creators
 export const fetchConvos = () => dispatch => {
@@ -56,4 +66,9 @@ export const updateConvo = (convo) => dispatch => {
 export const deleteConvo = (convoId) => dispatch => {
   return ConversationAPIUtil.deleteConvo(convoId)
     .then(() => dispatch(deleteConvoAction(convoId)))
+}
+
+export const addMember = (userId, convoId) => dispatch => {
+  return ConversationAPIUtil.addMember(userId, convoId)
+    .then(() => dispatch(addMemberAction(userId, convoId)))
 }

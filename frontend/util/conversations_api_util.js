@@ -31,3 +31,16 @@ export const deleteConvo = (conversationId) => {
     url: `/api/conversations/${conversationId}`
   })
 }
+
+export const addMember = (userId, conversationId) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/conversation_memberships",
+    data: {
+        conversation_memberships: {
+            user_id: userId,
+            conversation_id: conversationId
+        }
+    }
+  })
+}
