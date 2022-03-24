@@ -5,3 +5,5 @@ json.extract! conversation,
   :name, 
   :topic, 
   :purpose
+
+json.members conversation.members.pluck(:id)

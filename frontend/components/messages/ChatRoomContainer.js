@@ -10,11 +10,13 @@ import {
   patchMessageDB,
 } from "../../actions/message_actions";
 import { fetchUsers, fetchUser } from "../../actions/user_actions";
+import { fetchConvos } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
     messages: state.entities.messages,
-    currentUser: state.entities.users[state.session.id]
+    conversations: state.entities.conversations,
+    currentUser: state.entities.users[state.session.id],
   }
 }
 
@@ -28,6 +30,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteMessageDB: (message) => dispatch(deleteMessageDB(message)),
     patchMessage: (message) => dispatch(patchMessage(message)),
     patchMessageDB: (message) => dispatch(patchMessageDB(message)),
+    fetchConvos: () => dispatch(fetchConvos()),
   }
 }
 

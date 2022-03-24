@@ -53,6 +53,8 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
   const prettyDate = [msgDate, nth(dayOfMonth) ].join("")
   const msgTime = new Intl.DateTimeFormat("en-US", timeOptions).format(date);
 
+  if (!sender) return (<div></div>);
+
   return (
     (!editStatus) ? (
       <div className={`MessageItem__container ${displayDate && "has-date"}`}>

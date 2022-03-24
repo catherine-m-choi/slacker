@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { createConsumer } from "@rails/actioncable"
 import MessageItemContainer from "./MessageItemContainer";
 
@@ -134,12 +133,14 @@ function ChatRoom(props) {
   })
 
   return (
-    <div className="ChatRoom__container">
-      <div className="ChatRoom">
-        [Chat Room]
-        <ul>
-          {displayMessages}
-        </ul>
+    <div>
+      <div className="ChatRoom__container">
+        <div className="ChatRoom">
+          [Chat Room]
+          <ul>
+            {displayMessages}
+          </ul>
+        </div>
       </div>
     </div>
   )

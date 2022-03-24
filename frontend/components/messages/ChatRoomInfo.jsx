@@ -1,0 +1,37 @@
+import React, { useState, useEffect } from "react";
+
+function ChatRoomInfo(props) {
+  const [currentConvo, setcurrentConvo] = useState([])
+
+  useEffect(() => {
+    props.fetchConvos().then( (res) => {
+      const currentConvo = res.payload[props.match.params.id]
+      setcurrentConvo(currentConvo);
+    })
+  }, [props.match.params.id])
+
+  let memberNames = []
+
+  const displayPics = currentConvo.members && currentConvo.members.map((convo) => {
+    let user = props.users[convo]
+    memberNames.push(user.email)
+    // return <div key={user.id}>{user.email}</div> 
+    return <img  key={user.id} src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  height="40px" width="40px"  alt="User profile picture" />
+  })
+
+  return (
+    <div className="ChatRoomInfo">
+      <h1>[Chat Room Info Component]</h1>
+      <ul className="ChatRoomInfo__profile-pictures"  onClick={() => props.openModal("convo/addMembers") } >
+        {displayPics && displayPics}
+      </ul>
+      <br />
+      <ul className="ChatRoomInfo__members"  onClick={() => props.openModal("convo/addMembers") } >
+        {memberNames.join(", ")}
+      </ul>
+      <button onClick={() => props.openModal("convo/addMembers") } >Add a member</button>
+    </div>
+  )
+}
+
+export default ChatRoomInfo;

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_21_225929) do
+ActiveRecord::Schema.define(version: 2022_03_24_165721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversation_memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_conversation_memberships_on_conversation_id"
+    t.index ["user_id"], name: "index_conversation_memberships_on_user_id"
+  end
 
   create_table "conversations", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -66,5 +75,7 @@ ActiveRecord::Schema.define(version: 2022_03_21_225929) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "conversation_memberships", "conversations"
+  add_foreign_key "conversation_memberships", "users"
   add_foreign_key "messages", "users"
 end

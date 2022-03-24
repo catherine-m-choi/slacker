@@ -11,5 +11,6 @@
 #
 class Conversation < ApplicationRecord
   has_many :messages, as: :messageable
-  has_many :users, -> { distinct }, through: :messages
+  has_many :conversation_memberships
+  has_many :members, through: :conversation_memberships, source: :user
 end

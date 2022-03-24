@@ -31,10 +31,10 @@ class Message < ApplicationRecord
     optional: true
 
   # has_one :conversation, through: :self_ref, source: :messageable, source_type: 'Conversation'
-  belongs_to :conversation, -> { where(messages: { messageable_type: 'Conversation' }) }, 
-    foreign_key: :messageable_id, 
-    foreign_type: 'Conversation', 
-    optional: true
+  # belongs_to :conversation, -> { where(messages: { messageable_type: 'Conversation' }) }, 
+  #   foreign_key: :messageable_id, 
+  #   foreign_type: 'Conversation', 
+  #   optional: true
 
   def chat
     if (self.messageable_type == "Conversation")

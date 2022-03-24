@@ -43,7 +43,8 @@ class User < ApplicationRecord
 
   # Associations
   has_many :messages, inverse_of: 'user'
-  has_many :conversations, -> { unscope(:order).distinct }, through: :messages
+  has_many :conversation_memberships
+  has_many :conversations, through: :conversation_memberships, source: :conversation
 
   after_initialize :ensure_session_token!
 
