@@ -15,6 +15,7 @@ class Message < ApplicationRecord
   validates :body, :messageable_type, :messageable_id, :user_id, presence: true
 
   belongs_to :messageable, polymorphic: true
+  # has_one :self_ref, class_name: 'Message', foreign_key: :id
 
   belongs_to :user, 
     class_name: 'User', 
@@ -27,6 +28,12 @@ class Message < ApplicationRecord
   belongs_to :parent_message, 
     class_name: 'Message', 
     foreign_key: :parent_message_id, 
+    optional: true
+
+  # has_one :conversation, through: :self_ref, source: :messageable, source_type: 'Conversation'
+  belongs_to :conversation, -> { where(messages: { messageable_type: 'Conversation' }) }, 
+    foreign_key: :messageable_id, 
+    foreign_type: 'Conversation', 
     optional: true
 
   def chat

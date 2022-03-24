@@ -22,7 +22,7 @@ function MessageForm({message, currentUser, messageAction}) {
       parent_message_id: null,
       // These next two should come from ownProps url. Hard coding for now.
       messageable_type: "Conversation",
-      messageable_id: 1,
+      messageable_id: 4,
     }
     
     messageAction(newMessage);

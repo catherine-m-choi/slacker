@@ -41,8 +41,9 @@ class User < ApplicationRecord
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: {minimum: 8, allow_nil: true}
 
-  # Associatons
+  # Associations
   has_many :messages, inverse_of: 'user'
+  has_many :conversations, -> { unscope(:order).distinct }, through: :messages
 
   after_initialize :ensure_session_token!
 
@@ -77,7 +78,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.display_name = auth.info.name   # assuming the user model has a name
       # user.image = auth.info.image # assuming the user model has an image
-      user.skip_confirmation!
+      # user.skip_confirmation!
     end
   end
 
@@ -88,5 +89,5 @@ class User < ApplicationRecord
       end
     end
   end
-
+  
 end

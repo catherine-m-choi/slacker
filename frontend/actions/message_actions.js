@@ -1,9 +1,9 @@
 import * as MessageAPIUtil from '../util/message_api_util'
 
+export const FETCH_MESSAGES = "message/fetchMessages";
 export const ADD_MESSAGE = "message/addMessage";
 export const UPDATE_MESSAGE = "message/updateMessage";
 export const DELETE_MESSAGE = "message/deleteMessage";
-export const FETCH_MESSAGES = "message/fetchMessages";
 
 const allMessages = (messages) => {
   return {

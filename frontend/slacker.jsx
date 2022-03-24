@@ -4,8 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/Root";
 
 // start testing
-import {createMessage, patchMessage, deleteMessage, fetchMessages} from "./actions/message_actions"
-import { fetchUsers } from "./actions/user_actions"
+import { fetchConvos, addConvo, updateConvo, deleteConvo } from "./actions/conversation_actions"
 // end testing
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -30,10 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // start testing
   window.getState = store.getState;
   window.dispatch = store.dispatch; 
-  window.createMessage = createMessage; 
-  window.patchMessage = patchMessage; 
-  window.deleteMessage = deleteMessage; 
-  window.fetchMessages = fetchMessages; 
-  window.fetchUsers = fetchUsers; 
+
+  window.fetchConvos = fetchConvos;
+  window.addConvo = addConvo;
+  window.updateConvo = updateConvo;
+  window.deleteConvo = deleteConvo;
   // end testing
 });

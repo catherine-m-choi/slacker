@@ -77,7 +77,7 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
 
         <div className="MessageItem">
           
-          <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl: "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+          <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
           <ul>
             <div className="MessageItem__info">
               <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>

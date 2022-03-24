@@ -24,9 +24,13 @@ function TempChatRoom(props) {
     props.fetchUsers();
     
     // Fetching past messages: 
-    // Hard coded for now; need to change later
+    // Hard coded for now; need to change later.
+    // const chatInfo = {
+    //   chat_id: 1,
+    //   chat_type: "Conversation"
+    // }
     const chatInfo = {
-      chat_id: 1,
+      chat_id: 4,
       chat_type: "Conversation"
     }
     
@@ -36,7 +40,9 @@ function TempChatRoom(props) {
     })
     
     // setting up websocket:
-    const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
+    // switch for production!
+    // const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
+    const cable = createConsumer("ws://localhost:3000/cable")
 
     // hard coding to test for now
     // channel is necessary for connection to be established. category and id are params 
