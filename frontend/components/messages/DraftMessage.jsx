@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import { withRouter } from "react-router-dom";
-import NewDmSearch from "./NewDMSearch";
 import SearchUsers from "./SearchUsers";
 import MessageFormContainer from "./MessageFormContainer";
 
 function DraftMessage(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  // debugger
   if (!props.location) return <div></div>;
   const [recipients, setRecipients] = useState((props.location.recepientId) ? [props.location.recepientId] : [] );
 
@@ -17,20 +15,16 @@ function DraftMessage(props) {
     }
   }, [recipients])
 
-  // debugger
-
   const displayUsers = recipients.map((userId) => {
     let user = props.users[userId]
     // debugger
     if (!user) return <div key={userId} ></div>
     return (
-      <div key={user.id} >
+      <div key={user.id} className="DraftMessage__search-display-users" >
         <img src={
           (user.profilePictureUrl) ? 
           user.profilePictureUrl : 
             "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
-            height="40px" 
-            width="40px"  
             alt="User profile picture" 
         />
         {user.email}
@@ -38,9 +32,7 @@ function DraftMessage(props) {
     )
   })
 
-  let searchUsersBar;
   let recipientNames = [];
-  let recipientImages;
 
   recipients.forEach((userId) => {
     let user = props.users[userId]
@@ -62,18 +54,21 @@ function DraftMessage(props) {
   }
   
   return (
-    <div>
-      <h2>New message</h2>
+    <div className="DraftMessage" >
+      <div className="DraftMessage__info">
+        
+        <h2>New message</h2>
 
-      <label>To: 
-        {displayUsers}
-
-        <input 
-          type="text" 
-          placeholder="Find members" 
-          onChange={(e) => setSearchQuery(e.target.value) } 
-        />
-
+        <div className="DraftMessage__search">
+          <label htmlFor="DraftMessage__search-label" >To:</label>
+          {displayUsers}
+          <input id="DraftMessage__search-input"
+            type="text" 
+            placeholder="Find members" 
+            onChange={(e) => setSearchQuery(e.target.value) } 
+          />
+        </div>
+        
         <SearchUsers 
           searchQuery={searchQuery} 
           users={props.users} 
@@ -81,11 +76,9 @@ function DraftMessage(props) {
           setRecipients={setRecipients} 
           currentUserId={props.currentUserId}
         />
+      </div>
 
-        <br />
-
-        <div>This is the very beginning of your direct message history with {prettyNames}. Only the {recipients.length + 1} of you are in this conversation.</div>
-      </label>
+      {(recipients.length > 0) && <div className="DraftMessage__content">This is the very beginning of your direct message history with {prettyNames}. Only the {recipients.length + 1} of you are in this conversation.</div>}
 
       <MessageFormContainer recipients={[...recipients, props.currentUserId]} />
     </div>

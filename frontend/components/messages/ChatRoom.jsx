@@ -136,7 +136,6 @@ function ChatRoom(props) {
     <div>
       <div className="ChatRoom__container">
         <div className="ChatRoom">
-          [Chat Room]
           <ul>
             {displayMessages}
           </ul>

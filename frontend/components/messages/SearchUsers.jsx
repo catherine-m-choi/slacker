@@ -17,15 +17,13 @@ function SearchUsers(props) {
   })
 
   return (
-    <div>
-      <ul>
+      <ul className="SearchUsers">
         {filteredUsers.map((user) => (
             <li key={user.id} onClick={ () => {
               props.setRecipients(props.recipients.concat(user.id))
             }} >{user.email}</li>
         ))}
       </ul>
-    </div>
   )
 }
 

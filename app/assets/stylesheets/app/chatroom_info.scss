@@ -1,0 +1,61 @@
+.ChatRoomInfo {
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+  padding-left: calc(2vw - .9vh);
+  padding-right: calc(2vw - .9vh);
+  font-weight: bold;
+  border-bottom: 1px solid $border-light-gray;
+  box-shadow: 0 2px 5px -1px $box-shadow-gray;
+}
+
+.ChatRoomInfo__members {
+  padding: .5vh .9vh;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-overflow: ellipsis; 
+  overflow: hidden;
+  white-space: nowrap;   
+}
+
+
+.ChatRoomInfo__members:hover {
+  background-color: $lightish-message-hover;
+}
+
+.ChatRoomInfo__profile-pictures {
+  display: flex;
+  align-items: center;
+  padding: .5vh;
+  border: 1px solid $border-light-gray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ChatRoomInfo__profile-pictures img {
+  height: 3vh;
+  width: 3vh;  
+  border-radius: 3px;
+  padding-right: 3px;
+}
+
+.ChatRoomInfo__member-count {
+  margin-left: .8vh;
+  margin-right: .8vh;
+  font-size: .8rem;
+  font-weight: 400;
+  color: $text-gray;
+}
+
+.ChatRoomInfo__profile-pictures:hover {
+  background-color: $light-message-hover;
+}
+
+.App__center-content {
+  height: 95vh; // Top NavBar height is 5vh
+}
+

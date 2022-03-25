@@ -1,0 +1,122 @@
+
+.DraftMessage {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  justify-content: space-between;
+}
+
+.DraftMessage__info {
+  // height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.DraftMessage__info h2 {
+  box-sizing: border-box;
+  border-bottom: 1px solid $border-gray;
+  padding: 1.5vh 2vw;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+.DraftMessage__search {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  // padding: 2vh 2vw;
+  border-bottom: 1px solid $border-light-gray;
+  box-shadow: 0 2px 5px -1px $box-shadow-gray;
+}
+
+.DraftMessage__search label {
+  margin-left: 2vw;
+  font-size: .9rem;
+  color: $text--light-gray;
+  margin-right: 1.5vh;
+}
+
+.DraftMessage__search-input {
+  margin-left: 1.5vh;
+}
+
+.DraftMessage__content {
+  padding: 1.7vh 2vw 1vh 2vw;
+}
+
+.SearchUsers {
+  background-color: $border-solid-light-gray;
+  border: 1px solid $border-light-gray;
+  box-shadow: 0px .8px 2.5px 1.5px $box-shadow-gray;
+  width: 100%;
+  width: 93%;
+  margin-left: 5%;
+  margin-right: 0;
+  margin-top: -1.5vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 0;
+  max-height: 50vh;
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+
+.SearchUsers:empty{
+  display:none;
+}
+
+.SearchUsers li {
+  margin-right: 0;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  display: flex;
+  align-items: center;
+}
+.SearchUsers li:hover {
+  background-color: $link-blue;
+  color: $main-white;
+}
+
+.DraftMessage__search input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: $main-white;
+  outline: 0;
+  height: 3rem;
+  font-size: .95rem;
+}
+
+.DraftMessage__search input:focus {
+  outline: none;
+  border: none;
+  border-width:0px;
+  outline-width: 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+.DraftMessage__search-display-users {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  background-color: rgb(229, 242, 251);
+  border-radius: 5px;
+  margin-right: 1vw;
+}
+
+.DraftMessage__search-display-users img {
+  margin-right: 10px;
+  border-radius: 5px;
+  height: 30px;
+  width: 30px;
+}
