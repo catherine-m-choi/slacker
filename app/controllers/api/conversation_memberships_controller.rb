@@ -2,6 +2,7 @@ class Api::ConversationMembershipsController < ApplicationController
   def create
     @membership = ConversationMembership.new(memberships_params)
     if @membership.save
+      render :show
     else
       render json: @membership.errors.full_messages, status: 422
     end

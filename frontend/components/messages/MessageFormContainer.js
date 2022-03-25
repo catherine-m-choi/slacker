@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MessageForm from "./MessageForm";
 import {createMessageDB } from "../../actions/message_actions"
+import { addConvo, addMember } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -15,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     messageAction: (message) => dispatch(createMessageDB(message)),
-    // patchMessage: (message) => dispatch(patchMessage(message)),
+    addConvo: (convo) => dispatch(addConvo(convo)),
+    addMember: (userId, convoId) => dispatch(addMember(userId, convoId)),
   }
 }
 

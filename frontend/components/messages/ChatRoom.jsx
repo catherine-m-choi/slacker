@@ -29,7 +29,7 @@ function ChatRoom(props) {
 
     // Fetching users so that we can send them to message index items later
     // Later change this to only fetch users in the chat
-    props.fetchUsers();
+    // props.fetchUsers();
 
     const chatInfo = {
       chat_id: props.match.params.id,

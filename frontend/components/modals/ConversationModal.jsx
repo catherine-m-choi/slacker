@@ -18,7 +18,13 @@ function ConversationModal(props) {
 
       <div>SEARCH BAR</div>
       <input type="text" placeholder="Find members" onChange={(e) => setSearchQuery(e.target.value) } />
-      <SearchResults searchQuery={searchQuery} users={props.users} members={props.filteredUsers} addMember={props.addMember} convoId={props.conversation.id} />
+      <SearchResults 
+        searchQuery={searchQuery} 
+        users={props.users} 
+        members={props.filteredUsers} 
+        addMember={props.addMember} 
+        convoId={props.conversation.id} 
+      />
 
       <br />
       <br />

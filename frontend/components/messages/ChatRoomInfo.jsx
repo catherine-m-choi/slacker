@@ -12,6 +12,8 @@ function ChatRoomInfo(props) {
 
   let memberNames = []
 
+  if (!currentConvo) return <div></div>
+  
   const displayPics = currentConvo.members && currentConvo.members.map((convo) => {
     let user = props.users[convo]
     memberNames.push(user.email)
@@ -24,6 +26,7 @@ function ChatRoomInfo(props) {
       <h1>[Chat Room Info Component]</h1>
       <ul className="ChatRoomInfo__profile-pictures"  onClick={() => props.openModal("convo/addMembers") } >
         {displayPics && displayPics}
+        <div>{currentConvo.members && currentConvo.members.length}</div>
       </ul>
       <br />
       <ul className="ChatRoomInfo__members"  onClick={() => props.openModal("convo/addMembers") } >

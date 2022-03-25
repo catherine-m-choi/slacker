@@ -9,18 +9,57 @@ function MessageForm(props) {
     chat_type: "Conversation"
   }
 
+  let newMessage;
   const handleSubmit = () => {
-    const newMessage = {
-      body: body,
-      user_id: props.currentUser.id,
-      // parent_message_id could come from a button. 
-      parent_message_id: null,
-      // These next two should come from ownProps url. Hard coding for now.
-      messageable_type: "Conversation",
-      messageable_id: props.match.params.id,
+    let messageType;
+    switch (props.match.path) {
+      case '/app/conversations/:id':
+        console.log("not a new convo")
+        messageType = "Conversation";
+
+        newMessage = {
+          body: body,
+          user_id: props.currentUser.id,
+          parent_message_id: (props.parentId) ? props.parentId : null,
+          messageable_type: messageType,
+          messageable_id: props.match.params.id,
+        }
+  
+        props.messageAction(newMessage);
+        break;
+      case '/app/drafts':
+        console.log("new convo!!!")
+        messageType = "Conversation"
+        let convoId;
+
+        props.addConvo()
+          .then((res) => {
+            // debugger
+            props.recipients.forEach((userId) => {
+              // debugger
+              props.addMember(userId, res.payload.id)
+            })
+
+            newMessage = {
+              body: body,
+              user_id: props.currentUser.id,
+              parent_message_id: null,
+              messageable_type: messageType,
+              messageable_id: res.payload.id,
+            }
+
+            props.messageAction(newMessage)
+            convoId = res.payload.id
+          }, console.log)
+          .then( () => props.history.push(`/app/conversations/${convoId}`))
+        break;
+      case '/app/channels/:id':
+        messageType = "Channel"
+        break;
+      default:
+        break;
     }
-    
-    props.messageAction(newMessage);
+
     setBody("");
   }
   

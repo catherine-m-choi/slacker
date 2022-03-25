@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     chatRoomMembers: state.entities.conversations,
     users: state.entities.users,
+    currentUserId: state.session.id,
   }
 }
 

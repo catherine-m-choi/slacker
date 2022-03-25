@@ -86,12 +86,12 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
               <li className="MessageItem__time">{msgTime}</li>
             </div>
             <li className="MessageItem__body">{message.body}</li>
+            {(message.createdAt !== message.updatedAt) && <span>(Edited)</span> }
           </ul>
         </div>
 
       </div>
     ) : (
-      // <div>Yo</div>
       <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
     )
   )

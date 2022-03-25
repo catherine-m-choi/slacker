@@ -11,6 +11,7 @@ import {
 } from "../../actions/message_actions";
 import { fetchUsers, fetchUser } from "../../actions/user_actions";
 import { fetchConvos } from "../../actions/conversation_actions";
+import { getFilteredMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   return {

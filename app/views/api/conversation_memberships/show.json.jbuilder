@@ -1,0 +1,1 @@
+json.partial! "/api/conversation_memberships/conversation_memberships", conversation_memberships: @membership
