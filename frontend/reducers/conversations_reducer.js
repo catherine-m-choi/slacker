@@ -20,7 +20,9 @@ const conversationsReducer = (state = {}, action) => {
       return nextState;
     case ADD_MEMBER:
       nextState = Object.assign({}, state);
-      let convoId = action.payload.conversationId
+      // let convoId = action.payload.conversationId
+      // let newMembers = nextState[convoId].concat(action.payload.userId)
+      // nextState[convoId] = newMembers
       nextState[convoId].members.push(action.payload.userId)
       return nextState;
     default:

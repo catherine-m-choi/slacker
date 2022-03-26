@@ -9,14 +9,32 @@ export const getFilteredUsers = (state, userIds) => {
 }
 
 
-// export const getFilteredMessages = (state, messageType, messageId) => {
-//   const messages = state.entities.messages
-//   let result = {};
-//   for (let id in messages) {
-//     if (messages[id].messageType === messageType && messages[id].messageableId === messageId) {
-//       result[id] = messages[id]
-//     }
-//   }
+export const selectThreadMessages = (state, parentId) => {
+  const messages = state.entities.messages
+  let result = {};
+  for (let id in messages) {
+    // debugger
+    if (String(messages[id].parentMessageId) === String(parentId)) {
+      result[id] = messages[id]
+    }
+  }
 
-//   return result;
-// }
+  // debugger
+
+  return result;
+}
+
+export const selectConvoMessages = (state, convoId) => {
+  const messages = state.entities.messages
+  let result = {};
+  for (let id in messages) {
+    // debugger
+    if (messages[id].messageableType === "Conversation" && String(messages[id].messageableId) === String(convoId)  ) {
+      result[id] = messages[id]
+    }
+  }
+
+  // debugger
+
+  return result;
+}

@@ -50,6 +50,7 @@
 
 .DraftMessage__content {
   padding: 1.7vh 2vw 1vh 2vw;
+  font-size: 1.1rem;
 }
 
 .SearchUsers {
@@ -86,10 +87,11 @@
 }
 
 .DraftMessage__search input {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: hidden;
+  // border-top-style: hidden;
+  // border-right-style: hidden;
+  // border-left-style: hidden;
+  // border-bottom-style: hidden;
+  border: none;
   background-color: $main-white;
   outline: 0;
   height: 3rem;
@@ -111,7 +113,8 @@
   padding: 5px;
   background-color: rgb(229, 242, 251);
   border-radius: 5px;
-  margin-right: 1vw;
+  margin-right: .5vw;
+  margin-right: .5vw;
 }
 
 .DraftMessage__search-display-users img {

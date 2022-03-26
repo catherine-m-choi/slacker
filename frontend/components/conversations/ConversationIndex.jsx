@@ -4,8 +4,9 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function ConversationIndex(props) {
   
+  // Convos are already being fetched when App mounts
   useEffect(() => {
-    props.fetchConvos();
+    props.fetchConvos().then(console.log("From ConvoIndex"))
   }, [])
   
   return (

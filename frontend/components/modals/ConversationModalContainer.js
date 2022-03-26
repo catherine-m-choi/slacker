@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     conversation: state.entities.conversations[ownProps.match.params.id],
     users: state.entities.users,
-    filteredUsers: getFilteredUsers(state, state.entities.conversations[ownProps.match.params.id].members )
+    filteredUsers: getFilteredUsers(state, state.entities.conversations[ownProps.match.params.id].members ),
+    currentUserId: state.session.id,
   }
 }
 

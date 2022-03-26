@@ -3,9 +3,11 @@ import EditMessageForm from "./EditMessageForm";
 
 function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB}) {
   const [editStatus, setEditStatus] = useState(false);
+
+  // debugger
   
   if (!message) return;
-  
+
   const date = new Date(message.createdAt);
   const currentYear = new Date().getFullYear();
 
@@ -48,10 +50,12 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
     }
   }
 
+
   const dayOfMonth = date.getDate();
   const msgDate = date.toLocaleDateString('en-US', dateOptions)
   const prettyDate = [msgDate, nth(dayOfMonth) ].join("")
   const msgTime = new Intl.DateTimeFormat("en-US", timeOptions).format(date);
+
 
   if (!sender) return (<div></div>);
 
@@ -85,8 +89,11 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
               <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
               <li className="MessageItem__time">{msgTime}</li>
             </div>
-            <li className="MessageItem__body">{message.body}</li>
-            {(message.createdAt !== message.updatedAt) && <span>(Edited)</span> }
+            <li className="MessageItem__body">
+              {message.body}
+              {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
+            </li>
+            
           </ul>
         </div>
 

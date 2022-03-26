@@ -3,7 +3,6 @@ import React from "react";
 function SearchUsers(props) {
 
   const filteredUsers = Object.values(props.users).filter((user) => {
-    // debugger
     if (props.searchQuery === '') {
       return;
     } else if (props.currentUserId === user.id) {
@@ -21,6 +20,7 @@ function SearchUsers(props) {
         {filteredUsers.map((user) => (
             <li key={user.id} onClick={ () => {
               props.setRecipients(props.recipients.concat(user.id))
+              props.setSearchQuery("")
             }} >{user.email}</li>
         ))}
       </ul>

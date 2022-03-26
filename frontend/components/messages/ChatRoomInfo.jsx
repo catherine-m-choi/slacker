@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
 
 function ChatRoomInfo(props) {
-  const [currentConvo, setcurrentConvo] = useState([])
+  const [currentConvo, setcurrentConvo] = useState(props.conversations[props.match.params.id])
 
+  // debugger
   useEffect(() => {
-    props.fetchConvos().then( (res) => {
-      const currentConvo = res.payload[props.match.params.id]
+    if (Object.keys(props.conversations).length === 0) {
+      props.fetchConvos().then( (res) => {
+        const currentConvo = res.payload[props.match.params.id]
+        setcurrentConvo(currentConvo);
+      }).then(console.log("From ChatRoomInfo"))
+    } else {
+      const currentConvo = props.conversations[props.match.params.id]
       setcurrentConvo(currentConvo);
-    })
+    }
   }, [props.match.params.id])
 
   let memberNames = []
 
+  // if (!currentConvo) {
+  //   props.fetchConvos().then( (res) => {
+  //     const currentConvo = res.payload[props.match.params.id]
+  //     setcurrentConvo(currentConvo);
+  //   })
+  // }
   if (!currentConvo) return <div></div>
   
   const displayPics = currentConvo.members && currentConvo.members.map((convo) => {

@@ -1,0 +1,184 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $main-white;
+  height: 78vh;
+  width: min(80vw,520px);
+  max-width: 580px;
+  border-radius: 10px;
+}
+
+.ConversationModal {
+  position: relative;
+  height: 78vh;
+}
+
+.ConversationModal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: $text--light-gray;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.ConversationModal h2 {
+  padding: 1.5vw;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 17px;
+  border-bottom: 1px solid $border-gray;
+}
+
+.ConversationModal__search-bar {
+  background-color: $main-white;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 2vh;
+  border: 1px solid $border-dark-blue;
+  border-radius: 6px;
+  box-shadow: 0px 0px 0px 4px $box-shadow-light-blue;
+}
+
+.ConversationModal__search-bar span {
+  color: $text--light-gray;
+  margin-top: 8px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+.ConversationModal input {
+  width: 100%;
+  border: none;
+  background-color: $main-white;
+  outline: 0;
+  height: 1.5rem;
+  font-size: .95rem;
+}
+
+.ConversationModal input:focus {
+  outline: none;
+  outline-width: 0;
+  outline-style: none!important;
+  border-width:0px;
+  outline-width: 0;
+  box-shadow: none!important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ConversationModal__search-display-users {
+  padding: .5vh 1.5vw;
+  display: flex;
+  align-items: center;
+}
+
+.ConversationModal__search-display-users span {
+  margin: 0;
+  color: $text-black;
+  // font-weight: bold;
+}
+
+.ConversationModal__search-display-users img {
+  margin-right: 10px;
+  border-radius: 5px;
+  height:35px;
+  width: 35px;
+}
+
+.ConversationModal__search-display-users:hover {
+  background-color: $lightish-message-hover;
+  cursor: pointer;
+}
+
+.SearchResults__not-in-channel .ConversationModal__search-display-users, 
+.SearchResults__in-channel .ConversationModal__search-display-users {
+  justify-content: space-between;
+}
+
+.SearchResults__not-in-channel .ConversationModal__search-display-users div, 
+.SearchResults__in-channel .ConversationModal__search-display-users div {
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.ConversationModal h3 {
+  padding: 1vh 1.5vw;
+  font-size: .8rem;
+  color: $text--light-gray;
+}
+
+.SearchResults ul {
+  padding-bottom: 1.5vh;
+}
+
+.SearchResults {
+  height: 64vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.SearchResults.hidden {
+  height: 0;
+}
+
+.SearchResults__in-channel {
+  flex-shrink: 0;
+  display: none;
+}
+
+.SearchResults__in-channel:not(:empty) {
+  display: block;
+}
+
+.SearchResults div {
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+}
+
+.SearchResults__not-in-channel {
+  background-color: aliceblue;
+  height: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: none;
+}
+
+.SearchResults__not-in-channel:not(:empty) {
+  border-top: 1px solid $border-gray;
+  display: block;
+}
+
+.SearchResults button {
+  height: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: $link-blue;
+}
+
+.SearchResults__no-matches {
+  display: flex;
+  justify-content: center;
+  padding: 2vh;
+}
+
+.SearchResults__no-matches span {
+  margin-left: 5px;
+  font-weight: bold;
+}

@@ -16,18 +16,16 @@ function NewDmSearch(props) {
   })
 
   return (
-    <div>
-      <ul>
-        {filteredUsers.map((user) => (
-            <li key={user.id}>
-              <Link to={{
-                pathname: `/app/drafts`,
-                recepientId: user.id
-              }}>{user.email}</Link>
-            </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="SearchUsers">
+      {filteredUsers.map((user) => (
+          <li key={user.id}>
+            <Link to={{
+              pathname: `/app/drafts`,
+              recepientId: user.id
+            }}>{user.email}</Link>
+          </li>
+      ))}
+    </ul>
   )
 }
 

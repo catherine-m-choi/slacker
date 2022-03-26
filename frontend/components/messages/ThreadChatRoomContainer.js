@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import ChatRoom from "./ChatRoom";
+// import ChatRoom from "./ChatRoom";
+import ThreadChatRoom from "./ThreadChatRoom";
 import { 
   fetchMessagesDB, 
   receiveMessage, 
@@ -11,13 +12,13 @@ import {
 } from "../../actions/message_actions";
 import { fetchUsers, fetchUser } from "../../actions/user_actions";
 import { fetchConvos } from "../../actions/conversation_actions";
-import { selectConvoMessages } from "../../reducers/selectors/selectors";
+import { selectThreadMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
   return {
     // messages: state.entities.messages,
-    messages: selectConvoMessages(state, ownProps.match.params.id),
+    messages: selectThreadMessages(state, ownProps.parentMessage.id),
     conversations: state.entities.conversations,
     currentUser: state.entities.users[state.session.id],
   }
@@ -37,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatRoom));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ThreadChatRoom));

@@ -15,6 +15,12 @@ function DraftMessage(props) {
     }
   }, [recipients])
 
+  const onKeyDown = (e) => {
+    if (searchQuery === "" && e.keyCode === 8) {
+      setRecipients(recipients.slice(0,recipients.length - 1))
+    }
+  }
+
   const displayUsers = recipients.map((userId) => {
     let user = props.users[userId]
     // debugger
@@ -65,7 +71,9 @@ function DraftMessage(props) {
           <input id="DraftMessage__search-input"
             type="text" 
             placeholder="Find members" 
-            onChange={(e) => setSearchQuery(e.target.value) } 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={onKeyDown}
           />
         </div>
         
@@ -75,6 +83,7 @@ function DraftMessage(props) {
           recipients={recipients} 
           setRecipients={setRecipients} 
           currentUserId={props.currentUserId}
+          setSearchQuery={setSearchQuery}
         />
       </div>
 

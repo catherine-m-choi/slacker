@@ -27,19 +27,32 @@ function SearchResults(props) {
   })
 
   return (
-    <div>
-      <ul>
-        {(filteredUsersInChat.length > 0 ) && <li>In this channel</li> }
-        {filteredUsersInChat && filteredUsersInChat.map((user) => (
-            <li key={user.id}>{user.email}</li>
-        ))}
+    ((props.searchQuery !== "") && (filteredUsersInChat.length + filteredUsersNotInChat.length === 0 )) 
+      ? <div  className="SearchResults__no-matches" >No matches found for <span>{props.searchQuery}</span></div> : 
+    <div className={`SearchResults ${(props.searchQuery === "") && "hidden" }`} >
+      <ul className="SearchResults__in-channel" >
+        {(props.searchQuery !== "") && <h3>In this channel</h3> }
+        {(filteredUsersInChat.length > 0 || props.searchQuery === "" ) ? filteredUsersInChat.map((user) => (
+            <li key={user.id} className="ConversationModal__search-display-users" >
+              <div>
+                <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
+                <span>{user.email}</span>
+              </div>
+              <button onClick={(e) => console.log("Add Remove action later")} >Remove</button>
+            </li>
+        )) : <div>No matches in this channel</div>}
       </ul>
-      <br />
-      <ul>
-        {(filteredUsersNotInChat.length > 0 ) && <li>Not in this channel</li> }
-        {filteredUsersNotInChat.map((user) => (
-            <li key={user.id}>{user.email} <button onClick={(e) => props.addMember(user.id, props.convoId)} >Add</button></li>
-        ))}
+      <ul className="SearchResults__not-in-channel" >
+        {(props.searchQuery !== "") && <h3>Not in this channel</h3> }
+        {(filteredUsersNotInChat.length > 0 || props.searchQuery === "" ) ? filteredUsersNotInChat.map((user) => (
+            <li key={user.id} className="ConversationModal__search-display-users" >
+              <div>
+                <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
+                <span>{user.email}</span>
+              </div>
+              <button onClick={(e) => props.addMember(user.id, props.convoId)} >Add</button>
+            </li>
+        )) : <div>No matches not in this channel</div>}
       </ul>
     </div>
   )

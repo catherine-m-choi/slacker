@@ -16,7 +16,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700,800,900');
 @import './base/reset.scss';
 @import './base/variables.scss';
-@import './base/modal.scss';
+@import './base/modals.scss';
 @import './sessions/session_forms.scss';
 // @import './splash/nav_bar_v1.scss';
 @import './splash/nav_bar_v2.scss';
@@ -33,3 +33,4 @@
 
 @import './app/chatroom_info.scss';
 @import './app/draft_message.scss';
+@import './app/all_dms.scss';

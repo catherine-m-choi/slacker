@@ -17,78 +17,44 @@ import MessageFormContainer from "./MessageFormContainer";
 //   userId: 44
 // }
 
-function ChatRoom(props) {
+function ThreadChatRoom(props) {
 
-  // maybe props.messages should be a selector slice of state? 
-  const [chatMessages, setChatMessages] = useState(props.messages)
-  const messageCopy = {...props.messages}
+  // maybe props.messages should be a selector slice of state?
+  const [chatMessages, setChatMessages] = useState([props.parentMessage])
+  // debugger
 
   useEffect(() => {
-    let isMounted = true; 
-    
-    let chatInfo = {}
-    chatInfo = {chat_id: props.match.params.id}
-    if (props.match.path === '/app/conversations/:id') {
-      chatInfo['chat_type'] =  "Conversation"
-      
-    } else if (props.match.path === '/app/channels/:id') {
-      chatInfo['chat_type'] =  "Channel"
+    const chatInfo = {
+      // chat_id: props.parentMessage.messageableId,
+      parent_message_id: props.parentMessage.id,
+      chat_type: props.parentMessage.messageableType,
+      // thread: true
     }
-    
-    props.fetchMessagesDB().then( (res) => {
-      const currentMsgs = Object.values(res.payload).filter((msg) => String(msg.messageableId) === String(props.match.params.id) )
-      if (isMounted) setChatMessages(currentMsgs);
-    })
 
-    return () => {
-      isMounted = false; 
-    }
+    props.fetchMessagesDB().then( (res) => {
+      const currentMsgs = Object.values(res.payload).filter((msg) => msg.parentMessageId === props.parentMessage.id )
+      setChatMessages([props.parentMessage , ...currentMsgs])
+    })
   }, [])
   
-    
   useEffect(() => {
-    let isMounted = true; 
-    if (isMounted) setChatMessages(props.messages);
-    return () => {
-      isMounted = false; 
-    }
+    setChatMessages(props.messages);
   }, [props.messages])
-
-  useEffect(() => {
-    let isMounted = true;      
-
-    let chatInfo = {}
-    chatInfo = {chat_id: props.match.params.id}
-    if (props.match.path === '/app/conversations/:id') {
-      chatInfo['chat_type'] =  "Conversation"
-      
-    } else if (props.match.path === '/app/channels/:id') {
-      chatInfo['chat_type'] =  "Channel"
-    }
-
-    props.fetchMessagesDB().then( (res) => {
-      const currentMsgs = Object.values(res.payload).filter((msg) => String(msg.messageableId) === String(props.match.params.id) )
-      if (isMounted) setChatMessages(currentMsgs);
-    })
-
-    return () => {
-      isMounted = false; 
-    }
-  }, [props.match.params.id])
 
   useEffect(() => {
     let isMounted = true;       
     
-    // No longer necessary since we're fetching messages when route changes
     const chatInfo = {
-      chat_id: props.match.params.id,
-      chat_type: "Conversation"
+      // chat_id: props.parentMessage.messageableId,
+      chat_type: props.parentMessage.messageableType,
+      parent_message_id: props.parentMessage.id,
+      thread: true
     }
     
     // Grab prev messages when component mounts
     props.fetchMessagesDB(chatInfo).then((res) => {
-      // if (isMounted) setChatMessages(res.payload)
-      if (isMounted) setChatMessages(Object.values(res.payload))
+      const currentMsgs = Object.values(res.payload).filter((msg) => msg.parentMessageId === props.parentMessage.id )
+      if (isMounted) setChatMessages([props.parentMessage , ...currentMsgs])
     })
     
     // setting up websocket:
@@ -100,8 +66,8 @@ function ChatRoom(props) {
     // passed to ChatChannel
     const chatParams = {
       channel: "ChatsChannel", 
-      chat_type: "Conversation",
-      chat_id: props.match.params.id
+      chat_id: props.parentMessage.messageableId,
+      chat_type: props.parentMessage.messageableType
     }
 
     // creating actual subscription
@@ -120,16 +86,19 @@ function ChatRoom(props) {
 
         // Preventing repeated action for user who broadcasts, since they will
         // also receive the data they themselves broadcast out.
-        // debugger
+        
         switch (data.action) {
           case "subscribed":
             // When new used has joined chat, fetch user
             // props.fetchUsers()
             break;
           case "create":
-            // if (data.message.user_id === props.currentUser.id) return;
-            if (data.thread) return;
-            props.receiveMessage(camelizeMessage(data.message))
+            if (data.message.user_id === props.currentUser.id) return;
+            if (data.message.parent_message_id === props.parentMessage.id) {
+              console.log("yesssssss")
+              // debugger
+              props.receiveMessage(camelizeMessage(data.message))
+            }
             break;
           case "delete":
             props.deleteMessage(data.message.id)
@@ -167,12 +136,11 @@ function ChatRoom(props) {
     let date = new Date(msg.createdAt)
     let dateNoHours = date.setHours(0,0,0,0)
     let displayDate = false;
-    // debugger
+
     if (prevDate.valueOf() !== dateNoHours.valueOf()) {
       prevDate = dateNoHours;
       displayDate = true;
     }
-    // debugger
     return (
       <MessageItemContainer 
         key={msg.id} 
@@ -190,7 +158,7 @@ function ChatRoom(props) {
         <div className="ChatRoom">
           <ul>
             {displayMessages}
-            {props.parent && <MessageFormContainer />}
+            {props.parentMessage && <MessageFormContainer  parentMessage={props.parentMessage} />}
           </ul>
         </div>
       </div>
@@ -198,4 +166,4 @@ function ChatRoom(props) {
   )
 }
 
-export default ChatRoom;
+export default ThreadChatRoom;

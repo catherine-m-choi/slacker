@@ -13,7 +13,11 @@ function Modal({modal, closeModal}) {
       component = <ConversationModalContainer />
       break;
     case 'channel/addMembers':
+      // tbd
+      break;
     case 'profileSettings':
+      // tbd
+      break;
     default:
       return null;
   }

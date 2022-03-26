@@ -23,7 +23,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  // width: 60vw;
+  width: 100%;
 }
 
 .ChatRoom__container {
@@ -42,7 +43,7 @@
 // To keep scrollbar in main area always showing
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -58,6 +59,7 @@
 
 .MessageForm__container {
   height: 16vh;
+  width: calc(100% - 4vw);
   position: absolute;
   bottom: 0;
   overflow: hidden;
@@ -68,12 +70,13 @@
 
 .MessageForm {
   background-color: blanchedalmond;
-  width: 56vw;
+  // width: 56vw;
+  width: 100%;
   border-radius: 10px;
 }
 
 .AppRightBar__container {
-  width: 20vw;
+  width: min(40vw, 550px);
   border-left: 1px solid $border-light-gray;
 }
 
@@ -192,4 +195,10 @@
 
 .MessageItem__container:hover .MessageItem__actions-container { 
   display: flex; 
+}
+
+.MessageItem__edited {
+  color: $text--light-gray;
+  font-size: .8rem;
+  margin-left: 5px;
 }

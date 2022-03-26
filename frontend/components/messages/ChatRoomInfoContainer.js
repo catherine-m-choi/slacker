@@ -2,10 +2,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ChatRoomInfo from "./ChatRoomInfo";
 import { openModal, closeModal } from "../../actions/modal_actions";
+import { fetchConvos } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
+  // debugger
   return {
-    chatRoomMembers: state.entities.conversations,
+    conversations: state.entities.conversations,
     users: state.entities.users,
     currentUserId: state.session.id,
   }
