@@ -6,11 +6,13 @@ import MessageFormContainer from "./MessageFormContainer";
 
 function ThreadChatRoom(props) {
 
-  const [chatMessages, setChatMessages] = useState([props.parentMessage, ...Object.values(props.messages)])
+  const parent = props.parentMessage
+  const [replies, setReplies] = useState(Object.values(props.messages))
+  // const [chatMessages, setChatMessages] = useState([props.parentMessage, ...Object.values(props.messages)])
   
   useEffect(() => {
     let isMounted = true;
-    if (isMounted) setChatMessages([props.parentMessage, ...Object.values(props.messages)]);
+    if (isMounted) setReplies(Object.values(props.messages));
 
     return () => {
       isMounted = false; 
@@ -23,7 +25,7 @@ function ThreadChatRoom(props) {
     // Grab prev messages when component mounts
     props.fetchMessagesDB().then((res) => {
       const currentMsgs = Object.values(res.payload).filter((msg) => msg.parentMessageId === props.parentMessage.id )
-      if (isMounted) setChatMessages([props.parentMessage , ...currentMsgs])
+      if (isMounted) setReplies(currentMsgs)
     })
     
     // setting up websocket:
@@ -101,7 +103,7 @@ function ThreadChatRoom(props) {
   
   // Showing date above message only when it's a different date than previous msg
   let prevDate = 0;
-  const displayMessages = Object.values(chatMessages).map((msg) => {
+  const displayMessages = Object.values([props.parentMessage,...replies]).map((msg) => {
     let date = new Date(msg.createdAt)
     let dateNoHours = date.setHours(0,0,0,0)
     let displayDate = false;
@@ -110,6 +112,24 @@ function ThreadChatRoom(props) {
       prevDate = dateNoHours;
       displayDate = true;
     }
+
+    if (!msg.parentMessageId) {
+      return (
+        <div key={msg.id} >
+
+        <MessageItemContainer 
+          // key={msg.id} 
+          message={msg} 
+          displayDate={displayDate} 
+          deleteMessageDB={props.deleteMessageDB}
+          patchMessageDB={props.patchMessageDB}
+          />
+        
+        <span>{replies.length} replies</span>
+        </div>
+      )
+    } 
+
     return (
       <MessageItemContainer 
         key={msg.id} 
