@@ -12,7 +12,6 @@ function RightSideBar({rightSidebar, closeRightSidebar}) {
   let component;
   switch (rightSidebar.type) {
     case 'Thread':
-      // component = <AppRightBar closeRightSidebar={closeRightSidebar} />
       console.log("It's a thread!")
       component = <Thread closeRightSidebar={closeRightSidebar} message={rightSidebar.message} />
       break;

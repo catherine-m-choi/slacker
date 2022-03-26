@@ -3,48 +3,10 @@ import { createConsumer } from "@rails/actioncable"
 import MessageItemContainer from "./MessageItemContainer";
 import MessageFormContainer from "./MessageFormContainer";
 
-// if thread
-// props.parent = message
-
-// message will have: {
-//   body: "Welcome to Slack(er)! Type a message in the chat to begin"
-//   createdAt: "2022-03-25T04:33:13.005Z"
-//   id: 250
-//   messageableId: 69
-//   messageableType: "Conversation"
-//   parentMessageId: null
-//   updatedAt: "2022-03-25T04:33:13.005Z"
-//   userId: 44
-// }
 
 function ChatRoom(props) {
 
-  // maybe props.messages should be a selector slice of state? 
   const [chatMessages, setChatMessages] = useState(props.messages)
-  const messageCopy = {...props.messages}
-
-  useEffect(() => {
-    let isMounted = true; 
-    
-    let chatInfo = {}
-    chatInfo = {chat_id: props.match.params.id}
-    if (props.match.path === '/app/conversations/:id') {
-      chatInfo['chat_type'] =  "Conversation"
-      
-    } else if (props.match.path === '/app/channels/:id') {
-      chatInfo['chat_type'] =  "Channel"
-    }
-    
-    props.fetchMessagesDB().then( (res) => {
-      const currentMsgs = Object.values(res.payload).filter((msg) => String(msg.messageableId) === String(props.match.params.id) )
-      if (isMounted) setChatMessages(currentMsgs);
-    })
-
-    return () => {
-      isMounted = false; 
-    }
-  }, [])
-  
     
   useEffect(() => {
     let isMounted = true; 
@@ -54,14 +16,14 @@ function ChatRoom(props) {
     }
   }, [props.messages])
 
+
   useEffect(() => {
     let isMounted = true;      
-
     let chatInfo = {}
     chatInfo = {chat_id: props.match.params.id}
+
     if (props.match.path === '/app/conversations/:id') {
       chatInfo['chat_type'] =  "Conversation"
-      
     } else if (props.match.path === '/app/channels/:id') {
       chatInfo['chat_type'] =  "Channel"
     }
@@ -71,24 +33,16 @@ function ChatRoom(props) {
       if (isMounted) setChatMessages(currentMsgs);
     })
 
-    return () => {
-      isMounted = false; 
-    }
+    return () => {isMounted = false}
   }, [props.match.params.id])
+
 
   useEffect(() => {
     let isMounted = true;       
     
-    // No longer necessary since we're fetching messages when route changes
-    const chatInfo = {
-      chat_id: props.match.params.id,
-      chat_type: "Conversation"
-    }
-    
-    // Grab prev messages when component mounts
-    props.fetchMessagesDB(chatInfo).then((res) => {
-      // if (isMounted) setChatMessages(res.payload)
-      if (isMounted) setChatMessages(Object.values(res.payload))
+    props.fetchMessagesDB().then( (res) => {
+      const currentMsgs = Object.values(res.payload).filter((msg) => String(msg.messageableId) === String(props.match.params.id) )
+      if (isMounted) setChatMessages(currentMsgs);
     })
     
     // setting up websocket:
@@ -167,12 +121,12 @@ function ChatRoom(props) {
     let date = new Date(msg.createdAt)
     let dateNoHours = date.setHours(0,0,0,0)
     let displayDate = false;
-    // debugger
+
     if (prevDate.valueOf() !== dateNoHours.valueOf()) {
       prevDate = dateNoHours;
       displayDate = true;
     }
-    // debugger
+
     return (
       <MessageItemContainer 
         key={msg.id} 

@@ -14,7 +14,6 @@ import { fetchConvos } from "../../actions/conversation_actions";
 import { selectConvoMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return {
     // messages: state.entities.messages,
     messages: selectConvoMessages(state, ownProps.match.params.id),

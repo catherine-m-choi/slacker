@@ -3,39 +3,10 @@ import { createConsumer } from "@rails/actioncable"
 import MessageItemContainer from "./MessageItemContainer";
 import MessageFormContainer from "./MessageFormContainer";
 
-// if thread
-// props.parent = message
-
-// message will have: {
-//   body: "Welcome to Slack(er)! Type a message in the chat to begin"
-//   createdAt: "2022-03-25T04:33:13.005Z"
-//   id: 250
-//   messageableId: 69
-//   messageableType: "Conversation"
-//   parentMessageId: null
-//   updatedAt: "2022-03-25T04:33:13.005Z"
-//   userId: 44
-// }
 
 function ThreadChatRoom(props) {
 
-  // maybe props.messages should be a selector slice of state?
-  const [chatMessages, setChatMessages] = useState([props.parentMessage])
-  // debugger
-
-  useEffect(() => {
-    const chatInfo = {
-      // chat_id: props.parentMessage.messageableId,
-      parent_message_id: props.parentMessage.id,
-      chat_type: props.parentMessage.messageableType,
-      // thread: true
-    }
-
-    props.fetchMessagesDB().then( (res) => {
-      const currentMsgs = Object.values(res.payload).filter((msg) => msg.parentMessageId === props.parentMessage.id )
-      setChatMessages([props.parentMessage , ...currentMsgs])
-    })
-  }, [])
+  const [chatMessages, setChatMessages] = useState([props.parentMessage, ...Object.values(props.messages)])
   
   useEffect(() => {
     setChatMessages(props.messages);
@@ -44,15 +15,8 @@ function ThreadChatRoom(props) {
   useEffect(() => {
     let isMounted = true;       
     
-    const chatInfo = {
-      // chat_id: props.parentMessage.messageableId,
-      chat_type: props.parentMessage.messageableType,
-      parent_message_id: props.parentMessage.id,
-      thread: true
-    }
-    
     // Grab prev messages when component mounts
-    props.fetchMessagesDB(chatInfo).then((res) => {
+    props.fetchMessagesDB().then((res) => {
       const currentMsgs = Object.values(res.payload).filter((msg) => msg.parentMessageId === props.parentMessage.id )
       if (isMounted) setChatMessages([props.parentMessage , ...currentMsgs])
     })
