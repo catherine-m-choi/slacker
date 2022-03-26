@@ -79,7 +79,7 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
           <div className="MessageItem__actions">
             <i className="material-icons-outlined">add_reaction</i>
             <i className="material-icons-outlined">push_pin</i>
-            { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">chat</i>}
+            { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
             <i className="material-icons-outlined">bookmark_border</i>
             <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
             <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
