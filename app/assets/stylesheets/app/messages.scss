@@ -29,6 +29,7 @@
 
 .ChatRoom__container {
   padding-top: 2vh;
+  padding-bottom: 5vh;
   height: 64vh;
   // overflow: auto; 
   overflow-y: scroll;
@@ -80,11 +81,12 @@
 }
 
 .Thread > div {
-  height: 90vh;
+  height: 80vh;
 }
 
 .Thread .ChatRoom__container {
   height: 100%;
+  flex-direction: column;
 }
 
 // For edit form
@@ -122,6 +124,12 @@
 
 .ChatRoom .MessageItem:last-child {
   padding-bottom: 1vh;
+}
+
+.ChatRoom form {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  // background-color: blanchedalmond;
 }
 
 .MessageItem__container:hover .MessageItem {

@@ -17,7 +17,6 @@ function App(props) {
 
   useEffect(() => {
     props.fetchUsers()
-
     props.fetchMessagesDB()
     // props.fetchConvos().then(console.log("From App"))
   }, [])
@@ -33,7 +32,7 @@ function App(props) {
         <div className="App__center-content">
           
           <Route path="/app/conversations/:id" >
-            <button onClick={() => props.openRightSidebar({
+            {/* <button onClick={() => props.openRightSidebar({
               type: "Thread",
               message: {
                 id: 303,
@@ -45,7 +44,7 @@ function App(props) {
                 createdAt: "2022-03-25T04:33:13.009Z",
                 updatedAt: "2022-03-25T04:33:13.009Z",
               }
-            })} >Temp placeholder to test sidebar</button>
+            })} >Temp placeholder to test sidebar</button> */}
             <ChatRoomInfoContainer />
             <ChatRoomContainer />
             <div className="MessageForm__float"></div>
@@ -79,7 +78,7 @@ const mapDispatchToProps = dispatch => {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchMessagesDB: () => dispatch(fetchMessagesDB()),
     fetchConvos: () => dispatch(fetchConvos()),
-    openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
+    // openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
   }
 }
 

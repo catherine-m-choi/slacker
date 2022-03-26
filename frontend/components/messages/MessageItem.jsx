@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import EditMessageForm from "./EditMessageForm";
 
-function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB}) {
+function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar}) {
+
   const [editStatus, setEditStatus] = useState(false);
-
-  // debugger
-  
   if (!message) return;
-
   const date = new Date(message.createdAt);
   const currentYear = new Date().getFullYear();
-
   let dateOptions = {}
 
   // Don't display year in date if message is in the current year
@@ -55,6 +51,14 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
   const msgDate = date.toLocaleDateString('en-US', dateOptions)
   const prettyDate = [msgDate, nth(dayOfMonth) ].join("")
   const msgTime = new Intl.DateTimeFormat("en-US", timeOptions).format(date);
+  
+  const handleReply = (e) => {
+    console.log("Reply!")
+    openRightSidebar({
+      type: "Thread",
+      message: message
+    }) 
+  }
 
 
   if (!sender) return (<div></div>);
@@ -74,7 +78,7 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
           <div className="MessageItem__actions">
             <i className="material-icons-outlined">add_reaction</i>
             <i className="material-icons-outlined">push_pin</i>
-            <i className="material-icons-outlined">chat</i>
+            <i onClick={ () => handleReply() } className="material-icons-outlined">chat</i>
             <i className="material-icons-outlined">bookmark_border</i>
             <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
             <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>

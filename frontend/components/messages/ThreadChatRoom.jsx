@@ -9,7 +9,12 @@ function ThreadChatRoom(props) {
   const [chatMessages, setChatMessages] = useState([props.parentMessage, ...Object.values(props.messages)])
   
   useEffect(() => {
-    setChatMessages(props.messages);
+    let isMounted = true;
+    if (isMounted) setChatMessages([props.parentMessage, ...Object.values(props.messages)]);
+
+    return () => {
+      isMounted = false; 
+    };
   }, [props.messages])
 
   useEffect(() => {
