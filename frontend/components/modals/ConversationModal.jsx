@@ -7,11 +7,11 @@ function ConversationModal(props) {
   let memberNames = []
 
   const displayPics = Object.values(props.filteredUsers).map((user) => {
-    if (user.id !== props.currentUserId) memberNames.push(user.email)
+    if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
     return (
       <li key={user.id} className="ConversationModal__search-display-users" >
         <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
-        <span>{user.email}</span>
+        <span>{(user.displayName) ? user.displayName : user.email}</span>
       </li>)
   })
 

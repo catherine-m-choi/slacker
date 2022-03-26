@@ -1,30 +1,30 @@
 class Api::MessagesController < ApplicationController
   def index
-    if params[:thread] && params[:chat_type] === "Conversation"
-      parent = Message.find_by(id: params[:parent_message_id])
-      if parent
-        @messages = parent.child_messages 
-      else
-        @messages = []
-      end
-      # debugger
-      render :index
-    elsif params[:thread] && params[:chat_type] === "Channel"
-      parent = Channel.find_by(id: params[:parent_message_id])
-      @messages = parent.child_messages
-      render :index
-    elsif params[:chat_type] === "Conversation"
-      convo = Conversation.find_by(id: params[:chat_id])
-      @messages = convo.messages if convo 
-      render :index
-    elsif params[:chat_type] === "Channel"
-      channel = Channel.find_by(id: params[:chat_id])
-      @messages = channel.messages
-      render :index
-    else
-      @messages = Message.all
-      render :index
-    end
+    # if params[:thread] && params[:chat_type] === "Conversation"
+    #   parent = Message.find_by(id: params[:parent_message_id])
+    #   if parent
+    #     @messages = parent.child_messages 
+    #   else
+    #     @messages = []
+    #   end
+    #   # debugger
+    #   render :index
+    # elsif params[:thread] && params[:chat_type] === "Channel"
+    #   parent = Channel.find_by(id: params[:parent_message_id])
+    #   @messages = parent.child_messages
+    #   render :index
+    # elsif params[:chat_type] === "Conversation"
+    #   convo = Conversation.find_by(id: params[:chat_id])
+    #   @messages = convo.messages if convo 
+    #   render :index
+    # elsif params[:chat_type] === "Channel"
+    #   channel = Channel.find_by(id: params[:chat_id])
+    #   @messages = channel.messages
+    #   render :index
+    # else
+    @messages = Message.all.includes(:child_messages)
+    render :index
+    # end
   end
   
   def create

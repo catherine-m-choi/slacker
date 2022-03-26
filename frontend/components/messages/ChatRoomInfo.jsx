@@ -28,8 +28,8 @@ function ChatRoomInfo(props) {
   
   const displayPics = currentConvo.members && currentConvo.members.map((convo) => {
     let user = props.users[convo]
-    if (user.id !== props.currentUserId) memberNames.push(user.email)
-    // return <div key={user.id}>{user.email}</div> 
+    if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
+    // return <div key={user.id}>{user.displayName}</div> 
     return <img  key={user.id} src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  alt="User profile picture" />
   })
 

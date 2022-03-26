@@ -42,7 +42,10 @@ function MessageForm(props) {
             messageable_id: props.match.params.id,
           }
     
-          props.messageAction(newMessage);
+          props.messageAction(newMessage).then( (res) => {
+            props.updateRecentMessage(res.payload.messageableId, res.payload.id)
+          })
+
           break;
         case '/app/drafts':
           console.log("new convo!!!")
@@ -65,8 +68,10 @@ function MessageForm(props) {
                 messageable_id: res.payload.id,
               }
 
-              props.messageAction(newMessage)
               convoId = res.payload.id
+              props.messageAction(newMessage)
+                .then( (res) => props.updateRecentMessage(convoId, res.payload.id))
+
             }, console.log)
             .then( () => props.history.push(`/app/conversations/${convoId}`))
           break;

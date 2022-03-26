@@ -1,6 +1,7 @@
 import { ADD_MESSAGE, UPDATE_MESSAGE, DELETE_MESSAGE, FETCH_MESSAGES } from "../actions/message_actions";
 
 const messagesReducer = (state = {}, action) => {
+  // debugger
   Object.freeze(state);
   let nextState;
   switch (action.type) {

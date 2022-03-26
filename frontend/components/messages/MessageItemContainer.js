@@ -4,7 +4,8 @@ import { openRightSidebar } from "../../actions/right_sidebar_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    sender: state.entities.users[ownProps.message.userId]
+    sender: state.entities.users[ownProps.message.userId],
+    users: state.entities.users,
   }
 }
 

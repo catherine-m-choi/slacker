@@ -1,19 +1,13 @@
 import { connect } from "react-redux";
 import AllDMs from "./AllDMs";
+import { selectDirectMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = state => {
-  // debugger
   return {
-    // messages: 
+    messages: selectDirectMessages(state),
     users: state.entities.users,
     currentUserId: state.session.id,
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    // messages: 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AllDMs);
+export default connect(mapStateToProps, null)(AllDMs);

@@ -125,7 +125,7 @@ function ThreadChatRoom(props) {
           patchMessageDB={props.patchMessageDB}
           />
         
-        <span>{replies.length} replies</span>
+        {/* <span>{replies.length} replies</span> */}
         </div>
       )
     } 

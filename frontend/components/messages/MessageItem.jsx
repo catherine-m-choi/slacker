@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditMessageForm from "./EditMessageForm";
 
-function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar}) {
+function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar, users}) {
 
   const [editStatus, setEditStatus] = useState(false);
   if (!message) return;
@@ -63,6 +63,7 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
 
   if (!sender) return (<div></div>);
 
+
   return (
     (!editStatus) ? (
       <div className={`MessageItem__container ${displayDate && "has-date"}`}>
@@ -100,6 +101,25 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
             
           </ul>
         </div>
+
+        {(message.replyCount > 0) && 
+          <div onClick={ handleReply } >
+            {message.userRepliesIds.map((userId) => {
+              // debugger
+              return <li key={userId} >
+                {users[userId].id}
+                <img src={
+                  (users[userId].profilePictureUrl) ? 
+                    users[userId].profilePictureUrl : 
+                    "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
+                    height="30px"
+                    width="30px"
+                  alt="User profile picture" 
+                />
+              </li>
+            })}
+            {message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } 
+          </div>}
 
       </div>
     ) : (

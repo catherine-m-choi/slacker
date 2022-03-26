@@ -48,7 +48,7 @@ function SearchResults(props) {
             <li key={user.id} className="ConversationModal__search-display-users" >
               <div>
                 <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
-                <span>{user.email}</span>
+                <span>{(user.displayName) ? user.displayName : user.email }</span>
               </div>
               <button onClick={(e) => props.addMember(user.id, props.convoId)} >Add</button>
             </li>

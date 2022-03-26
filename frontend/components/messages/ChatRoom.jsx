@@ -127,6 +127,12 @@ function ChatRoom(props) {
       displayDate = true;
     }
 
+    if (msg.parentMessageId) {
+      return (
+        <React.Fragment key={msg.id} ></React.Fragment>
+      )
+    }
+
     return (
       <MessageItemContainer 
         key={msg.id} 

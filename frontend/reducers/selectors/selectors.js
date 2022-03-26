@@ -1,6 +1,5 @@
 export const getFilteredUsers = (state, userIds) => {
   const users = state.entities.users
-  // debugger
   let result = {};
   userIds.forEach(id => {
     result[id] = users[id]
@@ -18,9 +17,6 @@ export const selectThreadMessages = (state, parentId) => {
       result[id] = messages[id]
     }
   }
-
-  // debugger
-
   return result;
 }
 
@@ -33,8 +29,25 @@ export const selectConvoMessages = (state, convoId) => {
       result[id] = messages[id]
     }
   }
+  return result;
+}
 
+export const selectDirectMessages = (state) => {
   // debugger
+  const messages = state.entities.messages
+  const conversations = state.entities.conversations
+  // For every convo the user is in, select the most recent message. Sort by most recent messages.
 
+  let result = [];
+  if (Object.values(messages).length) {
+    for (let id in conversations) {
+      result.push({
+        date: conversations[id].lastMessage,
+        message: messages[conversations[id].lastMessage]
+      })
+    }
+  }
+  
+  result.sort( ( a, b ) => { return b.date - a.date; } );
   return result;
 }

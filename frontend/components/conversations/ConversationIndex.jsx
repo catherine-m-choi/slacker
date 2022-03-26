@@ -6,7 +6,7 @@ function ConversationIndex(props) {
   
   // Convos are already being fetched when App mounts
   useEffect(() => {
-    props.fetchConvos().then(console.log("From ConvoIndex"))
+    props.fetchConvos()
   }, [])
   
   return (

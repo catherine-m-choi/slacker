@@ -33,7 +33,7 @@ function DraftMessage(props) {
             "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
             alt="User profile picture" 
         />
-        {user.email}
+        {(user.displayName) ? user.displayName : user.email}
       </div>
     )
   })
@@ -43,7 +43,7 @@ function DraftMessage(props) {
   recipients.forEach((userId) => {
     let user = props.users[userId]
     if (user) {
-      recipientNames.push(user.email);
+      recipientNames.push((user.displayName) ? user.displayName : user.email);
     }
   })
 

@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NewDmSearch from "./NewDMSearch";
+import MessageItemContainer from "./MessageItemContainer";
 
 function AllDMs(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  
+  const [dms, setDms] = useState(props.messages);
+
+  useEffect(() => {
+    setDms(props.messages);
+  }, [props.messages])
+
+  useEffect(() => {
+    setDms(props.messages);
+  }, [])
+
+  const display = dms.map((msg) => {
+    return (
+      <MessageItemContainer 
+        key={msg.message.id} 
+        message={msg.message} 
+      />
+    )
+  })
+
   return (
     <div className="DraftMessage" >
       <div className="DraftMessage__info">
@@ -24,6 +43,7 @@ function AllDMs(props) {
 
       <ul>
         <li>Sort through user's Conversations</li>
+        {display}
       </ul>
     </div>
   )
