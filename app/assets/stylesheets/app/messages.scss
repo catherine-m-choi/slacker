@@ -75,6 +75,38 @@
   border-radius: 10px;
 }
 
+.Thread {
+  height: 100%;
+}
+
+.Thread > div {
+  height: 90vh;
+}
+
+.Thread .ChatRoom__container {
+  height: 100%;
+}
+
+// For edit form
+.MessageForm__container.thread {
+  height: 16vh;
+  // width: min(40vw, 550px);
+  // width: calc(100% - 4vw);
+  position: relative;
+  // bottom: 0;
+  overflow: hidden;
+  width: 300px;
+  // Need to fix width later
+  padding: 2vh 2vw 2vh 2vw;
+  display: flex;
+  justify-content: center;
+}
+
+.MessageForm__container.thread .MessageForm {
+  background-color: blanchedalmond;
+  border-radius: 10px;
+}
+
 .AppRightBar__container {
   width: min(40vw, 550px);
   border-left: 1px solid $border-light-gray;

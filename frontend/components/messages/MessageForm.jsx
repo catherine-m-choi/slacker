@@ -82,7 +82,7 @@ function MessageForm(props) {
   }
   
   return (
-    <div className="MessageForm__container">
+    <div className={`MessageForm__container ${(props.parentMessage) ? "thread" : ""}`}>
       <form className="MessageForm">
         [This is the textbox area]
         <br />
