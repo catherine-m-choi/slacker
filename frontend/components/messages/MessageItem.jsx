@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EditMessageForm from "./EditMessageForm";
 
-function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar, users}) {
+function MessageItem({
+  message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar, users, saveMessage, unsaveMessage, currentUserId, savedMessages}) {
 
   const [editStatus, setEditStatus] = useState(false);
+  const [saveStatus, setSaveStatus] = useState("");
+
+  useEffect(() => {
+    // debugger
+    if (Object.keys(savedMessages).includes(String(message.id))) setSaveStatus(true);
+  }, [])
+  
   if (!message) return;
   const date = new Date(message.createdAt);
   const currentYear = new Date().getFullYear();
@@ -60,13 +68,28 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
     }) 
   }
 
+  const handleSave = (e) => {
+    if (!saveStatus) {
+      console.log("Saved!")
+      const saveData = {
+        userId: currentUserId,
+        messageId: message.id
+      }
+      saveMessage(saveData)
+      setSaveStatus(true);
+    } else {
+      console.log("Unsaved!")
+      debugger
+      unsaveMessage(savedMessages[message.id])
+      setSaveStatus(false);
+    }
+  }
 
   if (!sender) return (<div></div>);
 
-
   return (
     (!editStatus) ? (
-      <div className={`MessageItem__container ${displayDate && "has-date"}`}>
+      <div className={`MessageItem__container ${displayDate && "has-date"} ${saveStatus && "saved"}` }>
         {displayDate && 
           <div className="MessageItem__date-container">
             <div className="MessageItem__date">
@@ -80,7 +103,7 @@ function MessageItem({message, sender, displayDate, deleteMessageDB, patchMessag
             <i className="material-icons-outlined">add_reaction</i>
             <i className="material-icons-outlined">push_pin</i>
             { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
-            <i className="material-icons-outlined">bookmark_border</i>
+            <i onClick={() => handleSave() } className="material-icons-outlined">bookmark_border</i>
             <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
             <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
           </div>

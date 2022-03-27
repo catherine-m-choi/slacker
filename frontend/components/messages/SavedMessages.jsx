@@ -33,7 +33,8 @@ function SavedMessages(props) {
   let display;
   if (savedMsgs) {
     // debugger
-    display = savedMsgs.map((msg) => {
+    display = savedMsgs.reverse().map((msg) => {
+      if (!msg) return <></>
       return (
         <MessageItemContainer 
           key={msg.id} 

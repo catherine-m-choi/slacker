@@ -19,6 +19,7 @@ function App(props) {
   useEffect(() => {
     props.fetchUsers()
     props.fetchMessagesDB()
+    props.fetchSavedMessages()
     // props.fetchConvos().then(console.log("From App"))
   }, [])
 
@@ -60,13 +61,14 @@ function App(props) {
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/user_actions";
 import { openRightSidebar } from "../actions/right_sidebar_actions";
-import { fetchMessagesDB } from "../actions/message_actions";
+import { fetchMessagesDB, fetchSavedMessages } from "../actions/message_actions";
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchMessagesDB: () => dispatch(fetchMessagesDB()),
     fetchConvos: () => dispatch(fetchConvos()),
+    fetchSavedMessages: () => dispatch(fetchSavedMessages()),
     // openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
   }
 }

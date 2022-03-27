@@ -54,15 +54,14 @@ export const selectDirectMessages = (state) => {
 
 export const selectSavedMessages = (state) => {
   const messages = state.entities.messages
-  const savedMessagesIds = Object.values(state.session.savedMessages);
+  const savedMessagesIds = Object.keys(state.session.savedMessages);
 
   let filteredMessages = [];
   if (Object.values(messages).length !== 0 ) {
-    savedMessagesIds.forEach( (savedMsg) => {
+    savedMessagesIds.forEach( (id) => {
       // debugger
-      filteredMessages.push(messages[savedMsg.messageId])
+      filteredMessages.push(messages[id])
     })
   }
-  // debugger
   return filteredMessages;
 }
