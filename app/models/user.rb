@@ -45,6 +45,7 @@ class User < ApplicationRecord
   has_many :messages, inverse_of: 'user'
   has_many :conversation_memberships
   has_many :conversations, through: :conversation_memberships, source: :conversation
+  has_many :saved_messages
 
   after_initialize :ensure_session_token!
 

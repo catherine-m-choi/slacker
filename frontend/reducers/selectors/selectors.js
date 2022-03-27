@@ -51,3 +51,18 @@ export const selectDirectMessages = (state) => {
   result.sort( ( a, b ) => { return b.date - a.date; } );
   return result;
 }
+
+export const selectSavedMessages = (state) => {
+  const messages = state.entities.messages
+  const savedMessagesIds = Object.values(state.session.savedMessages);
+
+  let filteredMessages = [];
+  if (Object.values(messages).length !== 0 ) {
+    savedMessagesIds.forEach( (savedMsg) => {
+      // debugger
+      filteredMessages.push(messages[savedMsg.messageId])
+    })
+  }
+  // debugger
+  return filteredMessages;
+}

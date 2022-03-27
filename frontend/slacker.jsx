@@ -5,6 +5,7 @@ import Root from "./components/Root";
 
 // start testing
 import { fetchConvos, addConvo, updateConvo, deleteConvo, addMember } from "./actions/conversation_actions"
+import { saveMessage, unsaveMessage, fetchSavedMessages} from "./actions/message_actions"
 // end testing
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,5 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.updateConvo = updateConvo;
   window.deleteConvo = deleteConvo;
   window.addMember = addMember;
+  window.saveMessage = saveMessage;
+  window.unsaveMessage = unsaveMessage;
+  window.fetchSavedMessages = fetchSavedMessages;
+  
   // end testing
 });

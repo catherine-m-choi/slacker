@@ -5,6 +5,11 @@ export const ADD_MESSAGE = "message/addMessage";
 export const UPDATE_MESSAGE = "message/updateMessage";
 export const DELETE_MESSAGE = "message/deleteMessage";
 
+// saved messages
+export const SAVE_MESSAGE = "message/saveMessage";
+export const UNSAVE_MESSAGE = "message/unsaveMessage";
+export const FETCH_SAVED_MESSAGES = "message/fetchSavedMessages";
+
 const allMessages = (messages) => {
   return {
     type: FETCH_MESSAGES,
@@ -34,6 +39,27 @@ const destroyMessage = (messageId) => {
 }
 
 
+const saveMessageAction = (saveData) => {
+  return {
+    type: SAVE_MESSAGE,
+    payload: saveData
+  }
+}
+
+const unsaveMessageAction = (saveId) => {
+  return {
+    type: UNSAVE_MESSAGE,
+    payload: saveId
+  }
+}
+
+const fetchSavedMessagesAction = (messages) => {
+  return {
+    type: FETCH_SAVED_MESSAGES,
+    payload: messages
+  }
+}
+
 // Ajax thunk action creators
 
 export const fetchMessagesDB = (chatInfo) => dispatch => {
@@ -56,6 +82,21 @@ export const deleteMessageDB = (messageId) => dispatch => {
     .then(() => dispatch(destroyMessage(messageId)))
 }
 
+export const saveMessage = (saveData) => dispatch => {
+  debugger
+  return MessageAPIUtil.saveMessage(saveData.userId, saveData.messageId)
+    .then((res) => dispatch(saveMessageAction(res)) )
+}
+
+export const unsaveMessage = (savedId) => dispatch => {
+  return MessageAPIUtil.unsaveMessage(savedId)
+    .then(() => dispatch(unsaveMessageAction(savedId)) )
+}
+
+export const fetchSavedMessages = () => dispatch => {
+  return MessageAPIUtil.fetchSavedMessages()
+    .then((messages) => dispatch(fetchSavedMessagesAction(messages)) )
+}
 
 // Non AJAX actions creators (aka just to change state in frontend)
 

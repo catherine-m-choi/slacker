@@ -1,6 +1,6 @@
 class Api::ConversationsController < ApplicationController
   def index
-    @convos = current_user.conversations.includes(:members, :messages)
+    @convos = current_user.conversations.includes(:members).includes(:messages)
     render :index
   end
 

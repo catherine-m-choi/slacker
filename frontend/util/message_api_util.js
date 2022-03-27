@@ -39,3 +39,32 @@ export const deleteMessage = (messageId) => {
     url: `/api/messages/${messageId}`
   })
 }
+
+// For saving messages:
+export const saveMessage = (userId, messageId) => {
+  return $.ajax({
+    method: "POST",
+    url: `/api/saved_messages`,
+    data: {
+      saved_message: {
+        user_id: userId,
+        message_id: messageId
+      }
+    }
+  })
+}
+
+export const unsaveMessage = (savedId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/saved_messages/${savedId}`
+  })
+}
+
+
+export const fetchSavedMessages = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/saved_messages"
+  })
+}

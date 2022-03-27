@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :create]
     resource :session, only: [:create, :destroy]
     resources :messages, only: [:index, :create, :update, :destroy]
+    resources :saved_messages, only: [:index, :create, :destroy]
     resources :conversations, only: [:index, :create, :update, :destroy]
     resources :conversation_memberships, only: [:create]
   end

@@ -7,6 +7,7 @@ import Modal from './modals/modal'
 import AllDMsContainer from "./messages/AllDMsContainer";
 import DraftMessage from "./messages/DraftMessage";
 import RightSidebar from "./right_sidebar/RightSidebar";
+import SavedMessagesContainer from "./messages/SavedMessagesContainer";
 
 // temp for placeholder styling
 import AppLeftBar from "./temp_app_bars/AppLeftBar";
@@ -32,19 +33,6 @@ function App(props) {
         <div className="App__center-content">
           
           <Route path="/app/conversations/:id" >
-            {/* <button onClick={() => props.openRightSidebar({
-              type: "Thread",
-              message: {
-                id: 303,
-                body: "drfhdfh",
-                userId: 44,
-                messageableId: 69,
-                messageableType: "Conversation",
-                parentMessageId: null,
-                createdAt: "2022-03-25T04:33:13.009Z",
-                updatedAt: "2022-03-25T04:33:13.009Z",
-              }
-            })} >Temp placeholder to test sidebar</button> */}
             <ChatRoomInfoContainer />
             <ChatRoomContainer />
             <div className="MessageForm__float"></div>
@@ -57,6 +45,7 @@ function App(props) {
           </Route>
           
           <Route path="/app/all-dms" component={AllDMsContainer} />
+          <Route path="/app/saved-page" component={SavedMessagesContainer} />
         
         </div>
         <RightSidebar />

@@ -14,7 +14,7 @@ function AppLeftBar(props) {
         <li><Link to="/app/all-dms"><i className="material-icons-outlined">forum</i>All DMs</Link></li>
         <li><i className="material-icons-outlined">alternate_email</i>Mentions & Reactions</li>
         <li><i className="material-icons-outlined">save_as</i>Drafts</li>
-        <li><i className="material-icons-outlined">bookmark_border</i>Saved Items</li>
+        <li><Link to="/app/saved-page"><i className="material-icons-outlined">bookmark_border</i>Saved Items</Link></li>
       </ul>
       <br />
       <div>Starred</div>
