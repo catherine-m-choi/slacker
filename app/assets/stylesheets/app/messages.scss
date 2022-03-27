@@ -96,6 +96,16 @@
   // To start thread at top of container
 }
 
+.Profile .ChatRoom__container {
+  height: 83vh; 
+  // Should be 87 vh since top nav is 5vh and info header is 8vh
+  flex-direction: column;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: calc(100% - 4vw);
+  // To start thread at top of container
+}
+
 // For edit form
 .MessageForm__container.thread {
   height: 16vh;

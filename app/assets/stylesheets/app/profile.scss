@@ -1,0 +1,60 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Profile .ChatRoomInfo  {
+  width: calc(100% - 4vw);
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.Profile img {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  width: 36vh;
+  height: 36vh;
+  border-radius: 10px;
+}
+
+.Profile__name {
+  font-weight: bold;
+  font-size: 1.16rem;
+}
+
+// .Profile__title {
+//   margin-bottom: 1vh;
+// }
+
+.Profile__status {
+  font-size: .85rem;
+  margin-bottom: 1vh;
+  color: $text--light-gray;
+}
+
+.Profile__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.Profile__buttons span {
+  background-color: $callout-box-gray;
+  padding: 8px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  // width: 30px;
+  // height: 30px;
+}
+
+.Profile__buttons li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: .8rem;
+  color: $text--light-gray;
+  margin-left: 20px;
+}
+
+.Profile {
+  text-align: center;
+}
