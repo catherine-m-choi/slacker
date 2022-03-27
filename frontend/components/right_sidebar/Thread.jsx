@@ -20,8 +20,13 @@ function Thread(props) {
   
   return (
     <div className="Thread" >
-      <h3>Thread</h3> {header}
-      <button onClick={props.closeRightSidebar} >Close me!</button>
+      <div className="ChatRoomInfo">
+        <div className="ThreadInfo__info">
+          <h3 className="ThreadInfo__title">Thread</h3> 
+          <div className="ThreadInfo__name" >{header}</div>
+        </div>
+        <span onClick={props.closeRightSidebar}  className="material-icons-outlined">close</span>
+      </div>
 
       <ThreadChatRoomContainer parentMessage={props.message} />
     </div>

@@ -122,28 +122,31 @@ function MessageItem({
               {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
             </li>
             
+          {/* </ul> */}
+        {/* </div> */}
+
+          {(message.replyCount > 0) && 
+            <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
+              <div className="MessageItem__reply-info" >
+                {message.userRepliesIds.map((userId) => {
+                  // debugger
+                  return (
+                    <img key={userId} src={
+                      (users[userId].profilePictureUrl) ? 
+                        users[userId].profilePictureUrl : 
+                        "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
+                      alt="User profile picture" 
+                    />
+                    )
+                })}
+                <div className="MessageItem__reply-count">{message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } </div>
+              </div>
+              <span class="material-icons-outlined">chevron_right</span>
+            </div>
+            }
+
           </ul>
         </div>
-
-        {(message.replyCount > 0) && 
-          <div onClick={ handleReply } >
-            {message.userRepliesIds.map((userId) => {
-              // debugger
-              return <li key={userId} >
-                {users[userId].id}
-                <img src={
-                  (users[userId].profilePictureUrl) ? 
-                    users[userId].profilePictureUrl : 
-                    "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
-                    height="30px"
-                    width="30px"
-                  alt="User profile picture" 
-                />
-              </li>
-            })}
-            {message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } 
-          </div>}
-
       </div>
     ) : (
       <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />

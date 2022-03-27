@@ -16,7 +16,9 @@
 .AppLeftBar__container {
   background-color: $monument-column-bg;
   color: $monument-text-color;
-  width: 20vw;
+  // width: 300px;
+  // flex: 0 0 280px;
+  flex: 0 0 20vw;
 }
 
 .App__center-content {
@@ -24,15 +26,15 @@
   display: flex;
   flex-direction: column;
   // width: 60vw;
-  width: 100%;
+  // width: 100%;
+  flex-grow: 1
 }
 
 .ChatRoom__container {
   padding-top: 2vh;
-  padding-bottom: 5vh;
+  padding-bottom: 0vh;
   height: 64vh;
-  // overflow: auto; 
-  overflow-y: scroll;
+  overflow-y: scroll; // Change to hidden if want scrollbar not showing
   display: flex; 
   flex-direction: column-reverse;
 }
@@ -41,18 +43,25 @@
   overflow-x: hidden;
 }
 
-// To keep scrollbar in main area always showing
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 8px;
+  width: 16px;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,.4);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.1);
+  background-clip: padding-box; // Add margin
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: rgba(0,0,0,.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  border: 4px solid rgba(0, 0, 0, 0);
 }
-// 
+
+.AppLeftBar__container .ChatRoom__container:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, .4);
+}
 
 .MessageForm__float {
   height: 20vh;
@@ -80,13 +89,11 @@
   height: 100%;
 }
 
-.Thread > div {
-  height: 80vh;
-}
-
-.Thread .ChatRoom__container {
-  height: 100%;
+.Thread .ChatRoom__container, .AppLeftBar__container .ChatRoom__container {
+  height: 83vh; 
+  // Should be 87 vh since top nav is 5vh and info header is 8vh
   flex-direction: column;
+  // To start thread at top of container
 }
 
 // For edit form
@@ -97,7 +104,8 @@
   position: relative;
   // bottom: 0;
   overflow: hidden;
-  width: 300px;
+  // width: min(25vw, 300px);
+  width: auto;
   // Need to fix width later
   padding: 2vh 2vw 2vh 2vw;
   display: flex;
@@ -110,8 +118,14 @@
 }
 
 .AppRightBar__container {
-  width: min(40vw, 550px);
+  // width: min(25vw, 300px);
+  // width: 400px;
+  // flex: 0 0 400px;
+  flex: 0 0 28vw;
   border-left: 1px solid $border-light-gray;
+  display: flex;
+  flex-direction: column;
+  // flex-grow: 1;
 }
 
 
@@ -123,7 +137,7 @@
 }
 
 .ChatRoom .MessageItem:last-child {
-  padding-bottom: 1vh;
+  // padding-bottom: 1vh;
 }
 
 .ChatRoom form {
@@ -241,4 +255,92 @@
   color: $text--light-gray;
   font-size: .8rem;
   margin-left: 5px;
+}
+
+.MessageItem__reply-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 40vw;
+  padding: 1px 0px;
+}
+
+.Thread .MessageItem__reply-info-container {
+  width: auto;
+}
+
+.MessageItem__reply-info-container:hover {
+  background-color: $main-white;
+  border-radius: 5px;
+  border: 1px solid $border-light-gray;
+  box-shadow: 0px 0px 10px -2px $callout-box-gray;
+  padding: 0px;
+}
+
+.MessageItem__reply-info {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.Thread .MessageItem__reply-info img {
+  display: none;
+}
+
+.MessageItem__reply-info img {
+  height: 22px;
+  width: 22px;
+  border-radius: 3px;
+  margin-right: 3px;
+}
+
+.MessageItem__reply-count {
+  margin-left: 10px;
+  color: $link-blue;
+  font-size: .85rem;
+  font-weight: bold;
+}
+
+.Thread .MessageItem__reply-count {
+  // margin-left: -30px;
+  color: $text--light-gray;
+  font-weight: 400;
+}
+
+
+.MessageItem__reply-info-container span {
+  display: none;
+}
+
+.MessageItem__reply-info-container:hover span {
+  font-size: 1rem;
+  padding-right: 8px;
+  display: inline;
+  color: $text--light-gray;
+}
+
+
+
+
+
+
+.ChatRoomInfo span {
+  cursor: pointer;
+}
+
+.ThreadInfo__info {
+  display: flex;
+  align-items:flex-end;
+}
+
+.ThreadInfo__title {
+  margin-right: 8px;
+}
+
+.ThreadInfo__name {
+  font-size: .85rem;
+  color: $text--light-gray;
+  font-weight: 400;
 }
