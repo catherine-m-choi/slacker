@@ -6,7 +6,6 @@ function Profile(props) {
       <div className="ChatRoomInfo__container">
         <div className="ChatRoomInfo">
           <h3>Profile</h3>
-          {/* <button onClick={props.closeRightSidebar} >Close me!</button> */}
           <span onClick={props.closeRightSidebar}  className="material-icons-outlined">close</span>
         </div>
       </div>

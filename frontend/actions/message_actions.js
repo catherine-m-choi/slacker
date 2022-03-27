@@ -83,7 +83,6 @@ export const deleteMessageDB = (messageId) => dispatch => {
 }
 
 export const saveMessage = (saveData) => dispatch => {
-  debugger
   return MessageAPIUtil.saveMessage(saveData.userId, saveData.messageId)
     .then((res) => dispatch(saveMessageAction(res)) )
 }

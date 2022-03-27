@@ -13,12 +13,12 @@ function ConversationIndex(props) {
     <div className="ConversationIndex">
       <div className="AppLeftBar__section-header">
         <div className="AppLeftBar__section-header-dropdown">
-          <span class="material-icons-outlined">arrow_drop_down</span>
+          <span className="material-icons-outlined">arrow_drop_down</span>
         </div>
         <div className="AppLeftBar__section-header-name">
           <div>Direct Messages</div>
           <Link to="/app/all-dms">
-            <span class="material-icons-outlined">add</span>
+            <span className="material-icons-outlined">add</span>
           </Link>
         </div>
       </div>

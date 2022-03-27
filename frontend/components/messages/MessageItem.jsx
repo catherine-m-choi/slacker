@@ -79,7 +79,6 @@ function MessageItem({
       setSaveStatus(true);
     } else {
       console.log("Unsaved!")
-      debugger
       unsaveMessage(savedMessages[message.id])
       setSaveStatus(false);
     }
@@ -97,7 +96,14 @@ function MessageItem({
 
   return (
     (!editStatus) ? (
-      <div className={`MessageItem__container ${displayDate && "has-date"} ${saveStatus && "saved"}` }>
+      <div className={`MessageItem__container ${displayDate && "has-date"} ${ saveStatus ? "saved" : "not-saved"}` }>
+        {/* { saveStatus &&
+          <div>
+            <i className="material-icons-outlined">bookmark</i>
+            Added to your saved items
+          </div>
+        } */}
+        
         {displayDate && 
           <div className="MessageItem__date-container">
             <div className="MessageItem__date">
@@ -111,49 +117,58 @@ function MessageItem({
             <i className="material-icons-outlined">add_reaction</i>
             <i className="material-icons-outlined">push_pin</i>
             { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
-            <i onClick={() => handleSave() } className="material-icons-outlined">bookmark_border</i>
+            <i onClick={() => handleSave() } className={`material-icons-outlined ${ saveStatus ? "saved" : "not-saved"}`}>{ saveStatus ? "bookmark" : "bookmark_border"}</i>
             <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
             <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
           </div>
         </div>
 
         <div className="MessageItem">
+
+          { saveStatus &&
+            <div className="MessageItem__saved-message">
+              <i className="material-icons-outlined">bookmark</i>
+              <div>Added to your saved items</div>
+            </div>
+          }
           
-          <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
-          <ul>
-            <div className="MessageItem__info">
-              <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
-              <li className="MessageItem__time">{msgTime}</li>
-            </div>
-            <li className="MessageItem__body">
-              {message.body}
-              {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
-            </li>
-            
-          {/* </ul> */}
-        {/* </div> */}
-
-          {(message.replyCount > 0) && 
-            <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
-              <div className="MessageItem__reply-info" >
-                {message.userRepliesIds.map((userId) => {
-                  // debugger
-                  return (
-                    <img key={userId} src={
-                      (users[userId].profilePictureUrl) ? 
-                        users[userId].profilePictureUrl : 
-                        "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
-                      alt="User profile picture" 
-                    />
-                    )
-                })}
-                <div className="MessageItem__reply-count">{message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } </div>
+          <div className="MessageItem__content">
+            <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+            <ul>
+              <div className="MessageItem__info">
+                <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+                <li className="MessageItem__time">{msgTime}</li>
               </div>
-              <span className="material-icons-outlined">chevron_right</span>
-            </div>
-            }
+              <li className="MessageItem__body">
+                {message.body}
+                {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
+              </li>
+              
+            {/* </ul> */}
+          {/* </div> */}
 
-          </ul>
+            {(message.replyCount > 0) && 
+              <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
+                <div className="MessageItem__reply-info" >
+                  {message.userRepliesIds.map((userId) => {
+                    // debugger
+                    return (
+                      <img key={userId} src={
+                        (users[userId].profilePictureUrl) ? 
+                          users[userId].profilePictureUrl : 
+                          "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
+                        alt="User profile picture" 
+                      />
+                      )
+                  })}
+                  <div className="MessageItem__reply-count">{message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } </div>
+                </div>
+                <span className="material-icons-outlined">chevron_right</span>
+              </div>
+              }
+
+            </ul>
+          </div>
         </div>
       </div>
     ) : (

@@ -8,6 +8,11 @@ function AppLeftBar(props) {
 
       <div className="ChatRoomInfo">
         <h1>Parks and Recreation of Pawnee</h1>
+        <Link to="/app/drafts" >
+          <div >
+            <span className="material-icons-outlined">post_add</span>
+          </div>
+        </Link>
       </div>
 
       <div className="ChatRoom__container">
@@ -24,21 +29,21 @@ function AppLeftBar(props) {
 
           <div className="AppLeftBar__section-header">
             <div className="AppLeftBar__section-header-dropdown">
-              <span class="material-icons-outlined">arrow_drop_down</span>
+              <span className="material-icons-outlined">arrow_drop_down</span>
             </div>
             <div className="AppLeftBar__section-header-name">
               <div>Starred</div>
-              <span class="material-icons-outlined">add</span>
+              <span className="material-icons-outlined">add</span>
             </div>
           </div>
 
           <div className="AppLeftBar__section-header">
             <div className="AppLeftBar__section-header-dropdown">
-              <span class="material-icons-outlined">arrow_drop_down</span>
+              <span className="material-icons-outlined">arrow_drop_down</span>
             </div>
             <div className="AppLeftBar__section-header-name">
               <div>Channels</div>
-              <span class="material-icons-outlined">add</span>
+              <span className="material-icons-outlined">add</span>
             </div>
           </div>
 

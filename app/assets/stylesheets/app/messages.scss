@@ -20,6 +20,7 @@
 
 .AppTopNav__main {
   display: flex;
+  margin-left: -5vw;
 }
 
 
@@ -80,9 +81,7 @@
 .AppLeftBar__container {
   background-color: $monument-column-bg;
   color: $monument-text-color;
-  // width: 300px;
-  // flex: 0 0 280px;
-  flex: 0 0 20vw;
+  flex: 0 0 15vw;
 }
 
 .AppLeftBar__container .ChatRoom {
@@ -119,7 +118,7 @@
   display: flex;
   align-items: center;
   padding-left: 1.5vw;
-  padding-right: 1.5vw;
+  padding-right: 0;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -136,8 +135,13 @@
 }
 
 .ConversationIndexItems__member-names {
-  overflow-y: hidden;
-  text-overflow: ellipsis; 
+  // overflow-y: hidden;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 13vw;
+  // width: 100%;
   // background-color: red;
 }
 
@@ -205,8 +209,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  // width: 60vw;
-  // width: 100%;
   flex-grow: 1
 }
 
@@ -336,14 +338,39 @@
   // background-color: blanchedalmond;
 }
 
-.MessageItem__container:hover .MessageItem {
+.MessageItem__container.not-saved:hover .MessageItem {
   background-color: $light-message-hover;
 }
 
+.MessageItem__container.saved .MessageItem {
+  background-color:$user-tag-highlight-light;
+}
+
+.MessageItem__saved-message {
+  padding-left: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: .75rem;
+  padding: 5px 2vw 5px 3.6vw;
+  color: $text--light-gray;
+}
+
+.MessageItem__saved-message i {
+  // width: .5vw;
+  margin-right: .5vw;
+  color: $saved-red;
+  font-size: .9rem;
+}
 
 .MessageItem {
   display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+.MessageItem__content {
+  display: flex;
 }
 
 .MessageItem__info {
@@ -443,6 +470,10 @@
   background-color: $light-message-hover;
 }
 
+.MessageItem__actions .saved {
+  color: $saved-red;
+}
+
 .MessageItem__container:hover .MessageItem__actions-container { 
   display: flex; 
 }
@@ -519,12 +550,29 @@
 
 
 
-
-
-
-.ChatRoomInfo span {
+.AppRightBar__container .ChatRoomInfo span {
   cursor: pointer;
 }
+
+
+
+.AppLeftBar__container .ChatRoomInfo span {
+  cursor: pointer;
+  display: flex;
+}
+
+.AppLeftBar__container .ChatRoomInfo div {
+  padding: 6px;
+  background-color: $main-white;
+  border-radius: 50%;
+  margin-left: 1.5vw;
+}
+
+.AppLeftBar__container .ChatRoomInfo span {
+  font-size: 1.2rem;
+  color: $monument-column-bg;
+}
+
 
 .ThreadInfo__info {
   display: flex;
