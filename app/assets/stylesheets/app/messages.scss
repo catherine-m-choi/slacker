@@ -92,6 +92,10 @@
   
 }
 
+.AppLeftBar__container a {
+  color: $box-border-transparent-less-opaque;
+}
+
 .AppLeftBar__menu-btns li {
   display: flex;
   align-items: center;
@@ -105,14 +109,40 @@
   background-color: $monument-hover-item;
 }
 
-.AppLeftBar__menu-btns a {
-  color: $box-border-transparent-less-opaque;
-}
-
 .AppLeftBar__menu-btns li i {
   padding-right: 10px;
   font-size: 1rem;
 }
+
+
+.ConversationIndexItems__container li {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.ConversationIndexItems__container li:hover {
+  background-color: $monument-hover-item;
+}
+
+.ConversationIndexItems__container img {
+  padding-right: 8px;
+  border-radius: 5px;
+  height: 2.5vh;
+  width: 2.5vh;
+}
+
+.ConversationIndexItems__member-names {
+  overflow-y: hidden;
+  text-overflow: ellipsis; 
+  // background-color: red;
+}
+
+
+
 
 .AppLeftBar__section-header {
   display: flex;
@@ -165,11 +195,6 @@
 
 .AppLeftBar__section-header-dropdown:hover {
   background-color: $box-border-transparent-more-opaque;
-}
-
-.ConversationIndexItems__container {
-  padding-left: 2vw;
-  padding-right: 2vw;
 }
 
 

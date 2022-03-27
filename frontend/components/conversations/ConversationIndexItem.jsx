@@ -13,23 +13,27 @@ function ConversationIndexItem(props) {
   if (props.conversation.members[0] !== props.currentUserId) {
     let userForPic = props.users[props.conversation.members[0]]
     if (userForPic) {
-      displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} height="25px" width="25px" alt="User profile picture" />
+      displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}alt="User profile picture" />
     }
   } else {
     let userForPic = props.users[props.conversation.members[1]]
     if (userForPic) {
-      displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} height="25px" width="25px" alt="User profile picture" />
+      displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}alt="User profile picture" />
     }
   }
   
   return (
-    <div>
-      <Link to={`/app/conversations/${props.conversation.id}`} >
+    <Link to={`/app/conversations/${props.conversation.id}`} >
+        <li>
         {displayImage}
-        {(memberNames.length > 1) && memberNames.length } 
-        {memberNames && memberNames.join(", ")}
-      </Link>
-    </div>
+        <div>
+          {(memberNames.length > 1) && memberNames.length } 
+        </div>
+        <div className="ConversationIndexItems__member-names">
+          {memberNames && memberNames.join(", ")}
+        </div>
+      </li>
+    </Link>
   )
 }
 
