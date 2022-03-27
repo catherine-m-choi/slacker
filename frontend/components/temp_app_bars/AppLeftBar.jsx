@@ -13,18 +13,35 @@ function AppLeftBar(props) {
       <div className="ChatRoom__container">
         <div className="ChatRoom">
           <br />
-          <ul>
+          <ul className="AppLeftBar__menu-btns">
             <li><i className="material-icons-outlined">comment</i>Threads</li>
-            <li><Link to="/app/all-dms"><i className="material-icons-outlined">forum</i>All DMs</Link></li>
+            <Link to="/app/all-dms"><li><i className="material-icons-outlined">forum</i>All DMs</li></Link>
             <li><i className="material-icons-outlined">alternate_email</i>Mentions & Reactions</li>
             <li><i className="material-icons-outlined">save_as</i>Drafts</li>
-            <li><Link to="/app/saved-page"><i className="material-icons-outlined">bookmark_border</i>Saved Items</Link></li>
+            <Link to="/app/saved-page"><li><i className="material-icons-outlined">bookmark_border</i>Saved Items</li></Link>
           </ul>
           <br />
-          <div>Starred</div>
-          <br />
-          <div>Channels</div>
-          <br />
+
+          <div className="AppLeftBar__section-header">
+            <div className="AppLeftBar__section-header-dropdown">
+              <span class="material-icons-outlined">arrow_drop_down</span>
+            </div>
+            <div className="AppLeftBar__section-header-name">
+              <div>Starred</div>
+              <span class="material-icons-outlined">add</span>
+            </div>
+          </div>
+
+          <div className="AppLeftBar__section-header">
+            <div className="AppLeftBar__section-header-dropdown">
+              <span class="material-icons-outlined">arrow_drop_down</span>
+            </div>
+            <div className="AppLeftBar__section-header-name">
+              <div>Channels</div>
+              <span class="material-icons-outlined">add</span>
+            </div>
+          </div>
+
           <ConversationIndexContainer />
         </div>
       </div>

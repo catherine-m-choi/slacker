@@ -24,7 +24,7 @@ function AppTopNav(props) {
           </div>
         </div>
         <div className="AppTopNav__search-bar">
-          <span class="material-icons-outlined">search</span>
+          <span className="material-icons-outlined">search</span>
           <h3>
             Search your workspace
           </h3>

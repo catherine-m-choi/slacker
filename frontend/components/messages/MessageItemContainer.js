@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     users: state.entities.users,
     currentUserId: state.session.id,
     savedMessages: state.session.savedMessages,
+    replies: ownProps.message.replyCount,
   }
 }
 

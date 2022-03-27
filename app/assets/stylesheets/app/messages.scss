@@ -15,12 +15,16 @@
 }
 
 .AppTopNav__main {
+  width: 55vw;
+}
+
+.AppTopNav__main {
   display: flex;
 }
 
 
 .AppTopNav__search-bar {
-  width: 40vw;
+  width: 45vw;
   background-color: $box-border-transparent-opaque;
   border: 1px solid $border-dark-blue;
   border-radius: 5px;
@@ -80,6 +84,97 @@
   // flex: 0 0 280px;
   flex: 0 0 20vw;
 }
+
+.AppLeftBar__container .ChatRoom {
+  font-size: .9rem;
+  font-weight: 300;
+  color: $box-border-transparent-less-opaque;
+  
+}
+
+.AppLeftBar__menu-btns li {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.AppLeftBar__menu-btns li:hover {
+  background-color: $monument-hover-item;
+}
+
+.AppLeftBar__menu-btns a {
+  color: $box-border-transparent-less-opaque;
+}
+
+.AppLeftBar__menu-btns li i {
+  padding-right: 10px;
+  font-size: 1rem;
+}
+
+.AppLeftBar__section-header {
+  display: flex;
+  align-items: center;
+  padding-left: 1.5vw;
+  padding-right: .5vw;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+
+.AppLeftBar__section-header-dropdown {
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  margin-right: 5px;
+}
+
+// .AppLeftBar__section-header-dropdown {
+//   background-color: $box-border-transparent-more-opaque;
+// }
+
+.AppLeftBar__section-header-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.AppLeftBar__section-header:hover span {
+  display: block;
+}
+
+.AppLeftBar__section-header-name span {
+  display: none;
+}
+.AppLeftBar__section-header-name span {
+  font-size: 1.2rem;
+  padding: 2px;
+  background-color: $box-border-transparent-more-opaque;
+  border-radius: 4px;
+}
+
+.AppLeftBar__section-header-dropdown {
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.AppLeftBar__section-header-dropdown:hover {
+  background-color: $box-border-transparent-more-opaque;
+}
+
+.ConversationIndexItems__container {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+
+
+
 
 .App__center-content {
   position: relative;
@@ -206,9 +301,9 @@
   padding-right: 2vw;
 }
 
-.ChatRoom .MessageItem:last-child {
+// .ChatRoom .MessageItem:last-child {
   // padding-bottom: 1vh;
-}
+// }
 
 .ChatRoom form {
   padding-left: 2vw;
@@ -340,7 +435,7 @@
   border-radius: 5px;
   cursor: pointer;
   width: 40vw;
-  padding: 1px 0px;
+  padding: 1px 1px;
 }
 
 .Thread .MessageItem__reply-info-container {
