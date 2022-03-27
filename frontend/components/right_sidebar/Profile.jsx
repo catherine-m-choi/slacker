@@ -12,22 +12,22 @@ function Profile(props) {
       </div>
 
       <div className="ChatRoom__container">
-        <img src={props.currentUser.profilePictureUrl} />
-          <div className="Profile__name">{props.currentUser.displayName}</div>
-          <div className="Profile__title">{props.currentUser.title}</div>
+        <img src={props.user.profilePictureUrl} />
+          <div className="Profile__name">{props.user.displayName}</div>
+          <div className="Profile__title">{props.user.title}</div>
           <div className="Profile__status">On vacation</div>
 
         <ul className="Profile__buttons">
           <li>
-            <span class="material-icons-outlined">sentiment_satisfied_alt</span>
+            <span className="material-icons-outlined">sentiment_satisfied_alt</span>
             <div>Set status</div>
           </li>
           <li>
-            <span class="material-icons-outlined">edit</span>
+            <span className="material-icons-outlined">edit</span>
             <div>Edit profile</div>
           </li>
           <li>
-            <span class="material-icons-outlined">settings</span>
+            <span className="material-icons-outlined">settings</span>
             <div>Preferences</div>
           </li>
         </ul>

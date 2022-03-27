@@ -84,6 +84,14 @@ function MessageItem({
       setSaveStatus(false);
     }
   }
+    
+  const handleProfile = (e) => {
+    console.log("Opening profile!")
+    openRightSidebar({
+      type: "Profile",
+      user: sender
+    }) 
+  }
 
   if (!sender) return (<div></div>);
 
@@ -111,10 +119,10 @@ function MessageItem({
 
         <div className="MessageItem">
           
-          <img className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+          <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
           <ul>
             <div className="MessageItem__info">
-              <li className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+              <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
               <li className="MessageItem__time">{msgTime}</li>
             </div>
             <li className="MessageItem__body">
@@ -141,7 +149,7 @@ function MessageItem({
                 })}
                 <div className="MessageItem__reply-count">{message.replyCount} {(message.replyCount === 1) ? "reply" : "replies" } </div>
               </div>
-              <span class="material-icons-outlined">chevron_right</span>
+              <span className="material-icons-outlined">chevron_right</span>
             </div>
             }
 

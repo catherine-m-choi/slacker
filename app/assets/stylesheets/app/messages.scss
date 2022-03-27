@@ -7,6 +7,66 @@
   background-color: $monument-top-nav-bg;
   color: $monument-top-nav-text;
   height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1vw;
+  padding-right: 1.5vh;
+}
+
+.AppTopNav__main {
+  display: flex;
+}
+
+
+.AppTopNav__search-bar {
+  width: 40vw;
+  background-color: $box-border-transparent-opaque;
+  border: 1px solid $border-dark-blue;
+  border-radius: 5px;
+  font-size: .82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 300;
+}
+
+.AppTopNav__search-bar span {
+  font-size: .9rem;
+  margin-right: 5px;
+  margin-bottom: -2px;
+}
+
+.AppTopNav__nav-btns {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5vw;
+}
+
+.AppTopNav__nav-btns i {
+  font-size: 1.3rem;
+}
+
+.AppTopNav__nav-btns div {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppTopNav__nav-btns div:hover {
+  background-color: $box-border-transparent-opaque;
+}
+
+.AppTopNav__profile {
+  height: 3.2vh;
+  width: 3.2vh;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .App__content {
@@ -175,12 +235,18 @@
   word-break: break-all;
 }
 
+.MessageItem__sender-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .MessageItem__sender-profile-img {
   height: 40px;
   width: 40px;
   border-radius: 5px;
   margin-top: 5px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .MessageItem__sender-name {

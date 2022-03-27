@@ -7,16 +7,30 @@ function AppTopNav(props) {
     console.log("Opening profile!")
     props.openRightSidebar({
       type: "Profile",
-      currentUser: props.currentUser
+      user: props.currentUser
     }) 
   }
   
   return (
     <div className="AppTopNav__container">
-      <h1>[Top Nav]<button onClick={ () => handleClick() } >Click me to see your profile</button></h1>
-      <div>
-        <img src={props.currentUser.profilePictureUrl} height="30px" width="30px" />
+      <div></div>
+      <div className="AppTopNav__main">
+        <div className="AppTopNav__nav-btns">
+          <div>
+            <i className="material-icons-outlined">arrow_back</i>
+          </div>
+          <div>
+            <i className="material-icons-outlined">arrow_forward</i>
+          </div>
+        </div>
+        <div className="AppTopNav__search-bar">
+          <span class="material-icons-outlined">search</span>
+          <h3>
+            Search your workspace
+          </h3>
+        </div>
       </div>
+      <img onClick={ () => handleClick() } className="AppTopNav__profile" src={props.currentUser.profilePictureUrl} />
     </div>
   )
 }

@@ -17,8 +17,8 @@ function RightSideBar({rightSidebar, closeRightSidebar}) {
       component = <Thread closeRightSidebar={closeRightSidebar} message={rightSidebar.message} />
       break;
     case 'Profile':
-      console.log("It's a thread!")
-      component = <Profile closeRightSidebar={closeRightSidebar} currentUser={rightSidebar.currentUser}/>
+      console.log("It's a profile!")
+      component = <Profile closeRightSidebar={closeRightSidebar} user={rightSidebar.user}/>
       break;
     default:
       return null;
