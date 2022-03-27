@@ -42,7 +42,6 @@ function App(props) {
 
           <Route path="/app/drafts">
             <DraftMessage />
-            {/* <MessageFormContainer /> */}
           </Route>
           
           <Route path="/app/all-dms" component={AllDMsContainer} />

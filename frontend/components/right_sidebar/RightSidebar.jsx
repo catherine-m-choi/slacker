@@ -3,6 +3,7 @@ import { closeRightSidebar } from '../../actions/right_sidebar_actions';
 import { connect } from 'react-redux';
 // import ConversationModalContainer from './ConversationModalContainer';
 import Thread from './Thread';
+import Profile from './Profile';
 
 function RightSideBar({rightSidebar, closeRightSidebar}) {
   if (!rightSidebar) {
@@ -16,7 +17,8 @@ function RightSideBar({rightSidebar, closeRightSidebar}) {
       component = <Thread closeRightSidebar={closeRightSidebar} message={rightSidebar.message} />
       break;
     case 'Profile':
-      // tbd
+      console.log("It's a thread!")
+      component = <Profile closeRightSidebar={closeRightSidebar} currentUser={rightSidebar.currentUser}/>
       break;
     default:
       return null;

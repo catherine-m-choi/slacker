@@ -15,7 +15,7 @@ function ConversationIndex(props) {
         Direct Messages  <Link to="/app/all-dms">+</Link>
         {Object.values(props.conversations).map((convo) => {
           return (
-            <ConversationIndexItem key={convo.id} conversation={convo} fetchConvos={props.fetchConvos} />
+            <ConversationIndexItem key={convo.id} conversation={convo} fetchConvos={props.fetchConvos} users={props.users} currentUserId={props.currentUserId} />
           )
         })}
       </ul>

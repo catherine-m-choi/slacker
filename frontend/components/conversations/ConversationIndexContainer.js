@@ -4,7 +4,9 @@ import { fetchConvos } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state) => {
   return {
-    conversations: state.entities.conversations
+    conversations: state.entities.conversations,
+    users: state.entities.users,
+    currentUserId: state.session.id,
   }
 }
 
