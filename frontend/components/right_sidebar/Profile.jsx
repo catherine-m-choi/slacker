@@ -3,9 +3,12 @@ import React from "react";
 function Profile(props) {
   return (
     <div className="Profile" >
-      <div className="ChatRoomInfo">
-        <h2>Profile</h2>
-        <button onClick={props.closeRightSidebar} >Close me!</button>
+      <div className="ChatRoomInfo__container">
+        <div className="ChatRoomInfo">
+          <h3>Profile</h3>
+          {/* <button onClick={props.closeRightSidebar} >Close me!</button> */}
+          <span onClick={props.closeRightSidebar}  className="material-icons-outlined">close</span>
+        </div>
       </div>
 
       <div className="ChatRoom__container">
@@ -29,8 +32,8 @@ function Profile(props) {
           </li>
         </ul>
 
-        <br />
-        <div>Local time: 12:23 AM</div>
+        {/* <br />
+        <div>Local time: 12:23 AM</div> */}
 
         <ul className="Profile__details">
           <li>

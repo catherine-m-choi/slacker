@@ -4,10 +4,22 @@
   align-items: center;
 }
 
-.Profile .ChatRoomInfo  {
-  width: calc(100% - 4vw);
-  padding-left: 2vw;
-  padding-right: 2vw;
+.Profile .ChatRoomInfo__container {
+  width: 100%;
+  margin-left: 0px;
+}
+
+.Profile .ChatRoomInfo {
+  padding-left: calc(2vw);
+  padding-right: calc(2vw);
+}
+
+.Profile .ChatRoom__container {
+  width: calc(100% - 4vw + 16px);  // 4vw for padding and 16 px to account for scroll bar width
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: calc(2vw - 16px);
 }
 
 .Profile img {
@@ -37,13 +49,16 @@
   display: flex;
   justify-content: space-between;
 }
+
 .Profile__buttons span {
   background-color: $callout-box-gray;
   padding: 8px;
   border-radius: 50%;
   margin-bottom: 10px;
-  // width: 30px;
-  // height: 30px;
+}
+
+.Profile__buttons span:hover {
+  background-color: $box-shadow-gray;
 }
 
 .Profile__buttons li {
@@ -53,8 +68,23 @@
   font-size: .8rem;
   color: $text--light-gray;
   margin-left: 20px;
+  cursor: pointer;
 }
 
-.Profile {
-  text-align: center;
+.Profile__buttons {
+  margin-bottom: 5vh;
+}
+
+.Profile__details {
+  width: calc(100%);
+  font-size: .88rem;
+  color: $text--light-gray;
+}
+
+.Profile__details li {
+  margin-bottom: 1.5vh;
+}
+
+.Profile__details span {
+  font-weight: bold;
 }
