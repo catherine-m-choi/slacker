@@ -5,14 +5,17 @@ import MessageItemCardContainer from "./MessageItemCardContainer";
 
 function AllDMs(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [dms, setDms] = useState(props.messages.reverse());
+  const [dms, setDms] = useState(props.messages);
+  const [lastest, setLatest] = useState(true);
 
   useEffect(() => {
-    setDms(props.messages.reverse());
+    setDms(props.messages);
+    setLatest(!lastest)
   }, [props.messages])
 
   useEffect(() => {
-    setDms(props.messages.reverse());
+    setDms(props.messages);
+    setLatest(!lastest)
   }, [])
 
   const display = dms.map((msg) => {

@@ -61,15 +61,18 @@
   border: 1px solid $border-light-gray;
   box-shadow: 0px .8px 2.5px 1.5px $box-shadow-gray;
   width: 85%;
-  margin-left: 5%;
-  margin-right: 0;
-  margin-top: -1.5vh;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  padding-right: 0;
   max-height: 50vh;
   border-radius: 5px;
   overflow-y: scroll;
+  position: absolute;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 0;
+  // margin-left: 5%;
+  // margin-right: 0;
+  // margin-top: -1.5vh;
+  top: 15vh;
+  left: 4vw;
 }
 
 .SearchUsers:empty{
@@ -150,7 +153,7 @@
 }
 
 .AllDMs .MessageItemCard__container:first-child {
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 
 .DraftMessage {
@@ -162,7 +165,7 @@
   padding-bottom: 0vh;
   overflow-y: scroll;
   display: flex; 
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .AllDMs:hover {
