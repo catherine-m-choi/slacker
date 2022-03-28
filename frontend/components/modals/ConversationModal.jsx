@@ -11,7 +11,7 @@ function ConversationModal(props) {
     return (
       <li key={user.id} className="ConversationModal__search-display-users" >
         <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
-        <span>{(user.displayName) ? user.displayName : user.email}</span>
+        <span>{`${(user.displayName) ? user.displayName : user.email} ${(user.id === props.currentUserId) ? "(you)" : "" }`}</span>
       </li>)
   })
 
@@ -20,13 +20,11 @@ function ConversationModal(props) {
       <h2>
         {memberNames.join(", ")}
       </h2>
-      {/* <button className="ConversationModal__close" onClick={ props.closeModal } >Close Modal</button> */}
       <div className="ConversationModal__close" onClick={ props.closeModal } >
         <span className="material-icons-outlined" >
           close
         </span>
       </div>
-
 
       <div className="ConversationModal__search-bar">
         <label aria-label="users search bar" >
@@ -42,6 +40,7 @@ function ConversationModal(props) {
         members={props.filteredUsers} 
         addMember={props.addMember} 
         convoId={props.conversation.id} 
+        currentUserId={props.currentUserId}
       />
 
       {(searchQuery === "") && 

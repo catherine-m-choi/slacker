@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import NewDmSearch from "./NewDMSearch";
-import MessageItemContainer from "./MessageItemContainer";
+// import MessageItemContainer from "./MessageItemContainer";
+import MessageItemCardContainer from "./MessageItemCardContainer";
 
 function AllDMs(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [dms, setDms] = useState(props.messages);
+  const [dms, setDms] = useState(props.messages.reverse());
 
   useEffect(() => {
-    setDms(props.messages);
+    setDms(props.messages.reverse());
   }, [props.messages])
 
   useEffect(() => {
-    setDms(props.messages);
+    setDms(props.messages.reverse());
   }, [])
 
   const display = dms.map((msg) => {
     return (
-      <MessageItemContainer 
+      <MessageItemCardContainer 
         key={msg.message.id} 
         message={msg.message} 
       />
@@ -26,7 +27,9 @@ function AllDMs(props) {
   return (
     <div className="DraftMessage" >
       <div className="DraftMessage__info">
-        <h2>All direct messages</h2>
+        <div className="DraftMessage__title">
+          <h2>All direct messages</h2>
+        </div>
         
         <div className="DraftMessage__search">
           <label htmlFor="NewMessage__search-label" >To:</label>
@@ -41,8 +44,7 @@ function AllDMs(props) {
         <NewDmSearch searchQuery={searchQuery} users={props.users} currentUserId={props.currentUserId} />
       </div>
 
-      <ul>
-        <li>Sort through user's Conversations</li>
+      <ul className="AllDMs">
         {display}
       </ul>
     </div>

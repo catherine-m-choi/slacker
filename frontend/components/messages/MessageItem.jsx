@@ -97,12 +97,6 @@ function MessageItem({
   return (
     (!editStatus) ? (
       <div className={`MessageItem__container ${displayDate && "has-date"} ${ saveStatus ? "saved" : "not-saved"}` }>
-        {/* { saveStatus &&
-          <div>
-            <i className="material-icons-outlined">bookmark</i>
-            Added to your saved items
-          </div>
-        } */}
         
         {displayDate && 
           <div className="MessageItem__date-container">
@@ -144,9 +138,6 @@ function MessageItem({
                 {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
               </li>
               
-            {/* </ul> */}
-          {/* </div> */}
-
             {(message.replyCount > 0) && 
               <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
                 <div className="MessageItem__reply-info" >

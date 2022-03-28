@@ -9,20 +9,18 @@ function SearchResults(props) {
       return;
     }
     else {
-      return user.email.includes(props.searchQuery)
+      return user.displayName.toLowerCase().includes(props.searchQuery.toLowerCase())
     }
   })
-    
   
   const filteredUsersNotInChat = Object.values(props.users).filter((user) => {
-    // debugger
     if (props.searchQuery === '') {
       return;
     } else if (Object.keys(props.members).includes(String(user.id))) {
       return;
     }
     else {
-      return user.email.includes(props.searchQuery)
+      return user.displayName.toLowerCase().includes(props.searchQuery.toLowerCase())
     }
   })
 
@@ -36,7 +34,7 @@ function SearchResults(props) {
             <li key={user.id} className="ConversationModal__search-display-users" >
               <div>
                 <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
-                <span>{user.email}</span>
+                <span>{`${user.displayName} ${(user.id === props.currentUserId) ? "(you)" : "" }`}</span>
               </div>
               <button onClick={(e) => console.log("Add Remove action later")} >Remove</button>
             </li>

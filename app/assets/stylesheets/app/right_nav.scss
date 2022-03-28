@@ -1,0 +1,47 @@
+
+.AppRightBar__container {
+  flex: 0 0 28vw;
+  border-left: 1px solid $border-light-gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.AppRightBar__container .ChatRoomInfo span {
+  cursor: pointer;
+}
+
+.Thread {
+  height: 100%;
+}
+
+.Thread .ChatRoom__container, .AppLeftBar__container .ChatRoom__container {
+  height: 83vh; 
+  // Maybe should be 87 vh since top nav is 5vh and info header is 8vh
+  flex-direction: column;
+  // To start thread at top of container
+}
+
+.Profile .ChatRoom__container {
+  height: 83vh; 
+  flex-direction: column;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  width: calc(100% - 4vw);
+}
+
+
+// Thread Info
+.ThreadInfo__info {
+  display: flex;
+  align-items:flex-end;
+}
+
+.ThreadInfo__title {
+  margin-right: 8px;
+}
+
+.ThreadInfo__name {
+  font-size: .85rem;
+  color: $text--light-gray;
+  font-weight: 400;
+}

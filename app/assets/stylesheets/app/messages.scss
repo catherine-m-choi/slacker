@@ -3,207 +3,9 @@
   flex-direction: column;
 }
 
-.AppTopNav__container {
-  background-color: $monument-top-nav-bg;
-  color: $monument-top-nav-text;
-  height: 5vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 1vw;
-  padding-right: 1.5vh;
-}
-
-.AppTopNav__main {
-  width: 55vw;
-}
-
-.AppTopNav__main {
-  display: flex;
-  margin-left: -5vw;
-}
-
-
-.AppTopNav__search-bar {
-  width: 45vw;
-  background-color: $box-border-transparent-opaque;
-  border: 1px solid $border-dark-blue;
-  border-radius: 5px;
-  font-size: .82rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: 300;
-}
-
-.AppTopNav__search-bar span {
-  font-size: .9rem;
-  margin-right: 5px;
-  margin-bottom: -2px;
-}
-
-.AppTopNav__nav-btns {
-  display: flex;
-  align-items: center;
-  margin-right: 1.5vw;
-}
-
-.AppTopNav__nav-btns i {
-  font-size: 1.3rem;
-}
-
-.AppTopNav__nav-btns div {
-  margin-left: 10px;
-  border-radius: 5px;
-  padding: 2px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.AppTopNav__nav-btns div:hover {
-  background-color: $box-border-transparent-opaque;
-}
-
-.AppTopNav__profile {
-  height: 3.2vh;
-  width: 3.2vh;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .App__content {
   display: flex;
 }
-
-.AppLeftBar__container {
-  background-color: $monument-column-bg;
-  color: $monument-text-color;
-  flex: 0 0 15vw;
-}
-
-.AppLeftBar__container .ChatRoom {
-  font-size: .9rem;
-  font-weight: 300;
-  color: $box-border-transparent-less-opaque;
-  
-}
-
-.AppLeftBar__container a {
-  color: $box-border-transparent-less-opaque;
-}
-
-.AppLeftBar__menu-btns li {
-  display: flex;
-  align-items: center;
-  padding-left: 1.5vw;
-  padding-right: 1.5vw;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.AppLeftBar__menu-btns li:hover {
-  background-color: $monument-hover-item;
-}
-
-.AppLeftBar__menu-btns li i {
-  padding-right: 10px;
-  font-size: 1rem;
-}
-
-
-.ConversationIndexItems__container li {
-  display: flex;
-  align-items: center;
-  padding-left: 1.5vw;
-  padding-right: 0;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.ConversationIndexItems__container li:hover {
-  background-color: $monument-hover-item;
-}
-
-.ConversationIndexItems__container img {
-  padding-right: 8px;
-  border-radius: 5px;
-  height: 2.5vh;
-  width: 2.5vh;
-}
-
-.ConversationIndexItems__member-names {
-  // overflow-y: hidden;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 13vw;
-  // width: 100%;
-  // background-color: red;
-}
-
-
-
-
-.AppLeftBar__section-header {
-  display: flex;
-  align-items: center;
-  padding-left: 1.5vw;
-  padding-right: .5vw;
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-
-.AppLeftBar__section-header-dropdown {
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  padding: 0;
-  align-items: center;
-  margin-right: 5px;
-}
-
-// .AppLeftBar__section-header-dropdown {
-//   background-color: $box-border-transparent-more-opaque;
-// }
-
-.AppLeftBar__section-header-name {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-grow: 1;
-}
-
-.AppLeftBar__section-header:hover span {
-  display: block;
-}
-
-.AppLeftBar__section-header-name span {
-  display: none;
-}
-.AppLeftBar__section-header-name span {
-  font-size: 1.2rem;
-  padding: 2px;
-  background-color: $box-border-transparent-more-opaque;
-  border-radius: 4px;
-}
-
-.AppLeftBar__section-header-dropdown {
-  font-size: 1.2rem;
-  border-radius: 4px;
-}
-
-.AppLeftBar__section-header-dropdown:hover {
-  background-color: $box-border-transparent-more-opaque;
-}
-
-
-
-
 
 .App__center-content {
   position: relative;
@@ -211,6 +13,7 @@
   flex-direction: column;
   flex-grow: 1
 }
+
 
 .ChatRoom__container {
   padding-top: 2vh;
@@ -241,9 +44,6 @@
   border: 4px solid rgba(0, 0, 0, 0);
 }
 
-.AppLeftBar__container .ChatRoom__container:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, .4);
-}
 
 .MessageForm__float {
   height: 20vh;
@@ -267,27 +67,6 @@
   border-radius: 10px;
 }
 
-.Thread {
-  height: 100%;
-}
-
-.Thread .ChatRoom__container, .AppLeftBar__container .ChatRoom__container {
-  height: 83vh; 
-  // Should be 87 vh since top nav is 5vh and info header is 8vh
-  flex-direction: column;
-  // To start thread at top of container
-}
-
-.Profile .ChatRoom__container {
-  height: 83vh; 
-  // Should be 87 vh since top nav is 5vh and info header is 8vh
-  flex-direction: column;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  width: calc(100% - 4vw);
-  // To start thread at top of container
-}
-
 // For edit form
 .MessageForm__container.thread {
   height: 16vh;
@@ -309,28 +88,12 @@
   border-radius: 10px;
 }
 
-.AppRightBar__container {
-  // width: min(25vw, 300px);
-  // width: 400px;
-  // flex: 0 0 400px;
-  flex: 0 0 28vw;
-  border-left: 1px solid $border-light-gray;
-  display: flex;
-  flex-direction: column;
-  // flex-grow: 1;
-}
-
-
 .MessageItem {
   padding-top: .5vh;
   padding-bottom: .5vh;
   padding-left: 2vw;
   padding-right: 2vw;
 }
-
-// .ChatRoom .MessageItem:last-child {
-  // padding-bottom: 1vh;
-// }
 
 .ChatRoom form {
   padding-left: 2vw;
@@ -347,17 +110,16 @@
 }
 
 .MessageItem__saved-message {
-  padding-left: 2vw;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   font-size: .75rem;
-  padding: 5px 2vw 5px 3.6vw;
+  padding: 5px 2vw;
+  padding-left: min(30px, 4vw);
   color: $text--light-gray;
 }
 
 .MessageItem__saved-message i {
-  // width: .5vw;
   margin-right: .5vw;
   color: $saved-red;
   font-size: .9rem;
@@ -371,6 +133,7 @@
 
 .MessageItem__content {
   display: flex;
+  justify-content: flex-start;
 }
 
 .MessageItem__info {
@@ -548,43 +311,3 @@
   color: $text--light-gray;
 }
 
-
-
-.AppRightBar__container .ChatRoomInfo span {
-  cursor: pointer;
-}
-
-
-
-.AppLeftBar__container .ChatRoomInfo span {
-  cursor: pointer;
-  display: flex;
-}
-
-.AppLeftBar__container .ChatRoomInfo div {
-  padding: 6px;
-  background-color: $main-white;
-  border-radius: 50%;
-  margin-left: 1.5vw;
-}
-
-.AppLeftBar__container .ChatRoomInfo span {
-  font-size: 1.2rem;
-  color: $monument-column-bg;
-}
-
-
-.ThreadInfo__info {
-  display: flex;
-  align-items:flex-end;
-}
-
-.ThreadInfo__title {
-  margin-right: 8px;
-}
-
-.ThreadInfo__name {
-  font-size: .85rem;
-  color: $text--light-gray;
-  font-weight: 400;
-}
