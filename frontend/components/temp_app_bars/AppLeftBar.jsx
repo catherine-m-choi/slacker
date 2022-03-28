@@ -7,7 +7,7 @@ function AppLeftBar(props) {
     <div className="AppLeftBar__container">
 
       <div className="ChatRoomInfo">
-        <h1>Parks and Recreation of Pawnee</h1>
+        <h1>Parks and Recreation</h1>
         <Link to="/app/drafts" >
           <div >
             <span className="material-icons-outlined">post_add</span>

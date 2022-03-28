@@ -125,6 +125,22 @@
   font-size: .9rem;
 }
 
+.MessageItem__pinned-message {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: .75rem;
+  padding: 5px 2vw;
+  padding-left: min(30px, 4vw);
+  color: $text--light-gray;
+}
+
+.MessageItem__pinned-message i {
+  margin-right: .5vw;
+  color: $pinned-yellow;
+  font-size: .9rem;
+}
+
 .MessageItem {
   display: flex;
   flex-direction: column;
@@ -235,6 +251,10 @@
 
 .MessageItem__actions .saved {
   color: $saved-red;
+}
+
+.MessageItem__actions .pinned {
+  color: $pinned-yellow;
 }
 
 .MessageItem__container:hover .MessageItem__actions-container { 

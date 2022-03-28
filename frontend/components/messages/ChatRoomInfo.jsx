@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 function ChatRoomInfo(props) {
   const [currentConvo, setcurrentConvo] = useState(props.conversations[props.match.params.id])
 
-  // debugger
   useEffect(() => {
     if (Object.keys(props.conversations).length === 0) {
       props.fetchConvos().then( (res) => {
@@ -18,12 +17,6 @@ function ChatRoomInfo(props) {
 
   let memberNames = []
 
-  // if (!currentConvo) {
-  //   props.fetchConvos().then( (res) => {
-  //     const currentConvo = res.payload[props.match.params.id]
-  //     setcurrentConvo(currentConvo);
-  //   })
-  // }
   if (!currentConvo) return <div></div>
   
   const displayPics = currentConvo.members && currentConvo.members.map((convo) => {
@@ -34,17 +27,24 @@ function ChatRoomInfo(props) {
   })
 
   return (
-    <div className="ChatRoomInfo">
-      <ul className="ChatRoomInfo__members"  onClick={() => props.openModal("convo/addMembers") } >
-        {memberNames.join(", ")}
-      </ul>
+    <div>
+      <div className="ChatRoomInfo">
+        <ul className="ChatRoomInfo__members"  onClick={() => props.openModal("convo/addMembers") } >
+          {memberNames.join(", ")}
+        </ul>
 
-      <ul className="ChatRoomInfo__profile-pictures"  onClick={() => props.openModal("convo/addMembers") } >
-        {displayPics && displayPics}
-        <div className="ChatRoomInfo__member-count" >{currentConvo.members && currentConvo.members.length}</div>
-      </ul>
-      {/* <button onClick={() => props.openModal("convo/addMembers") } >Add a member</button> */}
+        <ul className="ChatRoomInfo__profile-pictures"  onClick={() => props.openModal("convo/addMembers") } >
+          {displayPics && displayPics}
+          <div className="ChatRoomInfo__member-count" >{currentConvo.members && currentConvo.members.length}</div>
+        </ul>
+        
+      </div>
+
+      <div onClick={() => props.openModal("convo/pinnedMessages") } >
+        <i className="material-icons">push_pin</i> {currentConvo.pinnedMessages.length} Pinned
+      </div>
     </div>
+      
   )
 }
 

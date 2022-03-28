@@ -103,6 +103,8 @@ function ChatRoom(props) {
         parentMessageId: message.parent_message_id,
         messageableId: message.messageable_id,
         messageableType: message.messageable_type,
+        pinned: message.pinned,
+        pinnerId: message.pinner_id,
         createdAt: message.created_at,
         updatedAt: message.updated_at,
       }

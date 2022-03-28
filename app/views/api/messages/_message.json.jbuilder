@@ -7,6 +7,8 @@ json.extract! message,
   :messageable_type,
   :messageable_id,
   :parent_message_id,
+  :pinned,
+  :pinner_id,
   :created_at,
   :updated_at
 

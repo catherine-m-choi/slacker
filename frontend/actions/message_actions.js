@@ -10,6 +10,9 @@ export const SAVE_MESSAGE = "message/saveMessage";
 export const UNSAVE_MESSAGE = "message/unsaveMessage";
 export const FETCH_SAVED_MESSAGES = "message/fetchSavedMessages";
 
+// increment reply count
+export const INCREMENT_REPLY_COUNT = "message/incrementReplyCount";
+
 const allMessages = (messages) => {
   return {
     type: FETCH_MESSAGES,
@@ -57,6 +60,13 @@ const fetchSavedMessagesAction = (messages) => {
   return {
     type: FETCH_SAVED_MESSAGES,
     payload: messages
+  }
+}
+
+const incrementReplyCountAction = (messageId) => {
+  return {
+    type: INCREMENT_REPLY_COUNT,
+    payload: messageId
   }
 }
 
@@ -110,4 +120,8 @@ export const deleteMessage = (messageId) => dispatch => {
 
 export const patchMessage = (message) => dispatch => {
   return dispatch(updateMessage(message));
+}
+
+export const incrementReplyCount = (messageId) => dispatch => {
+  return dispatch(incrementReplyCountAction(messageId));
 }

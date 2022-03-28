@@ -6,9 +6,7 @@ import MessageFormContainer from "./MessageFormContainer";
 
 function ThreadChatRoom(props) {
 
-  const parent = props.parentMessage
   const [replies, setReplies] = useState(Object.values(props.messages))
-  // const [chatMessages, setChatMessages] = useState([props.parentMessage, ...Object.values(props.messages)])
   
   useEffect(() => {
     let isMounted = true;
@@ -113,23 +111,6 @@ function ThreadChatRoom(props) {
       displayDate = true;
     }
 
-    if (!msg.parentMessageId) {
-      return (
-        <div key={msg.id} >
-
-        <MessageItemContainer 
-          // key={msg.id} 
-          message={msg} 
-          displayDate={displayDate} 
-          deleteMessageDB={props.deleteMessageDB}
-          patchMessageDB={props.patchMessageDB}
-          />
-        
-        {/* <span>{replies.length} replies</span> */}
-        </div>
-      )
-    } 
-
     return (
       <MessageItemContainer 
         key={msg.id} 
@@ -147,7 +128,7 @@ function ThreadChatRoom(props) {
         <div className="ChatRoom">
           <ul>
             {displayMessages}
-            {props.parentMessage && <MessageFormContainer  parentMessage={props.parentMessage} />}
+            {props.parentMessage && <MessageFormContainer parentMessage={props.parentMessage} />}
           </ul>
         </div>
       </div>

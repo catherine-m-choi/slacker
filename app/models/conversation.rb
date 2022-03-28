@@ -13,4 +13,9 @@ class Conversation < ApplicationRecord
   has_many :messages, as: :messageable
   has_many :conversation_memberships
   has_many :members, through: :conversation_memberships, source: :user
+
+  def pinned_messages
+    self.messages.where(pinned: true)
+  end
+  
 end

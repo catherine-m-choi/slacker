@@ -1,6 +1,7 @@
 
 .AppRightBar__container {
-  flex: 0 0 28vw;
+  flex: 0 0 min(28vw, 400px);
+  // flex: 0 0 28vw;
   border-left: 1px solid $border-light-gray;
   display: flex;
   flex-direction: column;

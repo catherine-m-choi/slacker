@@ -1,7 +1,9 @@
 .AppLeftBar__container {
   background-color: $monument-column-bg;
   color: $monument-text-color;
-  flex: 0 0 15vw;
+  flex: 0 0 min(15vw, 200px); 
+  // When changing this, also need to change width for
+  // .ConversationIndexItems__member-names
 }
 
 .AppLeftBar__container .ChatRoom {
@@ -53,9 +55,6 @@
   margin-right: 5px;
 }
 
-// .AppLeftBar__section-header-dropdown {
-//   background-color: $box-border-transparent-more-opaque;
-// }
 
 .AppLeftBar__section-header-name {
   display: flex;
@@ -151,5 +150,5 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 13vw;
+  width: min(13vw, 180px);
 }

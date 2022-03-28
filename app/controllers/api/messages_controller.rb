@@ -47,6 +47,14 @@ class Api::MessagesController < ApplicationController
     @message = Message.find_by(id: params[:message][:id])
     if @message.nil?
       render json: ["Message does not exist"], status: 422
+    elsif (params[:message][:pinned] != "" || params[:message][:pinned] == true)
+      @message.pinned = params[:message][:pinned]
+      @message.pinner_id = params[:message][:pinner_id]
+      @message.save(touch: false)
+      @chat = @message.chat
+      broadcast_hash = {action: "update", message: @message}
+      ChatsChannel.broadcast_to(@chat, broadcast_hash)
+      render :show
     elsif @message.update(message_params)
       @chat = @message.chat
       broadcast_hash = {action: "update", message: @message}
@@ -80,7 +88,9 @@ class Api::MessagesController < ApplicationController
       :parent_message_id,
       :chat_id,
       :chat_type,
-      :thread
+      :thread,
+      :pinned,
+      :pinner_id
     )
   end
 end

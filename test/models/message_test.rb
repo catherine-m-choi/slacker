@@ -10,6 +10,8 @@
 #  parent_message_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  pinned            :boolean
+#  pinner_id         :integer
 #
 require 'test_helper'
 

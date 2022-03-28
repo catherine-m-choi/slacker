@@ -26,7 +26,9 @@ function MessageForm(props) {
         messageable_id: props.parentMessage.messageableId,
       }
 
-      props.messageAction(newMessage);
+      props.messageAction(newMessage)
+        .then(props.incrementReplyCount(props.parentMessage.id))
+      // props.incrementReplyCount(props.parentMessage.id);
     } else {
 
       switch (props.match.path) {

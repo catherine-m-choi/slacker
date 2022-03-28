@@ -59,7 +59,19 @@ export const selectSavedMessages = (state) => {
   let filteredMessages = [];
   if (Object.values(messages).length !== 0 ) {
     savedMessagesIds.forEach( (id) => {
-      // debugger
+      filteredMessages.push(messages[id])
+    })
+  }
+  return filteredMessages;
+}
+
+export const selectPinnedMessages = (state, conversation) => {
+  const messages = state.entities.messages
+  const pinnedMessagesIds = conversation.pinnedMessages;
+
+  let filteredMessages = [];
+  if (Object.values(messages).length !== 0 ) {
+    pinnedMessagesIds.forEach( (id) => {
       filteredMessages.push(messages[id])
     })
   }

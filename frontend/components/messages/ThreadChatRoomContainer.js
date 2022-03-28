@@ -15,9 +15,7 @@ import { fetchConvos } from "../../actions/conversation_actions";
 import { selectThreadMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return {
-    // messages: state.entities.messages,
     messages: selectThreadMessages(state, ownProps.parentMessage.id),
     conversations: state.entities.conversations,
     currentUser: state.entities.users[state.session.id],

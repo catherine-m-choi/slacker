@@ -10,6 +10,8 @@
 #  parent_message_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  pinned            :boolean
+#  pinner_id         :integer
 #
 class Message < ApplicationRecord
   validates :body, :messageable_type, :messageable_id, :user_id, presence: true
@@ -30,11 +32,11 @@ class Message < ApplicationRecord
     foreign_key: :parent_message_id, 
     optional: true
 
-  # has_one :conversation, through: :self_ref, source: :messageable, source_type: 'Conversation'
-  # belongs_to :conversation, -> { where(messages: { messageable_type: 'Conversation' }) }, 
-  #   foreign_key: :messageable_id, 
-  #   foreign_type: 'Conversation', 
-  #   optional: true
+  # before_save :stop_update_time_stamps
+
+  # def stop_update_time_stamps
+  #   self.class.record_timestamps = false if self.saved_change_to_pinned? || self.saved_change_to_pinner_id? 
+  # end 
 
   def chat
     if (self.messageable_type == "Conversation")

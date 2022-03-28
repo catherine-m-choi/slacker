@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ConversationModalContainer from './ConversationModalContainer';
+import PinnedMessageModalContainer from './PinnedMessageModalContainer';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -17,6 +18,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'profileSettings':
       // tbd
+      break;
+    case 'convo/pinnedMessages':
+      component = <PinnedMessageModalContainer />
       break;
     default:
       return null;
