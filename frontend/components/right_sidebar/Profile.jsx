@@ -31,34 +31,39 @@ function Profile(props) {
           </li>
         </ul>
 
-        {/* <br />
-        <div>Local time: 12:23 AM</div> */}
-
         <ul className="Profile__details">
+          {props.user.username && 
           <li>
-            <span>Display name</span>
-            <div>catherine.choi</div>
+            <span>Username</span>
+            <div>{props.user.username}</div>
           </li>
+          }
           <li>
             <span>Local time</span>
-            <div>3:54 AM3:54 AM</div>
+            <div>3:54 AM</div>
           </li>
-          <li>
-            <span>Phone number</span>
-            <div>(646) 416-3937</div>
-          </li>
+          {props.user.phone && 
+            <li>
+              <span>Phone number</span>
+              <div>{`(${props.user.phone.slice(0, 3)}) ${props.user.phone.slice(3, 6)}-${props.user.phone.slice(6, 10)}`}</div>
+            </li>
+          }
           <li>
             <span>Email address</span>
-            <div>catherinemargaretchoi@gmail.com</div>
+            <div>{props.user.email}</div>
           </li>
+          {props.user.location && 
           <li>
             <span>Location</span>
-            <div>New York City</div>
+            <div>New York City - ADD TO DB</div>
           </li>
+          }
+          {props.user.birthday && 
           <li>
             <span>Birthday</span>
-            <div>February 23rd, 1994</div>
+            <div>February 23rd, 1994 - ADD TO DB</div>
           </li>
+          }
         </ul>
       </div>
     </div>
