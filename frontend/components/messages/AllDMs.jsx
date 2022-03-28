@@ -28,7 +28,7 @@ function AllDMs(props) {
   })
 
   return (
-    <div className="DraftMessage" >
+    <div className="DraftMessage DMContainer" >
       <div className="DraftMessage__info">
         <div className="DraftMessage__title">
           <h2>All direct messages</h2>
