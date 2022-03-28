@@ -15,3 +15,7 @@
 .SavedMessages .MessageItemCard:hover {
   background-color: $saved-yellow-dark;
 }
+
+.DraftMessage.SavedMessages {
+  height: 95vh;
+}

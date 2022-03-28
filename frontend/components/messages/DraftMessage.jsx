@@ -60,7 +60,7 @@ function DraftMessage(props) {
   }
   
   return (
-    <div className="DraftMessage SavedMessages" >
+    <div className="DraftMessage" >
       <div className="DraftMessage__info">
         <div className="DraftMessage__title">
           <h2>New message</h2>
