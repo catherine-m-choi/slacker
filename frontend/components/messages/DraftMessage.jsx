@@ -60,10 +60,11 @@ function DraftMessage(props) {
   }
   
   return (
-    <div className="DraftMessage" >
+    <div className="DraftMessage SavedMessages" >
       <div className="DraftMessage__info">
-        
-        <h2>New message</h2>
+        <div className="DraftMessage__title">
+          <h2>New message</h2>
+        </div>
 
         <div className="DraftMessage__search">
           <label htmlFor="DraftMessage__search-label" >To:</label>

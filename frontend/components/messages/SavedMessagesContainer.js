@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   return {
     // savedMessagesIds: Object.values(state.session.savedMessages),
     // messages: state.entities.messages,
-    savedMessages: selectSavedMessages(state),
+    savedMessages: selectSavedMessages(state).reverse(),
   }
 }
 

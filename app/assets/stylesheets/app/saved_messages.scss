@@ -1,0 +1,17 @@
+
+.AllDMs.SavedMessages {
+  // flex-direction: column-reverse;
+  flex-direction: column;
+  background-color: $main-white;
+}
+
+
+.SavedMessages .MessageItemCard {
+  background-color: $saved-yellow;
+  // background-color: $user-tag-highlight-light;
+  border: 1px solid $border-light-gray;
+}
+
+.SavedMessages .MessageItemCard:hover {
+  background-color: $saved-yellow-dark;
+}
