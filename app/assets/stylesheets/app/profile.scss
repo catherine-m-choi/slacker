@@ -46,6 +46,8 @@
 }
 
 .Profile__buttons {
+  margin-top: 2vh;
+  margin-bottom: 3vh;
   display: flex;
   justify-content: space-between;
 }
@@ -69,10 +71,6 @@
   color: $text--light-gray;
   margin-left: 20px;
   cursor: pointer;
-}
-
-.Profile__buttons {
-  margin-bottom: 5vh;
 }
 
 .Profile__details {

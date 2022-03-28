@@ -10,7 +10,14 @@ function ConversationIndexItem(props) {
   })
 
   let displayImage;
-  if (props.conversation.members[0] !== props.currentUserId) {
+  if (memberNames.length > 1) {
+    displayImage = <div className="ConversationIndexItems__member-count" >
+      <div>
+        {memberNames.length}
+      </div>
+    </div>
+  }
+  else if (props.conversation.members[0] !== props.currentUserId) {
     let userForPic = props.users[props.conversation.members[0]]
     if (userForPic) {
       displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}alt="User profile picture" />
@@ -26,9 +33,9 @@ function ConversationIndexItem(props) {
     <Link to={`/app/conversations/${props.conversation.id}`} >
         <li>
         {displayImage}
-        <div>
+        {/* <div>
           {(memberNames.length > 1) && memberNames.length } 
-        </div>
+        </div> */}
         <div className="ConversationIndexItems__member-names">
           {memberNames && memberNames.join(", ")}
         </div>

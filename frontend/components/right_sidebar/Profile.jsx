@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Profile(props) {
   return (
@@ -16,20 +17,34 @@ function Profile(props) {
           <div className="Profile__title">{props.user.title}</div>
           <div className="Profile__status">On vacation</div>
 
-        <ul className="Profile__buttons">
-          <li>
-            <span className="material-icons-outlined">sentiment_satisfied_alt</span>
-            <div>Set status</div>
-          </li>
-          <li>
-            <span className="material-icons-outlined">edit</span>
-            <div>Edit profile</div>
-          </li>
-          <li>
-            <span className="material-icons-outlined">settings</span>
-            <div>Preferences</div>
-          </li>
-        </ul>
+        {(props.user.id === props.currentUserId) ? 
+          <ul className="Profile__buttons">
+            <li>
+              <span className="material-icons-outlined">sentiment_satisfied_alt</span>
+              <div>Set status</div>
+            </li>
+            <li>
+              <span className="material-icons-outlined">edit</span>
+              <div>Edit profile</div>
+            </li>
+            <li>
+              <span className="material-icons-outlined">settings</span>
+              <div>Preferences</div>
+            </li>
+          </ul>
+        : 
+          <ul className="Profile__buttons">
+            <Link to={{
+              pathname: `/app/drafts`,
+              recepientId: props.user.id
+            }}>
+              <li>
+                <span className="material-icons-outlined">comment</span>
+                <div>Message</div>
+              </li>
+            </Link>
+          </ul>
+        }
 
         <ul className="Profile__details">
           {props.user.username && 
@@ -70,4 +85,14 @@ function Profile(props) {
   )
 }
 
-export default Profile;
+// export default Profile;
+
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    currentUserId: state.session.id,
+  }
+}
+
+export default connect(mapStateToProps, null)(Profile);
