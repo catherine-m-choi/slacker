@@ -4,6 +4,7 @@ import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
 import { selectPinnedMessages } from "../../reducers/selectors/selectors";
+import { patchMessageDB } from "../../actions/message_actions";
 
 const mapStateToProps = (state, ownProps) => {
   let chat;
@@ -15,6 +16,8 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
+    // pinnedMessages: chat.pinnedMessages,
+    // messages: state.entities.messages,
     pinnedMessages: selectPinnedMessages(state, chat),
     filteredUsers: getFilteredUsers(state, chat.members ),
   }
@@ -23,6 +26,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = state => {
   return {
     closeModal: () => dispatch(closeModal()),
+    patchMessageDB: (message) => dispatch(patchMessageDB(message)),
   }
 }
 

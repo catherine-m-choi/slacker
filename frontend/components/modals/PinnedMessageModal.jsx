@@ -1,11 +1,18 @@
 import React from "react";
 import { beautifyDate, beautifyTime } from "../../util/date_util";
 
-function PinnedMessages({pinnedMessages, filteredUsers}) {
+function PinnedMessages({pinnedMessages, filteredUsers, patchMessageDB}) {
+
+
+  const handlePin = (msg) => {
+    const updatedMessage = Object.assign({}, msg);
+    updatedMessage.pinned = false;
+    updatedMessage.pinner_id = null;
+    patchMessageDB(updatedMessage);
+  }
   
   return (
     <div>
-      Pinned Messages here
       <ul>
         {pinnedMessages.map( (msg) => {
           return (
@@ -16,8 +23,9 @@ function PinnedMessages({pinnedMessages, filteredUsers}) {
                     <img onClick={() => handleProfile() } className="MessageItemCard__sender-profile-img" src={filteredUsers[msg.userId].profilePictureUrl} />
                     <li onClick={() => handleProfile() } className="MessageItemCard__sender-name">{filteredUsers[msg.userId].displayName}</li>
                   </div>
-                  <li>{msg.body}</li>
-                  <li>{`${beautifyDate(msg.createdAt)} at ${beautifyTime(msg.createdAt)}`}</li>
+                  <li className="MessageItemCard__body">{msg.body}</li>
+                  <li className="MessageItemCard__date">{`${beautifyDate(msg.createdAt)} at ${beautifyTime(msg.createdAt)}`}</li>
+                  <span onClick={() => handlePin(msg) } className="material-icons-outlined">close</span>
                 </ul>
               </div>
           </div>
