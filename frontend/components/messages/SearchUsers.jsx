@@ -19,8 +19,10 @@ function SearchUsers(props) {
       <ul className="SearchUsers">
         {filteredUsers.map((user) => (
             <li key={user.id} onClick={ () => {
-              props.setRecipients(props.recipients.concat(user.id))
-              props.setSearchQuery("")
+              console.log("clicked");
+              props.setRecipients(props.recipients.concat(user.id));
+              props.setSearchQuery("");
+              // props.close();
             }} >{user.email}</li>
         ))}
       </ul>

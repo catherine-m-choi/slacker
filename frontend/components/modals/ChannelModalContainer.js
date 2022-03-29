@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchConvos: () => dispatch(fetchConvos()),
     closeModal: () => dispatch(closeModal()),

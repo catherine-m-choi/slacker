@@ -7,6 +7,7 @@ function AllDMs(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [dms, setDms] = useState(props.messages);
   const [lastest, setLatest] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     setDms(props.messages);
@@ -17,6 +18,15 @@ function AllDMs(props) {
     setDms(props.messages);
     setLatest(!lastest)
   }, [])
+
+
+  const expand = () => {
+    setExpanded(true);
+  }
+
+  const close = () => {
+      setExpanded(false);
+  }
 
   const display = dms.map((msg) => {
     return (
@@ -41,10 +51,18 @@ function AllDMs(props) {
             type="text" 
             placeholder="Find members" 
             onChange={(e) => setSearchQuery(e.target.value) } 
+            onFocus={expand} 
           />
         </div>
 
-        <NewDmSearch searchQuery={searchQuery} users={props.users} currentUserId={props.currentUserId} />
+        {expanded ? (
+          <div className="SearchUsers__hidden-background" 
+            onClick={() => close()} >
+              
+            <NewDmSearch searchQuery={searchQuery} users={props.users} currentUserId={props.currentUserId} />
+          </div>
+        ) : null}
+
       </div>
 
       <ul className="AllDMs">

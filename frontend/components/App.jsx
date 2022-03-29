@@ -28,8 +28,8 @@ function App(props) {
     <div className="App">
       <Route path="/app/conversations/:id" component={Modal} />
       <Route path="/app/channels/:id" component={Modal} />
-      <AppTopNav />
 
+      <AppTopNav />
       <div className="App__content">
         <AppLeftBar />
           
@@ -49,14 +49,12 @@ function App(props) {
             <MessageFormContainer />
           </Route>
 
-          <Route path="/app/drafts">
-            <DraftMessage />
-          </Route>
-          
+          <Route path="/app/drafts" component={DraftMessage} />
           <Route path="/app/all-dms" component={AllDMsContainer} />
           <Route path="/app/saved-page" component={SavedMessagesContainer} />
         
         </div>
+
         <Route path="/app/conversations/:id" component={RightSidebar} />
         <Route path="/app/channels/:id" component={RightSidebar} />
         
@@ -65,11 +63,8 @@ function App(props) {
   )
 };
 
-// export default App;
-
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/user_actions";
-// import { openRightSidebar } from "../actions/right_sidebar_actions";
 import { fetchMessagesDB, fetchSavedMessages } from "../actions/message_actions";
 import { fetchChannels } from "../actions/channel_actions";
 
@@ -80,7 +75,6 @@ const mapDispatchToProps = dispatch => {
     fetchConvos: () => dispatch(fetchConvos()),
     fetchChannels: () => dispatch(fetchChannels()),
     fetchSavedMessages: () => dispatch(fetchSavedMessages()),
-    // openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
   }
 }
 

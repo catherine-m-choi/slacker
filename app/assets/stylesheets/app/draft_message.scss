@@ -53,11 +53,20 @@
   font-size: 1.1rem;
 }
 
+.SearchUsers__hidden-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .SearchUsers {
   background-color: $border-solid-light-gray;
   border: 1px solid $border-light-gray;
   box-shadow: 0px .8px 2.5px 1.5px $box-shadow-gray;
-  width: 85%;
+  width: calc(65vw);
   max-height: 50vh;
   border-radius: 5px;
   overflow-y: scroll;
@@ -65,11 +74,9 @@
   padding-top: 1vh;
   padding-bottom: 1vh;
   padding-right: 0;
-  // margin-left: 5%;
-  // margin-right: 0;
-  // margin-top: -1.5vh;
-  top: 15.5vh;
-  left: 4vw;
+  top: calc(16vh + 30px);
+  // left: 4vw;
+  left: min(27vw, 300px);
 }
 
 .SearchUsers:empty{

@@ -7,6 +7,7 @@ function DraftMessage(props) {
   const [searchQuery, setSearchQuery] = useState("");
   if (!props.location) return <div></div>;
   const [recipients, setRecipients] = useState((props.location.recepientId) ? [props.location.recepientId] : [] );
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     console.log(recipients)
@@ -19,6 +20,16 @@ function DraftMessage(props) {
     if (searchQuery === "" && e.keyCode === 8) {
       setRecipients(recipients.slice(0,recipients.length - 1))
     }
+  }
+
+  const expand = () => {
+    console.log("expand/focus")
+    setExpanded(true);
+  }
+  
+  const close = () => {
+    console.log("closing")
+    setExpanded(false);
   }
 
   const displayUsers = recipients.map((userId) => {
@@ -54,10 +65,9 @@ function DraftMessage(props) {
     prettyNames = recipientNames.join(" and ")
   } else {
     const slicedNames = recipientNames.slice(0, recipientNames.length - 1)
-    console.log(slicedNames);
-    console.log(recipientNames)
     prettyNames = slicedNames.join(", ") + `, and ${recipientNames[recipientNames.length - 1]}`
   }
+
   
   return (
     <div className="DraftMessage" >
@@ -66,31 +76,39 @@ function DraftMessage(props) {
           <h2>New message</h2>
         </div>
 
-        <div className="DraftMessage__search">
-          <label htmlFor="DraftMessage__search-label" >To:</label>
-          {displayUsers}
-          <input id="DraftMessage__search-input"
-            type="text" 
-            placeholder="Find members" 
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={onKeyDown}
-          />
-        </div>
-        
-        <SearchUsers 
-          searchQuery={searchQuery} 
-          users={props.users} 
-          recipients={recipients} 
-          setRecipients={setRecipients} 
-          currentUserId={props.currentUserId}
-          setSearchQuery={setSearchQuery}
-        />
+          <div className="DraftMessage__search">
+            <label htmlFor="DraftMessage__search-label" >To:</label>
+            {displayUsers}
+            <input id="DraftMessage__search-input"
+              type="text" 
+              placeholder="Find members" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={onKeyDown}
+              onFocus={expand}
+            />
+          </div>
+
+          {expanded ? (
+            <div className="SearchUsers__hidden-background" 
+              onClick={() => close()} >
+              <SearchUsers 
+                searchQuery={searchQuery} 
+                users={props.users} 
+                recipients={recipients} 
+                setRecipients={setRecipients} 
+                currentUserId={props.currentUserId}
+                setSearchQuery={setSearchQuery}
+                />
+            </div>
+          ) : null}
+
       </div>
 
       {(recipients.length > 0) && <div className="DraftMessage__content">This is the very beginning of your direct message history with {prettyNames}. Only the {recipients.length + 1} of you are in this conversation.</div>}
 
       <MessageFormContainer recipients={[...recipients, props.currentUserId]} />
+
     </div>
   )
 }
@@ -104,5 +122,6 @@ const mapStateToProps = (state, ownProps) => {
     currentUserId: state.session.id,
   }
 }
+
 
 export default withRouter(connect(mapStateToProps, null)(DraftMessage));

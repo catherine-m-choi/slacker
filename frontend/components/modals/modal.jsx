@@ -6,6 +6,7 @@ import ChannelModalContainer from './ChannelModalContainer';
 import PinnedMessageModalContainer from './PinnedMessageModalContainer';
 import ProfileCard from './ProfileCard';
 import EditProfile from './EditProfile';
+import SearchUsers from '../messages/SearchUsers';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -15,6 +16,12 @@ function Modal({modal, closeModal}) {
   switch (modal) {
     case 'convo/addMembers':
       component = <ConversationModalContainer />
+      break;
+    case 'channel/modal-description':
+      component = <ChannelModalContainer tab="description" />
+      break;
+    case 'channel/modal-members':
+      component = <ChannelModalContainer tab="members" />
       break;
     case 'channel/addMembers':
       component = <ChannelModalContainer />

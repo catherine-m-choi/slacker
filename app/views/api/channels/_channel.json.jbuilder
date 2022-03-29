@@ -5,7 +5,8 @@ json.extract! channel,
   :name, 
   :topic, 
   :description,
-  :founder_id
+  :founder_id,
+  :created_at
 
 json.members channel.members.pluck(:id)
 json.last_message channel.messages.order(created_at: :desc).limit(1).pluck(:id).first

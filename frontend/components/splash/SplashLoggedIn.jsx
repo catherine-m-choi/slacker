@@ -19,7 +19,8 @@ function SplashLoggedIn(props) {
                   <div className="SplashLoggedIn__workspace-name">Parks Department of Pawnee</div>
                   <div className="SplashLoggedIn__workspace-members">102 members</div>
                 </div>
-                <Link to="/app">
+                {/* Change this to whatever the #general channel is for production  */}
+                <Link to="/app/channels/1">
                   <button className="purple-solid btn">LAUNCH SLACK</button>
                 </Link>
               </div>
