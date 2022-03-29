@@ -30,10 +30,19 @@ function ChatRoomInfo(props) {
   (<span className="material-icons-outlined">lock</span>) :
   (<span className="material-icons-outlined">tag</span>)
 
+  const handleChatInfoModal = () => {
+    if (props.chatType === "Conversation") {
+      return props.openModal("convo/addMembers") 
+    } else if (props.chatType === "Channel") {
+      return props.openModal("channel/addMembers") 
+    }
+  }
+  
+
   return (
     <div>
       <div className="ChatRoomInfo">
-        <ul className="ChatRoomInfo__members"  onClick={() => props.openModal("convo/addMembers") } >
+        <ul className="ChatRoomInfo__members"  onClick={() => handleChatInfoModal() } >
           {(props.chatType === "Conversation") ? 
           memberNames.join(", ") : 
           <div>
@@ -42,16 +51,23 @@ function ChatRoomInfo(props) {
           </div>}
         </ul>
 
-        <ul className="ChatRoomInfo__profile-pictures"  onClick={() => props.openModal("convo/addMembers") } >
+        <ul className="ChatRoomInfo__profile-pictures"  onClick={() => handleChatInfoModal() } >
           {displayPics && displayPics}
           <div className="ChatRoomInfo__member-count" >{currentChat.members && currentChat.members.length}</div>
         </ul>
         
       </div>
 
-      <div onClick={() => props.openModal("convo/pinnedMessages") } >
-        <i className="material-icons">push_pin</i> {currentChat.pinnedMessages.length} Pinned
+      {(currentChat.pinnedMessages.length > 0) && 
+      <div className="ChatRoomInfo__pinned-message" onClick={() => props.openModal("convo/pinnedMessages") } >
+        <div className="ChatRoomInfo__pinned-btn">
+          <i className="material-icons">push_pin</i>
+          <div>
+            {currentChat.pinnedMessages.length} Pinned
+          </div>
+        </div>
       </div>
+      }
     </div>
       
   )

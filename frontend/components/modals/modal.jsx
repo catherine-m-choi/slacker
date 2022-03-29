@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ConversationModalContainer from './ConversationModalContainer';
+import ChannelModalContainer from './ChannelModalContainer';
 import PinnedMessageModalContainer from './PinnedMessageModalContainer';
 import ProfileCard from './ProfileCard';
 import EditProfile from './EditProfile';
@@ -16,7 +17,7 @@ function Modal({modal, closeModal}) {
       component = <ConversationModalContainer />
       break;
     case 'channel/addMembers':
-      // tbd
+      component = <ChannelModalContainer />
       break;
     case 'profile/edit':
       component = <EditProfile />

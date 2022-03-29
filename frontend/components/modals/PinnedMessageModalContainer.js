@@ -6,10 +6,17 @@ import { getFilteredUsers } from "../../reducers/selectors/selectors";
 import { selectPinnedMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
+  let chat;
+  if (ownProps.match.path === '/app/conversations/:id') {
+    chat = state.entities.conversations[ownProps.match.params.id]
+  }
+  else if (ownProps.match.path === '/app/channels/:id') {
+    chat = state.entities.channels[ownProps.match.params.id]
+  }
+
   return {
-    // conversation: state.entities.conversations[ownProps.match.params.id],
-    pinnedMessages: selectPinnedMessages(state, state.entities.conversations[ownProps.match.params.id]),
-    filteredUsers: getFilteredUsers(state, state.entities.conversations[ownProps.match.params.id].members ),
+    pinnedMessages: selectPinnedMessages(state, chat),
+    filteredUsers: getFilteredUsers(state, chat.members ),
   }
 }
 

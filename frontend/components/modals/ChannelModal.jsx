@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import SearchResults from "./SearchResults";
 
-function ConversationModal(props) {
+function ChannelModal(props) {
   const [searchQuery, setSearchQuery] = useState("");
 
   let memberNames = []
@@ -15,10 +15,15 @@ function ConversationModal(props) {
       </li>)
   })
 
+  const displayIcon = (props.chat.private) ?
+  (<span className="material-icons-outlined">lock</span>) :
+  (<span className="material-icons-outlined">tag</span>)
+
   return (
     <div className="ConversationModal">
       <h2>
-        {memberNames.join(", ")}
+        {displayIcon}
+        {props.chat.name}
       </h2>
       <div className="ConversationModal__close" onClick={ props.closeModal } >
         <span className="material-icons-outlined" >
@@ -45,7 +50,6 @@ function ConversationModal(props) {
 
       {(searchQuery === "") && 
         <ul className="ConversationModal__members">
-          {/* <li className="ConversationModal__search-display-users" ><img src="https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" /><button>Add people</button></li> */}
           {displayPics && displayPics}
         </ul>
       }
@@ -54,4 +58,4 @@ function ConversationModal(props) {
   )
 }
 
-export default ConversationModal;
+export default ChannelModal;

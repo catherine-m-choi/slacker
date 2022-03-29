@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
-import ConversationModal from "./ConversationModal";
+import ChannelModal from "./ChannelModal";
 import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
 import { addMember } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   if (ownProps.match.path === '/app/conversations/:id') {
     return {
       chat: state.entities.conversations[ownProps.match.params.id],
@@ -32,4 +31,4 @@ const mapDispatchToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ConversationModal));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelModal));

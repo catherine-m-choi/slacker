@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function AppTopNav(props) {
 
@@ -10,6 +11,8 @@ function AppTopNav(props) {
       user: props.currentUser
     }) 
   }
+
+  let history = useHistory();
   
   return (
     <div className="AppTopNav__container">
@@ -17,10 +20,10 @@ function AppTopNav(props) {
       <div className="AppTopNav__main">
         <div className="AppTopNav__nav-btns">
           <div>
-            <i className="material-icons-outlined">arrow_back</i>
+            <i onClick={() => history.goBack()} className="material-icons-outlined">arrow_back</i>
           </div>
           <div>
-            <i className="material-icons-outlined">arrow_forward</i>
+            <i  onClick={() => history.goForward()} className="material-icons-outlined">arrow_forward</i>
           </div>
         </div>
         <div className="AppTopNav__search-bar">
