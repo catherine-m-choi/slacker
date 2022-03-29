@@ -3,6 +3,8 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ConversationModalContainer from './ConversationModalContainer';
 import PinnedMessageModalContainer from './PinnedMessageModalContainer';
+import ProfileCard from './ProfileCard';
+import EditProfile from './EditProfile';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -16,8 +18,11 @@ function Modal({modal, closeModal}) {
     case 'channel/addMembers':
       // tbd
       break;
-    case 'profileSettings':
-      // tbd
+    case 'profile/edit':
+      component = <EditProfile />
+      break;
+    case 'convo/profileCard':
+      component = <ProfileCard />
       break;
     case 'convo/pinnedMessages':
       component = <PinnedMessageModalContainer />

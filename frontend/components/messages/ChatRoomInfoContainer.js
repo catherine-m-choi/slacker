@@ -5,7 +5,6 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 import { fetchConvos } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  // debugger
   return {
     conversations: state.entities.conversations,
     currentConvo: state.entities.conversations[ownProps.match.params.id],
@@ -20,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchConvos: () => dispatch(fetchConvos()),
     openModal: (modal) => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal()),
+    // closeModal: () => dispatch(closeModal()),
   }
 }
 

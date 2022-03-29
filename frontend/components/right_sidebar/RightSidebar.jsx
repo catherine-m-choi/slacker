@@ -1,7 +1,6 @@
 import React from 'react';
 import { closeRightSidebar } from '../../actions/right_sidebar_actions';
 import { connect } from 'react-redux';
-// import ConversationModalContainer from './ConversationModalContainer';
 import Thread from './Thread';
 import Profile from './Profile';
 

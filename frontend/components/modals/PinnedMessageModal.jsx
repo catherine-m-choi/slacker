@@ -2,8 +2,6 @@ import React from "react";
 import { beautifyDate, beautifyTime } from "../../util/date_util";
 
 function PinnedMessages({pinnedMessages, filteredUsers}) {
-  // const display = props.pinnedMessages
-  // debugger
   
   return (
     <div>

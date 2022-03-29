@@ -24,7 +24,7 @@ function Profile(props) {
               <div>Set status</div>
             </li>
             <li>
-              <span className="material-icons-outlined">edit</span>
+              <span onClick={() => props.openModal("profile/edit") } className="material-icons-outlined">edit</span>
               <div>Edit profile</div>
             </li>
             <li>
@@ -86,6 +86,7 @@ function Profile(props) {
 }
 
 // export default Profile;
+import { openModal } from "../../actions/modal_actions";
 
 import { connect } from "react-redux";
 
@@ -95,4 +96,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Profile);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openModal: (modal) => dispatch(openModal(modal)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

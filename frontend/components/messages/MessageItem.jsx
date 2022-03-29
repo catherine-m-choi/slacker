@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from "react";
 import EditMessageForm from "./EditMessageForm";
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "../modals/ProfileCard";
 import { beautifyDate, beautifyTime } from "../../util/date_util";
 
 function MessageItem({
-  message, sender, displayDate, deleteMessageDB, patchMessageDB, openRightSidebar, users, saveMessage, unsaveMessage, currentUserId, savedMessages, replyCount}) {
+  message, 
+  sender, 
+  displayDate, 
+  deleteMessageDB, 
+  patchMessageDB, 
+  openRightSidebar, 
+  users, 
+  saveMessage, 
+  unsaveMessage, 
+  currentUserId, 
+  savedMessages, 
+  replyCount, 
+  openModal}) {
 
   const [editStatus, setEditStatus] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
@@ -78,6 +90,7 @@ function MessageItem({
       type: "Profile",
       user: sender
     }) 
+    // openModal("convo/profileCard")
   }
 
   if (!sender) return (<div></div>);
