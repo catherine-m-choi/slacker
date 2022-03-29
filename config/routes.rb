@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     resources :saved_messages, only: [:index, :create, :destroy]
     resources :conversations, only: [:index, :create, :update, :destroy]
     resources :conversation_memberships, only: [:create]
+    resources :channels, only: [:index, :create, :update, :destroy]
+    resources :channel_memberships, only: [:create]
   end
 end

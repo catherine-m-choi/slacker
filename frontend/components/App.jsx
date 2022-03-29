@@ -17,9 +17,10 @@ import AppTopNav from "./temp_app_bars/AppTopNav";
 function App(props) { 
 
   useEffect(() => {
-    props.fetchUsers()
-    props.fetchMessagesDB()
-    props.fetchSavedMessages()
+    props.fetchUsers();
+    props.fetchMessagesDB();
+    props.fetchSavedMessages();
+    props.fetchChannels();
     // props.fetchConvos().then(console.log("From App"))
   }, [])
 
@@ -34,6 +35,13 @@ function App(props) {
         <div className="App__center-content">
           
           <Route path="/app/conversations/:id" >
+            <ChatRoomInfoContainer />
+            <ChatRoomContainer />
+            <div className="MessageForm__float"></div>
+            <MessageFormContainer />
+          </Route>
+          
+          <Route path="/app/channels/:id" >
             <ChatRoomInfoContainer />
             <ChatRoomContainer />
             <div className="MessageForm__float"></div>
@@ -59,14 +67,16 @@ function App(props) {
 
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/user_actions";
-import { openRightSidebar } from "../actions/right_sidebar_actions";
+// import { openRightSidebar } from "../actions/right_sidebar_actions";
 import { fetchMessagesDB, fetchSavedMessages } from "../actions/message_actions";
+import { fetchChannels } from "../actions/channel_actions";
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchUsers: () => dispatch(fetchUsers()),
     fetchMessagesDB: () => dispatch(fetchMessagesDB()),
     fetchConvos: () => dispatch(fetchConvos()),
+    fetchChannels: () => dispatch(fetchChannels()),
     fetchSavedMessages: () => dispatch(fetchSavedMessages()),
     // openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
   }

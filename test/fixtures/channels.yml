@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: channels
+#
+#  id          :bigint           not null, primary key
+#  name        :string           not null
+#  topic       :string
+#  description :string
+#  founder_id  :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  name: MyString
+  topic: MyString
+  description: MyString
+  founder_id: 1
+
+two:
+  name: MyString
+  topic: MyString
+  description: MyString
+  founder_id: 1

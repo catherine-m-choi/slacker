@@ -20,12 +20,31 @@ export const selectThreadMessages = (state, parentId) => {
   return result;
 }
 
-export const selectConvoMessages = (state, convoId) => {
+// export const selectConvoMessages = (state, convoId) => {
+//   const messages = state.entities.messages
+//   let result = {};
+//   for (let id in messages) {
+//     // debugger
+//     if (messages[id].messageableType === "Conversation" && String(messages[id].messageableId) === String(convoId)  ) {
+//       result[id] = messages[id]
+//     }
+//   }
+//   return result;
+// }
+
+export const selectMessages = (state, messageableId, messageablePath) => {
   const messages = state.entities.messages
+  let chatType;
+  if (messageablePath === '/app/conversations/:id') {
+    chatType =  "Conversation"
+  } else if (messageablePath === '/app/channels/:id') {
+    chatType =  "Channel"
+  }
+  
   let result = {};
   for (let id in messages) {
     // debugger
-    if (messages[id].messageableType === "Conversation" && String(messages[id].messageableId) === String(convoId)  ) {
+    if (messages[id].messageableType === chatType && String(messages[id].messageableId) === String(messageableId)  ) {
       result[id] = messages[id]
     }
   }

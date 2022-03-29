@@ -1,5 +1,6 @@
 import React from "react";
 import ConversationIndexContainer from "../conversations/ConversationIndexContainer";
+import ChannelIndexContainer from "../channels/ChannelIndexContainer";
 import { Link } from "react-router-dom";
 
 function AppLeftBar(props) {
@@ -37,7 +38,7 @@ function AppLeftBar(props) {
             </div>
           </div>
 
-          <div className="AppLeftBar__section-header">
+          {/* <div className="AppLeftBar__section-header">
             <div className="AppLeftBar__section-header-dropdown">
               <span className="material-icons-outlined">arrow_drop_down</span>
             </div>
@@ -45,8 +46,9 @@ function AppLeftBar(props) {
               <div>Channels</div>
               <span className="material-icons-outlined">add</span>
             </div>
-          </div>
+          </div> */}
 
+          <ChannelIndexContainer />
           <ConversationIndexContainer />
         </div>
       </div>

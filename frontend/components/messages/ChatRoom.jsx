@@ -54,8 +54,14 @@ function ChatRoom(props) {
     // passed to ChatChannel
     const chatParams = {
       channel: "ChatsChannel", 
-      chat_type: "Conversation",
+      // chat_type: "Conversation",
       chat_id: props.match.params.id
+    }
+
+    if (props.match.path === '/app/conversations/:id') {
+      chatParams.chat_type =  "Conversation";
+    } else if (props.match.path === '/app/channels/:id') {
+      chatParams.chat_type =  "Channel";
     }
 
     // creating actual subscription

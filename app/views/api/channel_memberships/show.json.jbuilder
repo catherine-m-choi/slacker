@@ -1,0 +1,1 @@
+json.partial! "/api/channel_memberships/channel_memberships", channel_memberships: @membership

@@ -4,10 +4,18 @@ function MessageForm(props) {
 
   const [body, setBody] = useState(props.message.body)
 
-  const chatInfo = {
-    chat_id: props.match.params.id,
-    chat_type: "Conversation"
-  }
+  // const chatInfo = {
+  //   chat_id: props.match.params.id,
+  //   chat_type: "Conversation"
+  // }
+
+  // const chatInfo = {chat_id: props.match.params.id}
+
+  // if (props.match.path === '/app/conversations/:id') {
+  //   chatInfo.chat_type =  "Conversation";
+  // } else if (props.match.path === '/app/channels/:id') {
+  //   chatInfo.chat_type =  "Channel";
+  // }
 
   let newMessage;
   const handleSubmit = () => {
@@ -16,7 +24,7 @@ function MessageForm(props) {
     if (props.parentMessage) {
       console.log("thread reply")
       console.log("not a new convo")
-      messageType = "Conversation";
+      messageType = props.parentMessage.messageableType;
 
       newMessage = {
         body: body,
@@ -79,6 +87,20 @@ function MessageForm(props) {
           break;
         case '/app/channels/:id':
           messageType = "Channel"
+          debugger
+
+          newMessage = {
+            body: body,
+            user_id: props.currentUser.id,
+            parent_message_id: null,
+            messageable_type: messageType,
+            messageable_id: props.match.params.id,
+          }
+    
+          props.messageAction(newMessage).then( (res) => {
+            props.updateRecentChannelMessage(res.payload.messageableId, res.payload.id)
+          })
+
           break;
         default:
           break;

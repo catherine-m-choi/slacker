@@ -11,12 +11,13 @@ import {
 } from "../../actions/message_actions";
 import { fetchUsers, fetchUser } from "../../actions/user_actions";
 import { fetchConvos } from "../../actions/conversation_actions";
-import { selectConvoMessages } from "../../reducers/selectors/selectors";
+import { selectMessages } from "../../reducers/selectors/selectors";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    messages: selectConvoMessages(state, ownProps.match.params.id),
+    messages: selectMessages(state, ownProps.match.params.id, ownProps.match.path),
     conversations: state.entities.conversations,
+    channels: state.entities.channels,
     currentUser: state.entities.users[state.session.id],
   }
 }

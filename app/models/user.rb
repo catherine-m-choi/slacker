@@ -43,9 +43,11 @@ class User < ApplicationRecord
 
   # Associations
   has_many :messages, inverse_of: 'user'
+  has_many :saved_messages
   has_many :conversation_memberships
   has_many :conversations, through: :conversation_memberships, source: :conversation
-  has_many :saved_messages
+  has_many :channel_memberships
+  has_many :channels, through: :channel_memberships, source: :channel
 
   after_initialize :ensure_session_token!
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ConversationIndexItem from "./ConversationIndexItem";
+import ChannelIndexItem from "./ChannelIndexItem";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function ConversationIndex(props) {
+function ChannelIndex(props) {
   
   useEffect(() => {
-    props.fetchConvos()
+    props.fetchChannels()
   }, [])
   
   return (
@@ -15,17 +15,17 @@ function ConversationIndex(props) {
           <span className="material-icons-outlined">arrow_drop_down</span>
         </div>
         <div className="AppLeftBar__section-header-name">
-          <div>Direct Messages</div>
-          <Link to="/app/all-dms">
+          <div>Channels</div>
+          <Link to="/app/browse-channels">
             <span className="material-icons-outlined">add</span>
           </Link>
         </div>
       </div>
 
       <ul className="ConversationIndexItems__container">
-        {Object.values(props.conversations).map((convo) => {
+        {Object.values(props.channels).map((channel) => {
           return (
-            <ConversationIndexItem key={convo.id} conversation={convo} fetchConvos={props.fetchConvos} users={props.users} currentUserId={props.currentUserId} />
+            <ChannelIndexItem key={channel.id} channel={channel} fetchChannels={props.fetchChannels} users={props.users} currentUserId={props.currentUserId} />
           )
         })}
       </ul>
@@ -33,4 +33,4 @@ function ConversationIndex(props) {
   )
 }
 
-export default ConversationIndex;
+export default ChannelIndex;
