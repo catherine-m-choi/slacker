@@ -4,15 +4,23 @@ function ChatRoomInfo(props) {
   const [currentChat, setcurrentChat] = useState(props.chats[props.match.params.id])
 
   useEffect(() => {
-    if (Object.keys(props.chats).length === 0) {
-      props.fetchConvos().then( (res) => {
-        const currentChat = res.payload[props.match.params.id]
+    let mounted = true;
+    if (mounted) {
+
+      if (Object.keys(props.chats).length === 0) {
+        props.fetchConvos().then( (res) => {
+          const currentChat = res.payload[props.match.params.id]
+          setcurrentChat(currentChat);
+        }).then(console.log("From ChatRoomInfo"))
+      } else {
+        const currentChat = props.chats[props.match.params.id]
         setcurrentChat(currentChat);
-      }).then(console.log("From ChatRoomInfo"))
-    } else {
-      const currentChat = props.chats[props.match.params.id]
-      setcurrentChat(currentChat);
+      }
     }
+
+    return (
+      mounted = false
+    )
   }, [props.match.params.id])
 
   let memberNames = []
@@ -38,7 +46,6 @@ function ChatRoomInfo(props) {
     }
   }
   
-
   return (
     <div>
       <div className="ChatRoomInfo">

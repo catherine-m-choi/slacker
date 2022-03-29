@@ -4,7 +4,9 @@ import {
   UPDATE_CHANNEL, 
   DELETE_CHANNEL, 
   ADD_MEMBER, 
-  UPDATE_RECENT_MESSAGE } from "../actions/channel_actions";
+  UPDATE_RECENT_MESSAGE,
+  UPDATE_PINNED_MESSAGES
+} from "../actions/channel_actions";
 
 const channelsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -34,6 +36,10 @@ const channelsReducer = (state = {}, action) => {
     case UPDATE_RECENT_MESSAGE:
       nextState = Object.assign({}, state);
       nextState[action.payload.channelId].lastMessage = action.payload.messageId;
+      return nextState;
+    case UPDATE_PINNED_MESSAGES:
+      nextState = Object.assign({}, state);
+      nextState[action.payload.channelId].pinnedMessages = action.payload.pinnedMessages
       return nextState;
     default:
       return state;

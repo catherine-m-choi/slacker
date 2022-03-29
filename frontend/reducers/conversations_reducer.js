@@ -4,7 +4,9 @@ import {
   UPDATE_CONVO, 
   DELETE_CONVO, 
   ADD_MEMBER, 
-  UPDATE_RECENT_MESSAGE } from "../actions/conversation_actions";
+  UPDATE_RECENT_MESSAGE,
+  UPDATE_PINNED_MESSAGES,
+} from "../actions/conversation_actions";
 
 const conversationsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -34,6 +36,10 @@ const conversationsReducer = (state = {}, action) => {
     case UPDATE_RECENT_MESSAGE:
       nextState = Object.assign({}, state);
       nextState[action.payload.convoId].lastMessage = action.payload.messageId;
+      return nextState;
+    case UPDATE_PINNED_MESSAGES:
+      nextState = Object.assign({}, state);
+      nextState[action.payload.convoId].pinnedMessages = action.payload.pinnedMessages
       return nextState;
     default:
       return state;

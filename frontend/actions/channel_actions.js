@@ -7,6 +7,7 @@ export const UPDATE_CHANNEL = "channel/updateChannel"
 export const DELETE_CHANNEL = "channel/deleteChannel"
 export const ADD_MEMBER = "channel/addMember"
 export const UPDATE_RECENT_MESSAGE = "channel/updateRecentMessage"
+export const UPDATE_PINNED_MESSAGES = "channel/updatePinnedMessages"
 
 // Action creators
 const fetchChannelsAction = (channels) => {
@@ -58,6 +59,16 @@ const updateRecentMessageAction = (channelId, messageId) => {
 }
 
 
+const updatePinnedMessagesAction = (channelId, pinnedMessages) => {
+  return {
+    type: UPDATE_PINNED_MESSAGES,
+    payload: {
+      channelId, 
+      pinnedMessages
+    }
+  }
+}
+
 // Thunk action creators
 export const fetchChannels = () => dispatch => {
   return ChannelAPIUtil.fetchChannels()
@@ -87,4 +98,9 @@ export const addChannelMember = (userId, channelId) => dispatch => {
 export const updateRecentChannelMessage = (channelId, messageId) => dispatch => {
   // debugger
   return dispatch(updateRecentMessageAction(channelId, messageId))
+}
+
+
+export const updatePinnedChannelMessages = (channelId, pinnedMessages) => dispatch => {
+  return dispatch(updatePinnedMessagesAction(channelId, pinnedMessages))
 }

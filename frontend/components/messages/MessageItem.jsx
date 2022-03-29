@@ -15,7 +15,9 @@ function MessageItem({
   unsaveMessage, 
   currentUserId, 
   savedMessages, 
-  replyCount, 
+  replyCount,
+  pinnedMessagesId,
+  updatePinnedMessages, 
   openModal}) {
 
   const [editStatus, setEditStatus] = useState(false);
@@ -64,24 +66,44 @@ function MessageItem({
   }
 
   const handlePin = (e) => {
-    if (!pinStatus) {
-      console.log("Pinned!")
-
-      const updatedMessage = Object.assign({}, message);
-      updatedMessage.pinned = true;
-      updatedMessage.pinner_id = currentUserId;
-
-      patchMessageDB(updatedMessage);
-      setPinnedStatus(true);
-    } else {
-      console.log("Unpinned!")
-      const updatedMessage = Object.assign({}, message);
-      updatedMessage.pinned = false;
-      updatedMessage.pinner_id = null;
-      
-      patchMessageDB(updatedMessage);
-      setPinnedStatus(false);
+    let mounted = true
+    const updatedMessage = Object.assign({}, message);
+    if (mounted) {
+      if (!pinStatus) {
+        console.log("Pinned!")
+        updatedMessage.pinned = true;
+        updatedMessage.pinner_id = currentUserId;
+        setPinnedStatus(true);
+        patchMessageDB(updatedMessage)
+        .then( (res) => { 
+          const updatedPinMsgs = [...pinnedMessagesId]
+          console.log(res)
+          updatedPinMsgs.push(res.payload.id)
+          console.log(updatedPinMsgs);
+          
+          updatePinnedMessages(message.messageableId, updatedPinMsgs)
+          
+        })
+      } else {
+        console.log("Unpinned!")
+        updatedMessage.pinned = false;
+        updatedMessage.pinner_id = null;
+        setPinnedStatus(false);
+        patchMessageDB(updatedMessage)
+        .then( (res) => { 
+          const updatedPinMsgs = [...pinnedMessagesId]
+          const index = updatedPinMsgs.indexOf(message.id);
+          if (index > -1) {
+            updatedPinMsgs.splice(index, 1); // 2nd parameter means remove one item only
+          }
+          updatePinnedMessages(message.messageableId, updatedPinMsgs)
+        })
+      }
     }
+
+    return (
+      mounted = false
+    )
   }
     
   const handleProfile = (e) => {

@@ -57,7 +57,8 @@ function App(props) {
           <Route path="/app/saved-page" component={SavedMessagesContainer} />
         
         </div>
-        <RightSidebar />
+        <Route path="/app/conversations/:id" component={RightSidebar} />
+        <Route path="/app/channels/:id" component={RightSidebar} />
         
       </div>
     </div>

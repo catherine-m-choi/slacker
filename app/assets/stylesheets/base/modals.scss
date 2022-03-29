@@ -195,9 +195,10 @@
 .convo-pinnedMessages .modal-child {
   border: 1px solid $border-gray;
   max-height: 60vh;
-  width: 30vw;
+  width: min(30vw, 350px);
   top: calc(30vh + 18.5vh);
-  left: calc(15vw + 4vw + min(15vw, 200px));
+  left: calc(15vw + 20px + min(15vw, 200px));
+  // left: max(15vw, 175px);
   overflow-y: scroll;
   background-color: rgb(248, 248, 248);
   padding: 0;

@@ -7,6 +7,7 @@ export const UPDATE_CONVO = "conversation/updateConvo"
 export const DELETE_CONVO = "conversation/deleteConvo"
 export const ADD_MEMBER = "conversation/addMember"
 export const UPDATE_RECENT_MESSAGE = "conversation/updateRecentMessage"
+export const UPDATE_PINNED_MESSAGES = "conversation/updatePinnedMessages"
 
 // Action creators
 const fetchConvosAction = (convos) => {
@@ -57,6 +58,16 @@ const updateRecentMessageAction = (convoId, messageId) => {
   }
 }
 
+const updatePinnedMessagesAction = (convoId, pinnedMessages) => {
+  return {
+    type: UPDATE_PINNED_MESSAGES,
+    payload: {
+      convoId, 
+      pinnedMessages
+    }
+  }
+}
+
 
 // Thunk action creators
 export const fetchConvos = () => dispatch => {
@@ -87,4 +98,8 @@ export const addMember = (userId, convoId) => dispatch => {
 export const updateRecentMessage = (convoId, messageId) => dispatch => {
   // debugger
   return dispatch(updateRecentMessageAction(convoId, messageId))
+}
+
+export const updatePinnedConvoMessages = (convoId, pinnedMessages) => dispatch => {
+  return dispatch(updatePinnedMessagesAction(convoId, pinnedMessages))
 }
