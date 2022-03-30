@@ -27,8 +27,11 @@ function App(props) {
 
   return (
     <div className="App">
-      <Route path="/app/conversations/:id" component={Modal} />
-      <Route path="/app/channels/:id" component={Modal} />
+      <Switch>
+        <Route path="/app/conversations/:id" component={Modal} />
+        <Route path="/app/channels/:id" component={Modal} />
+        <Route path="/app/" component={Modal} />
+      </Switch>
 
       <AppTopNav />
       <div className="App__content">
