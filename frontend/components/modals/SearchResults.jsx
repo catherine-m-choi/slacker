@@ -36,7 +36,7 @@ function SearchResults(props) {
                 <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
                 <span>{`${user.displayName} ${(user.id === props.currentUserId) ? "(you)" : "" }`}</span>
               </div>
-              <button onClick={(e) => console.log("Add Remove action later")} >Remove</button>
+              <button onClick={(e) => props.removeMember(user.id, props.convoId)} >Remove</button>
             </li>
         )) : <div>No matches in this channel</div>}
       </ul>

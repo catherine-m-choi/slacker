@@ -38,10 +38,11 @@ function ChannelModal(props) {
             searchQuery={searchQuery} 
             users={props.users} 
             members={props.filteredUsers} 
-            addMember={props.addMember} 
             convoId={props.chat.id} 
             currentUserId={props.currentUserId}
             chatType="channel"
+            addMember={props.addMember} 
+            removeMember = {props.removeMember}
           />
 
           {(searchQuery === "") && 

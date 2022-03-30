@@ -6,6 +6,7 @@ import {
   ADD_MEMBER, 
   UPDATE_RECENT_MESSAGE,
   UPDATE_PINNED_MESSAGES,
+  REMOVE_MEMBER
 } from "../actions/conversation_actions";
 
 const conversationsReducer = (state = {}, action) => {
@@ -29,9 +30,17 @@ const conversationsReducer = (state = {}, action) => {
     case ADD_MEMBER:
       nextState = Object.assign({}, state);
       let convoId = action.payload.conversationId
-      // let newMembers = nextState[convoId].concat(action.payload.userId)
-      // nextState[convoId] = newMembers
       nextState[convoId].members.push(action.payload.userId)
+      return nextState;
+    case REMOVE_MEMBER:
+      nextState = Object.assign({}, state);
+      let deleteId = action.payload.userId
+      let arr = nextState[action.payload.conversationId].members;
+      let idx = arr.indexOf(deleteId)
+      if (idx > -1) {
+        arr.splice(idx, 1);
+      }
+      nextState[action.payload.conversationId].members = arr;
       return nextState;
     case UPDATE_RECENT_MESSAGE:
       nextState = Object.assign({}, state);

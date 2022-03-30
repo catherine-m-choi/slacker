@@ -20,7 +20,7 @@ function AppLeftBar(props) {
         <div className="ChatRoom">
           <br />
           <ul className="AppLeftBar__menu-btns">
-            <li><i className="material-icons-outlined">comment</i>Threads</li>
+            {/* <li><i className="material-icons-outlined">comment</i>Threads</li> */}
             <Link to="/app/all-dms"><li><i className="material-icons-outlined">forum</i>All DMs</li></Link>
             <li><i className="material-icons-outlined">alternate_email</i>Mentions & Reactions</li>
             <li><i className="material-icons-outlined">save_as</i>Drafts</li>

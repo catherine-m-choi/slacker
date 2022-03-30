@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function MessageForm(props) {
 
-  const [body, setBody] = useState(props.message.body)
+  const [body, setBody] = useState(props.message.body);
+  const [sent, setSent] = useState(false);
 
   let newMessage;
   const handleSubmit = () => {
     let messageType;
+    setSent(true);
 
     if (props.parentMessage) {
       console.log("thread reply")
@@ -96,9 +98,15 @@ function MessageForm(props) {
           break;
       }
   }
-
     setBody("");
   }
+
+  useEffect(() => {
+    if (body !== "" && sent === false) {
+      console.log("SAVE DRAFT!")
+      setBody("");
+    }
+  }, [props.location])
   
   return (
     <div className={`MessageForm__container ${(props.parentMessage) ? "thread" : ""}`}>

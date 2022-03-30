@@ -44,3 +44,14 @@ export const addMember = (userId, conversationId) => {
     }
   })
 }
+
+export const removeMember = (userId, conversationId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: "/api/conversation_memberships/1",
+    data: {
+      user_id: userId,
+      conversation_id: conversationId
+    }
+  })
+}

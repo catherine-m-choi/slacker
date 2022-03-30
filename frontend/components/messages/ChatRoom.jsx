@@ -38,6 +38,7 @@ function ChatRoom(props) {
 
 
   useEffect(() => {
+    console.log("mounting websocket")
     let isMounted = true;       
     
     props.fetchMessagesDB().then( (res) => {
@@ -50,11 +51,10 @@ function ChatRoom(props) {
     // const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
     const cable = createConsumer("ws://localhost:3000/cable")
 
-    // channel is necessary for connection to be established. category and id are params 
+    // channel is necessary for connection to be established. chat_type and id are params 
     // passed to ChatChannel
     const chatParams = {
       channel: "ChatsChannel", 
-      // chat_type: "Conversation",
       chat_id: props.match.params.id
     }
 

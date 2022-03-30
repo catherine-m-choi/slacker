@@ -4,6 +4,7 @@ import {
   UPDATE_CHANNEL, 
   DELETE_CHANNEL, 
   ADD_MEMBER, 
+  REMOVE_MEMBER,
   UPDATE_RECENT_MESSAGE,
   UPDATE_PINNED_MESSAGES
 } from "../actions/channel_actions";
@@ -29,9 +30,17 @@ const channelsReducer = (state = {}, action) => {
     case ADD_MEMBER:
       nextState = Object.assign({}, state);
       let channelId = action.payload.channelId
-      // let newMembers = nextState[channelId].concat(action.payload.userId)
-      // nextState[channelId] = newMembers
       nextState[channelId].members.push(action.payload.userId)
+      return nextState;
+    case REMOVE_MEMBER:
+      nextState = Object.assign({}, state);
+      let deleteId = action.payload.userId
+      let arr = nextState[action.payload.channelId].members;
+      let idx = arr.indexOf(deleteId)
+      if (idx > -1) {
+        arr.splice(idx, 1);
+      }
+      nextState[action.payload.channelId].members = arr;
       return nextState;
     case UPDATE_RECENT_MESSAGE:
       nextState = Object.assign({}, state);

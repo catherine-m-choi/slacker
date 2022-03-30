@@ -38,9 +38,10 @@ function ConversationModal(props) {
         searchQuery={searchQuery} 
         users={props.users} 
         members={props.filteredUsers} 
-        addMember={props.addMember} 
         convoId={props.chat.id} 
         currentUserId={props.currentUserId}
+        addMember={props.addMember} 
+        removeMember = {props.removeMember}
       />
 
       {(searchQuery === "") && 

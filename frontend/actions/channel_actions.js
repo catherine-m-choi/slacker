@@ -6,6 +6,7 @@ export const ADD_CHANNEL = "channel/addChannel"
 export const UPDATE_CHANNEL = "channel/updateChannel"
 export const DELETE_CHANNEL = "channel/deleteChannel"
 export const ADD_MEMBER = "channel/addMember"
+export const REMOVE_MEMBER = "channel/removeMember"
 export const UPDATE_RECENT_MESSAGE = "channel/updateRecentMessage"
 export const UPDATE_PINNED_MESSAGES = "channel/updatePinnedMessages"
 
@@ -41,6 +42,16 @@ const deleteChannelAction = (channelId) => {
 const addMemberAction = (userId, channelId) => {
   return {
     type: ADD_MEMBER,
+    payload: {
+      userId: userId, 
+      channelId: channelId,
+    }
+  }
+}
+
+const removeMemberAction = (userId, channelId) => {
+  return {
+    type: REMOVE_MEMBER,
     payload: {
       userId: userId, 
       channelId: channelId,
@@ -94,6 +105,13 @@ export const addChannelMember = (userId, channelId) => dispatch => {
   return ChannelAPIUtil.addMember(userId, channelId)
     .then(() => dispatch(addMemberAction(userId, channelId)))
 }
+
+
+export const removeChannelMember = (userId, channelId) => dispatch => {
+  return ChannelAPIUtil.removeMember(userId, channelId)
+    .then(() => dispatch(removeMemberAction(userId, channelId)))
+}
+
 
 export const updateRecentChannelMessage = (channelId, messageId) => dispatch => {
   // debugger

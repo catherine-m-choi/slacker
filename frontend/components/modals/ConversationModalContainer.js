@@ -3,7 +3,7 @@ import ConversationModal from "./ConversationModal";
 import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
-import { addMember } from "../../actions/conversation_actions";
+import { addMember, removeMember } from "../../actions/conversation_actions";
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
@@ -28,7 +28,8 @@ const mapDispatchToProps = state => {
   return {
     fetchConvos: () => dispatch(fetchConvos()),
     closeModal: () => dispatch(closeModal()),
-    addMember: (userId, convoId) => dispatch(addMember(userId, convoId))
+    addMember: (userId, convoId) => dispatch(addMember(userId, convoId)),
+    removeMember: (userId, convoId) => dispatch(removeMember(userId, convoId)),
   }
 }
 

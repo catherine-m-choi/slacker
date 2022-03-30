@@ -6,6 +6,7 @@ export const ADD_CONVO = "conversation/addConvo"
 export const UPDATE_CONVO = "conversation/updateConvo"
 export const DELETE_CONVO = "conversation/deleteConvo"
 export const ADD_MEMBER = "conversation/addMember"
+export const REMOVE_MEMBER = "conversation/removeMember"
 export const UPDATE_RECENT_MESSAGE = "conversation/updateRecentMessage"
 export const UPDATE_PINNED_MESSAGES = "conversation/updatePinnedMessages"
 
@@ -41,6 +42,16 @@ const deleteConvoAction = (convoId) => {
 const addMemberAction = (userId, convoId) => {
   return {
     type: ADD_MEMBER,
+    payload: {
+      userId: userId, 
+      conversationId: convoId,
+    }
+  }
+}
+
+const removeMemberAction = (userId, convoId) => {
+  return {
+    type: REMOVE_MEMBER,
     payload: {
       userId: userId, 
       conversationId: convoId,
@@ -93,6 +104,11 @@ export const deleteConvo = (convoId) => dispatch => {
 export const addMember = (userId, convoId) => dispatch => {
   return ConversationAPIUtil.addMember(userId, convoId)
     .then(() => dispatch(addMemberAction(userId, convoId)))
+}
+
+export const removeMember = (userId, convoId) => dispatch => {
+  return ConversationAPIUtil.removeMember(userId, convoId)
+    .then(() => dispatch(removeMemberAction(userId, convoId)))
 }
 
 export const updateRecentMessage = (convoId, messageId) => dispatch => {

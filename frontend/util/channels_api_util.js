@@ -44,3 +44,14 @@ export const addMember = (userId, channelId) => {
     }
   })
 }
+
+export const removeMember = (userId, channelId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: "/api/channel_memberships/1",
+    data: {
+      user_id: userId,
+      channel_id: channelId
+    }
+  })
+}
