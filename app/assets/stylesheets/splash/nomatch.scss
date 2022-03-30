@@ -1,0 +1,34 @@
+.NoMatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.NoMatch.app {
+  justify-content: center;
+  height: 80%;
+}
+
+.NoMatch .SessionForm__center-col {
+  padding: 60px 0;
+  margin-left: -1.5vw;
+}
+
+.NoMatch__content {
+  width: min(400px, 80vw);
+  background-color: $callout-box-gray;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.NoMatch__content h2 {
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.NoMatch__content span {
+  margin-right: 10px;
+}

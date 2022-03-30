@@ -376,7 +376,10 @@
   background-color: $button-green-hover;
 }
 
-
+// Conversation modal
+.convo-addMembers .modal-child {
+  width: min(50vw,500px);
+}
 
 // Channel modal
 
@@ -406,7 +409,7 @@
 }
 
 .channel-modal-description .ConversationModal__tabs button,
-.channel-modal-members .ConversationModal__tabs button, {
+.channel-modal-members .ConversationModal__tabs button {
   padding: 0;
   border: none;
   background: none;
@@ -414,6 +417,7 @@
   font: .9rem;
   font-weight: bold;
   color: $text--light-gray;
+  cursor: pointer;
 }
 
 .channel-modal-description .ConversationModal__tabs .active,
@@ -471,8 +475,10 @@
   border-radius: 10px;
 }
 
-.channel-modal-description .SearchResults__not-in-channel {
+.channel-modal-description .SearchResults__not-in-channel,
+.channel-modal-members .SearchResults__not-in-channel {
   height:65%;
+  // height: 55vh;
 }
 
 .ChannelModal__tab-content .ChannelModal__tab-edit {
