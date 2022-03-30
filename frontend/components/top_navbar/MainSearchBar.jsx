@@ -33,6 +33,13 @@ function MainSearchBar(props) {
     }) 
   }
 
+  const onKeyDown = (e) => {
+    if (!(["", "@", "#"].includes(searchQuery)) && e.keyCode === 13) {
+      props.history.push(`/app/search`);
+      props.setShowSearch(false);
+    }
+  }
+
   let searchResults;
   if (searchParams === "people" || searchQuery[0] === "@" ) {
     let newQuery = searchQuery;
@@ -51,7 +58,10 @@ function MainSearchBar(props) {
     searchResults = 
       <ul>
         {filteredUsers.map((user) => (
-          <li key={user.id} onClick={() => handleProfile(user) }  >
+          <li key={user.id} onClick={() => {
+            handleProfile(user);
+            props.setShowSearch(false);
+            }} >
             {user.displayName}
           </li>
         ))}
@@ -64,7 +74,7 @@ function MainSearchBar(props) {
     const filteredChannels = Object.values(props.channels).filter((channel) => {
       if (newQuery === '') {
         return;
-      } else if (props.currentChat.id === channel.id) {
+      } else if (props.currentChat && props.currentChat.id === channel.id) {
         return;
       } else {
         return channel.name.toLowerCase().includes(newQuery.toLowerCase())
@@ -73,7 +83,7 @@ function MainSearchBar(props) {
     searchResults = 
       <ul>
         {filteredChannels.map((channel) => (
-          <Link  key={channel.id} to={`/app/channels/${channel.id}`} >
+          <Link  key={channel.id} to={`/app/channels/${channel.id}`} onClick={ () => props.setShowSearch(false)} >
             <li >
               {channel.name}
             </li>
@@ -92,7 +102,7 @@ function MainSearchBar(props) {
     searchResults = 
       <ul>
         {filteredMessages.map((message) => (
-          <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}/${message.messageableId}`} >
+          <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
             <li >
               {message.body}
             </li>
@@ -115,7 +125,7 @@ function MainSearchBar(props) {
     const filteredChannels = Object.values(props.channels).filter((channel) => {
       if (searchQuery === '') {
         return;
-      } else if (props.currentChat.id === channel.id) {
+      } else if (props.currentChat && props.currentChat.id === channel.id) {
         return;
       } else {
         return channel.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -133,19 +143,22 @@ function MainSearchBar(props) {
     searchResults = 
       <ul>
         {filteredUsers.map((user) => (
-          <li key={user.id} onClick={() => handleProfile(user) }  >
+          <li key={user.id} onClick={() => {
+            handleProfile(user); 
+            props.setShowSearch(false);
+          }}>
             {user.displayName}
           </li>
         ))}
         {filteredChannels.map((channel) => (
-          <Link  key={channel.id} to={`/app/channels/${channel.id}`} >
+          <Link  key={channel.id} to={`/app/channels/${channel.id}`} onClick={ () => props.setShowSearch(false)} >
             <li >
               {channel.name}
             </li>
           </Link>
         ))}
         {filteredMessages.map((message) => (
-          <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}s/${message.messageableId}`} >
+          <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}s/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
             <li >
               {message.body}
             </li>
@@ -164,6 +177,7 @@ function MainSearchBar(props) {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={ () => props.setShowSearch(true) }
+        onKeyDown={onKeyDown}
       />
 
       {searchResults}
@@ -220,6 +234,11 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     return {
       chatType: "",
+      users: state.entities.users,
+      channels: state.entities.channels,
+      conversations: state.entities.conversations,
+      messages: state.entities.messages,
+      currentUserId: state.session.id,
     }
   }
 }
