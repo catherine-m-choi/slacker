@@ -18,7 +18,7 @@ function AddChannelModal(props) {
     }
   }
 
-  const displayErrors = <div>Don't forget to enter a name!</div>
+  const displayErrors = <p className="AddChannelModal__form-field-error">Don't forget to enter a name!</p>
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -65,7 +65,7 @@ function AddChannelModal(props) {
         </div>
 
         <div className="AddChannelModal__form-field">
-          <label htmlFor="modal-description">Description<span>(optional)</span></label>
+          <label htmlFor="modal-description">Description<span className="AddChannelModal__form-field-optional" >(optional)</span></label>
           <input 
             type="text" 
             id="modal-description" 

@@ -659,3 +659,14 @@
   color: $text--light-gray;
 }
 
+.AddChannelModal__form-field-optional {
+  margin-left: 8px;
+  color: $text--light-gray;
+  font-size: .83rem;
+  font-weight: 400;
+}
+
+.AddChannelModal__form-field .AddChannelModal__form-field-error {
+  color: $error-text-red;
+  font-weight: bold;
+}
