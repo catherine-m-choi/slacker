@@ -3,7 +3,8 @@ import ChannelModal from "./ChannelModal";
 import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
-import { addMember } from "../../actions/conversation_actions";
+// import { addMember } from "../../actions/conversation_actions";
+import { addChannelMember } from "../../actions/channel_actions";
 
 const mapStateToProps = (state, ownProps) => {
   if (ownProps.match.path === '/app/conversations/:id') {
@@ -27,7 +28,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchConvos: () => dispatch(fetchConvos()),
     closeModal: () => dispatch(closeModal()),
-    addMember: (userId, convoId) => dispatch(addMember(userId, convoId))
+    addMember: (userId, channelId) => dispatch(addChannelMember(userId, channelId))
   }
 }
 

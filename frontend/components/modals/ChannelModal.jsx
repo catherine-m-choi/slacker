@@ -41,6 +41,7 @@ function ChannelModal(props) {
             addMember={props.addMember} 
             convoId={props.chat.id} 
             currentUserId={props.currentUserId}
+            chatType="channel"
           />
 
           {(searchQuery === "") && 
