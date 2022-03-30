@@ -31,7 +31,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchConvos: () => dispatch(fetchConvos()),
     openModal: (modal) => dispatch(openModal(modal)),
-    // closeModal: () => dispatch(closeModal()),
   }
 }
 

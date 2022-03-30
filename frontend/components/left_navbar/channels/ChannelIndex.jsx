@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ChannelIndexItem from "./ChannelIndexItem";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function ChannelIndex(props) {
   
@@ -16,9 +15,9 @@ function ChannelIndex(props) {
         </div>
         <div className="AppLeftBar__section-header-name">
           <div>Channels</div>
-          <Link to="/app/browse-channels">
+          <div onClick={() => props.openModal("channel/addChannel")} >
             <span className="material-icons-outlined">add</span>
-          </Link>
+          </div>
         </div>
       </div>
 

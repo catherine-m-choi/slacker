@@ -58,8 +58,7 @@ function App(props) {
         
         </div>
 
-        <Route path="/app/conversations/:id" component={RightSidebar} />
-        <Route path="/app/channels/:id" component={RightSidebar} />
+        <Route path="/app" component={RightSidebar} />
 
         
       </div>

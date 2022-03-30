@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ChannelModal from "./ChannelModal";
+import ChannelModal from "./ChannelInfoModal";
 import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";

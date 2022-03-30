@@ -6,7 +6,8 @@ import ChannelModalContainer from './ChannelModalContainer';
 import PinnedMessageModalContainer from './PinnedMessageModalContainer';
 import ProfileCard from './ProfileCard';
 import EditProfile from './EditProfile';
-import SearchUsers from '../messages/SearchUsers';
+import AddChannelModal from './AddChannelModal';
+// import SearchUsers from '../messages/SearchUsers';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -25,6 +26,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'channel/addMembers':
       component = <ChannelModalContainer />
+      break;
+    case 'channel/addChannel':
+      component = <AddChannelModal />
       break;
     case 'profile/edit':
       component = <EditProfile />
