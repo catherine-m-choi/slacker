@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 function ConversationIndexItem(props) {
   let memberNames = []
@@ -28,10 +29,19 @@ function ConversationIndexItem(props) {
       displayImage = <img  src={(userForPic.profilePictureUrl) ? userForPic.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}alt="User profile picture" />
     }
   }
+
+  let status="";
+  if (props.location.pathname.includes("app/conversations/")) {
+    const arr = props.location.pathname.split("/")
+    const id = arr[arr.length - 1]
+    if (props.conversation && String(props.conversation.id) === id ) {
+      status = "active"
+    }
+  }
   
   return (
     <Link to={`/app/conversations/${props.conversation.id}`} >
-        <li>
+        <li className={status}>
         {displayImage}
         {/* <div>
           {(memberNames.length > 1) && memberNames.length } 
@@ -44,4 +54,4 @@ function ConversationIndexItem(props) {
   )
 }
 
-export default ConversationIndexItem;
+export default withRouter(ConversationIndexItem);

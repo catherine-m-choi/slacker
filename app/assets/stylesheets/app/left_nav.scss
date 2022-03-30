@@ -31,6 +31,15 @@
   background-color: $monument-hover-item;
 }
 
+
+.AppLeftBar__menu-btns .active:hover {
+  background-color: $monument-active-item;
+}
+
+.AppLeftBar__menu-btns .active {
+  background-color: $monument-active-item;
+}
+
 .AppLeftBar__menu-btns li i {
   padding-right: 10px;
   font-size: 1rem;
@@ -124,6 +133,26 @@
 
 .ConversationIndexItems__container li:hover {
   background-color: $monument-hover-item;
+}
+
+.ConversationIndexItems__container .active:hover {
+  background-color: $monument-active-item;
+}
+
+.ConversationIndexItems__container .active {
+  background-color: $monument-active-item;
+}
+
+.ChannelIndexItem__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ChannelIndexItem__icon span {
+  font-size: .95rem;
+  width: 2.5vh;
+  margin-right: 8px;
+  text-align: center;
 }
 
 .ConversationIndexItems__container img {

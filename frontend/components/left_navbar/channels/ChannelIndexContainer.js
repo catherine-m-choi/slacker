@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (state) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchChannels: () => dispatch(fetchChannels()),
     openModal: (modal) => dispatch(openModal(modal)),
