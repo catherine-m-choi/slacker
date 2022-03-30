@@ -78,6 +78,7 @@
   top: calc(16vh + 30px);
   // left: 4vw;
   left: min(27vw, 300px);
+  cursor: pointer;
 }
 
 .SearchUsers:empty{

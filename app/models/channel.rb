@@ -9,6 +9,7 @@
 #  founder_id  :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  private     :boolean
 #
 class Channel < ApplicationRecord
   validates :name, presence: true

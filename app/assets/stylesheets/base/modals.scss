@@ -514,7 +514,7 @@
 }
 
 .channel-addChannel label {
-  font-size: .9rem;
+  font-size: .95rem;
   font-weight: bold;
 }
 
@@ -668,5 +668,13 @@
 
 .AddChannelModal__form-field .AddChannelModal__form-field-error {
   color: $error-text-red;
+  font-weight: bold;
+}
+
+.channel-addChannel .AddChannelModal__private-msg {
+  font-size: .95rem;
+}
+
+.channel-addChannel .AddChannelModal__private-msg .bold {
   font-weight: bold;
 }

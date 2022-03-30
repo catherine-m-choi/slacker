@@ -5,6 +5,7 @@ json.extract! channel,
   :name, 
   :topic, 
   :description,
+  :private,
   :founder_id,
   :created_at
 
