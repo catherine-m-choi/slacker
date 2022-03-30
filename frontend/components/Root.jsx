@@ -8,6 +8,7 @@ import SplashContainer from "./splash/SplashContainer";
 import App from "./App";
 import LoginFormContainer from "./sessions/LoginFormContainer";
 import SignupFormContainer from "./sessions/SignupFormContainer";
+import NoMatch from "./messages/NoMatch";
 
 const Root = ({ store }) => {
   return (
@@ -19,6 +20,7 @@ const Root = ({ store }) => {
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute path="/app" component={App}/>
+        {/* <Route path="/*" component={NoMatch} /> */}
       </HashRouter>
     </Provider>
   )

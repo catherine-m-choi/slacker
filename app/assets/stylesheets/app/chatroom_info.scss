@@ -59,14 +59,10 @@
   height: 95vh; // Top NavBar height is 5vh
 }
 
-// .App__center-content:first-child {
-//   position: relative;
-// }
 
 .ChatRoomInfo__pinned-message {
-  position: absolute;
+  position: relative;
   background-color: $main-white;
-  z-index: 5;
   width: 100%;
   height: 5vh;
   font-size: .85rem;

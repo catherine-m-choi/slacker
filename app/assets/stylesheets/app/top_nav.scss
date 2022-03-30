@@ -68,3 +68,20 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.MainSearchBar {
+  position: absolute;
+  transform: translate(-50%);
+  top: 4px;
+  left: 50%;
+  z-index: 100;
+  background-color: $main-white;
+  padding: 5px;
+  width: 50vw;
+  // height: 30vh;
+  max-height: 45vh;
+  border-radius: 10px;
+  border: 1px solid $border-light-gray;
+  box-shadow: 0 2px 5px -1px $box-shadow-gray;
+  color: black;
+}

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ChannelIndex from "./ChannelIndex";
-import { fetchChannels } from "../../actions/channel_actions";
+import { fetchChannels } from "../../../actions/channel_actions";
 
 const mapStateToProps = (state) => {
   return {

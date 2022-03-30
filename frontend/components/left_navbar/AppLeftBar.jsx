@@ -1,6 +1,6 @@
 import React from "react";
-import ConversationIndexContainer from "../conversations/ConversationIndexContainer";
-import ChannelIndexContainer from "../channels/ChannelIndexContainer";
+import ConversationIndexContainer from "./conversations/ConversationIndexContainer";
+import ChannelIndexContainer from "./channels/ChannelIndexContainer";
 import { Link } from "react-router-dom";
 
 function AppLeftBar(props) {

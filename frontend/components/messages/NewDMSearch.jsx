@@ -11,7 +11,7 @@ function NewDmSearch(props) {
       return;
     }
     else {
-      return user.email.includes(props.searchQuery)
+      return user.email.toLowerCase().includes(props.searchQuery.toLowerCase())
     }
   })
 

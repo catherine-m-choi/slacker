@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ConversationIndex from "./ConversationIndex";
-import { fetchConvos } from "../../actions/conversation_actions";
+import { fetchConvos } from "../../../actions/conversation_actions";
 
 const mapStateToProps = (state) => {
   return {

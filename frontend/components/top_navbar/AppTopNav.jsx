@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
+import MainSearchBar from "./MainSearchBar";
 
 function AppTopNav(props) {
-
+  
+  const [showSearch, setShowSearch] = useState(false);
     
   const handleClick = (e) => {
     console.log("Opening profile!")
@@ -13,6 +15,7 @@ function AppTopNav(props) {
   }
 
   let history = useHistory();
+  console.log(showSearch)
   
   return (
     <div className="AppTopNav__container">
@@ -26,12 +29,19 @@ function AppTopNav(props) {
             <i  onClick={() => history.goForward()} className="material-icons-outlined">arrow_forward</i>
           </div>
         </div>
-        <div className="AppTopNav__search-bar">
+        <div className="AppTopNav__search-bar" onClick={ () => setShowSearch(true)} >
           <span className="material-icons-outlined">search</span>
-          <h3>
+          <h3 >
             Search your workspace
           </h3>
         </div>
+          { showSearch ? (<div className="SearchUsers__hidden-background" 
+            onClick={() => setShowSearch(false)} >
+          </div>
+          ) : null }
+          { showSearch ? (
+            <MainSearchBar setShowSearch={setShowSearch} />
+          ) : null }
       </div>
       <img onClick={ () => handleClick() } className="AppTopNav__profile" src={props.currentUser.profilePictureUrl} />
     </div>

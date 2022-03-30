@@ -4,19 +4,6 @@ function MessageForm(props) {
 
   const [body, setBody] = useState(props.message.body)
 
-  // const chatInfo = {
-  //   chat_id: props.match.params.id,
-  //   chat_type: "Conversation"
-  // }
-
-  // const chatInfo = {chat_id: props.match.params.id}
-
-  // if (props.match.path === '/app/conversations/:id') {
-  //   chatInfo.chat_type =  "Conversation";
-  // } else if (props.match.path === '/app/channels/:id') {
-  //   chatInfo.chat_type =  "Channel";
-  // }
-
   let newMessage;
   const handleSubmit = () => {
     let messageType;
@@ -80,10 +67,13 @@ function MessageForm(props) {
 
               convoId = res.payload.id
               props.messageAction(newMessage)
-                .then( (res) => props.updateRecentMessage(convoId, res.payload.id))
+              .then( (res) => props.updateRecentConvoMessage(convoId, res.payload.id))
+              .then( () => {
+                props.history.push(`/app/conversations/${convoId}`)
+                console.log("pushing to new convoid")
+              })
 
-            }, console.log)
-            .then( () => props.history.push(`/app/conversations/${convoId}`))
+            })
           break;
         case '/app/channels/:id':
           messageType = "Channel"

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import ChatRoomContainer from "./messages/ChatRoomContainer";
 import ChatRoomInfoContainer from "./messages/ChatRoomInfoContainer";
 import MessageFormContainer from "./messages/MessageFormContainer";
@@ -10,9 +10,10 @@ import RightSidebar from "./right_sidebar/RightSidebar";
 import SavedMessagesContainer from "./messages/SavedMessagesContainer";
 
 // temp for placeholder styling
-import AppLeftBar from "./temp_app_bars/AppLeftBar";
-// import AppRightBar from "./temp_app_bars/AppRightBar";
-import AppTopNav from "./temp_app_bars/AppTopNav";
+import AppLeftBar from "./left_navbar/AppLeftBar";
+// import AppRightBar from "./nav_bars/AppRightBar";
+import AppTopNav from "./top_navbar/AppTopNav";
+import NoMatch from "./messages/NoMatch";
 
 function App(props) { 
 
@@ -34,29 +35,32 @@ function App(props) {
         <AppLeftBar />
           
         <div className="App__center-content">
-          
-          <Route path="/app/conversations/:id" >
-            <ChatRoomInfoContainer />
-            <ChatRoomContainer />
-            <div className="MessageForm__float"></div>
-            <MessageFormContainer />
-          </Route>
-          
-          <Route path="/app/channels/:id" >
-            <ChatRoomInfoContainer />
-            <ChatRoomContainer />
-            <div className="MessageForm__float"></div>
-            <MessageFormContainer />
-          </Route>
 
-          <Route path="/app/drafts" component={DraftMessage} />
-          <Route path="/app/all-dms" component={AllDMsContainer} />
-          <Route path="/app/saved-page" component={SavedMessagesContainer} />
+          <Switch>
+            <Route path="/app/conversations/:id" >
+              <ChatRoomInfoContainer />
+              <ChatRoomContainer />
+              <div className="MessageForm__float"></div>
+              <MessageFormContainer />
+            </Route>
+            
+            <Route path="/app/channels/:id" >
+              <ChatRoomInfoContainer />
+              <ChatRoomContainer />
+              <div className="MessageForm__float"></div>
+              <MessageFormContainer />
+            </Route>
+            <Route exact path="/app/drafts" component={DraftMessage} />
+            <Route exact path="/app/all-dms" component={AllDMsContainer} />
+            <Route exact path="/app/saved-page" component={SavedMessagesContainer} />
+            <Route path="/app/*" component={NoMatch} />
+          </Switch>
         
         </div>
 
         <Route path="/app/conversations/:id" component={RightSidebar} />
         <Route path="/app/channels/:id" component={RightSidebar} />
+
         
       </div>
     </div>

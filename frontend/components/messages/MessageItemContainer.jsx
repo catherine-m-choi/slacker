@@ -8,21 +8,23 @@ import { updatePinnedChannelMessages } from "../../actions/channel_actions";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
-  let chat;
+  let pinned = [];
   if (ownProps.match.path === '/app/conversations/:id') {
-    chat = state.entities.conversations[ownProps.match.params.id]
+    if (state.entities.conversations[ownProps.match.params.id]) {
+      pinned = state.entities.conversations[ownProps.match.params.id].pinnedMessages
+    }
+  } else if (ownProps.match.path === '/app/channels/:id') {
+    if (state.entities.channels[ownProps.match.params.id]) {
+      pinned = state.entities.channels[ownProps.match.params.id].pinnedMessages
+    }
   }
-  else if (ownProps.match.path === '/app/channels/:id') {
-    chat = state.entities.channels[ownProps.match.params.id]
-  }
-  // debugger
   return {
     sender: state.entities.users[ownProps.message.userId],
     users: state.entities.users,
     currentUserId: state.session.id,
     savedMessages: state.session.savedMessages,
     replyCount: ownProps.message.replyCount,
-    pinnedMessagesId: chat.pinnedMessages,
+    pinnedMessagesId: pinned,
   }
 }
 

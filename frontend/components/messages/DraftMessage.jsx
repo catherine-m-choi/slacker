@@ -65,7 +65,7 @@ function DraftMessage(props) {
     prettyNames = recipientNames.join(" and ")
   } else {
     const slicedNames = recipientNames.slice(0, recipientNames.length - 1)
-    prettyNames = slicedNames.join(", ") + `, and ${recipientNames[recipientNames.length - 1]}`
+    prettyNames = slicedNames.join(", ")  + ((recipientNames.length > 2) ? "," : "") + ` and ${recipientNames[recipientNames.length - 1]}`
   }
 
   
