@@ -4,7 +4,7 @@ import { beautifyDate } from "../../util/date_util";
 
 function ChannelModal(props) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [tab, setTab] = useState(props.tab) // toggle between "info" and "description tabs"
+  const [tab, setTab] = useState(props.tab) // toggle between "members" and "description tabs"
 
   let memberNames = []
 
@@ -52,18 +52,20 @@ function ChannelModal(props) {
       break;
     case "description":
       display = 
-        <div>
-          <div>
-            <p>Topic</p>
-            <div>{props.chat.topic}</div>
+        <div className="ChannelModal__tab-content" >
+          <div className="ChannelModal__tab-card">
+            <div>Topic</div>
+            <p>{props.chat.topic}</p>
+            <div className="ChannelModal__tab-edit">Edit</div>
           </div>
-          <div>
-            <p>Description</p>
-            <div>{props.chat.description}</div>
+          <div className="ChannelModal__tab-card">
+            <div>Description</div>
+            <p>{props.chat.description}</p>
+            <div className="ChannelModal__tab-edit">Edit</div>
           </div>
-          <div>
-            <p>Created by</p>
-            <div>{`${props.users[props.chat.founderId].displayName} on ${beautifyDate(props.chat.createdAt)}`} </div>
+          <div className="ChannelModal__tab-card">
+            <div>Created by</div>
+            <p>{`${props.users[props.chat.founderId].displayName} on ${beautifyDate(props.chat.createdAt)}`} </p>
           </div>
           
         </div>
@@ -84,10 +86,14 @@ function ChannelModal(props) {
         </span>
       </div>
 
-      <button onClick={() => setTab("description")} >Description</button>
-      <button onClick={() => setTab("members")} >Members {props.chat.members.length}</button>
+      <div className="ConversationModal__tabs">
+        <button className={(tab === "description") ? "active" : null } onClick={() => setTab("description")} >Description</button>
+        <button className={(tab === "members") ? "active" : null } onClick={() => setTab("members")} >Members {props.chat.members.length}</button>
+      </div>
 
-      {display}
+      <div className="ChannelModal__tab-content-container">
+        {display}
+      </div>
 
     </div>
   )

@@ -252,3 +252,228 @@
   z-index: 1000;
   font-size: .8rem;
 }
+
+
+
+// Edit profile modal
+
+.profile-edit .modal-child {
+  height: auto;
+  max-height: 85vh;
+  width: min(50vw,500px);
+  padding: 30px 16px 30px 30px;
+  overflow-y: scroll;
+}
+
+.profile-edit h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-bottom: 2vh;
+}
+
+.profile-edit form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.EditProfile__left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.EditProfile__left p {
+  font-size: .8rem;
+  color: $text--light-gray;
+}
+
+.EditProfile__right {
+  display: flex;
+  margin-left: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EditProfile__right img {
+  max-width: min(28vh, 250px);
+  max-height: min(28vh, 250px);
+  border-radius: 10px;
+}
+
+.EditProfile__left div {
+  margin-bottom: 15px;
+}
+
+.EditProfile__left label,
+.EditProfile__right label {
+  display: block;
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.EditProfile__left input {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.EditProfile__left input, .EditProfile__right input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid $border-gray;
+  border-radius: 5px;
+  color: $text--light-gray
+}
+
+.EditProfile__left input[type="text"]:focus, 
+.EditProfile__left input[type="email"]:focus, 
+.EditProfile__left input[type="tel"]:focus,
+.EditProfile__left input[type="url"]:focus, 
+.EditProfile__right input[type="url"]:focus {
+  outline: .3px solid $text--light-gray;
+  box-shadow: 0px 0px 0px 4px $box-shadow-blue;
+  transition: height .5s;
+  color: $text-black;
+}
+
+.EditProfile__right label {
+  margin-top: 15px;
+}
+
+.EditProfile__btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.EditProfile__btns button {
+  border: none;
+  padding: 0px 16px;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.EditProfile__btns .EditProfile__btn-not-solid {
+  background-color: $main-white;
+  border: 1px solid $border-gray;
+  // margin-right: 15px;
+}
+
+.EditProfile__btns .EditProfile__btn-not-solid:hover {
+  background-color: $callout-box-gray;
+  // margin-right: 15px;
+}
+
+.EditProfile__btns .EditProfile__btn-solid {
+  margin-left: 15px;
+  background-color: $button-green;
+  color: $main-white;
+}
+
+.EditProfile__btn-solid:hover {
+  margin-left: 15px;
+  background-color: $button-green-hover;
+}
+
+
+
+// Channel modal
+
+.channel-modal-description .modal-child {
+  height: auto;
+  max-height: 85vh;
+  width: min(50vw,500px);
+  padding: 0;
+  // overflow-y: scroll;
+  background-color: $main-white;
+}
+
+.channel-modal-description h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.channel-modal-description .ConversationModal__tabs {
+  border-bottom: 1px solid rgba(29, 28, 29, 0.3);
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.channel-modal-description .ConversationModal__tabs button {
+  padding: 0;
+  border: none;
+  background: none;
+  margin-right: 20px;
+  font: .9rem;
+  font-weight: bold;
+  color: $text--light-gray;
+}
+
+.channel-modal-description .ConversationModal__tabs .active {
+  text-decoration: underline;
+  text-underline-offset: 15px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: $button-green;
+  color: $text-black;
+}
+
+.channel-modal-description .ChannelModal__tab-content {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $border-light-gray;
+  border-radius: 10px;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  background-color: $main-white;
+}
+
+.ChannelModal__tab-card {
+  position: relative;
+  padding: 1.5vw;
+}
+
+.ChannelModal__tab-card:hover {
+  background-color: $callout-box-gray;
+  cursor: pointer;
+}
+
+.ChannelModal__tab-card:not(:last-child) {
+  border-bottom: 1px solid $border-light-gray;
+}
+
+.ChannelModal__tab-card div {
+  font-weight: bold;
+  font-size: .95rem;
+}
+
+.ChannelModal__tab-card p {
+  font-size: .95rem;
+}
+
+.ChannelModal__tab-content-container {
+  padding-top: 2vw;
+  background-color: $callout-box-gray;
+  border-radius: 10px;
+  height: 80%;
+}
+
+.channel-modal-description .ConversationModal {
+  border-radius: 10px;
+}
+
+.channel-modal-description .SearchResults__not-in-channel {
+  height:65%;
+}
+
+.ChannelModal__tab-content .ChannelModal__tab-edit {
+  color: $link-blue;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: .8rem;
+  cursor: pointer;
+}

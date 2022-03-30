@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Profile(props) {
+  
   return (
     <div className="Profile" >
       <div className="ChatRoomInfo__container">
@@ -12,12 +13,12 @@ function Profile(props) {
       </div>
 
       <div className="ChatRoom__container">
-        <img src={props.user.profilePictureUrl} />
-          <div className="Profile__name">{props.user.displayName}</div>
-          <div className="Profile__title">{props.user.title}</div>
+        <img src={props.users[props.userId].profilePictureUrl} />
+          <div className="Profile__name">{props.users[props.userId].displayName}</div>
+          <div className="Profile__title">{props.users[props.userId].title}</div>
           <div className="Profile__status">On vacation</div>
 
-        {(props.user.id === props.currentUserId) ? 
+        {(props.users[props.userId].id === props.currentUserId) ? 
           <ul className="Profile__buttons">
             <li>
               <span className="material-icons-outlined">sentiment_satisfied_alt</span>
@@ -36,7 +37,7 @@ function Profile(props) {
           <ul className="Profile__buttons">
             <Link to={{
               pathname: `/app/drafts`,
-              recepientId: props.user.id
+              recepientId: props.users[props.userId].id
             }}>
               <li>
                 <span className="material-icons-outlined">comment</span>
@@ -47,33 +48,33 @@ function Profile(props) {
         }
 
         <ul className="Profile__details">
-          {props.user.username && 
+          {props.users[props.userId].username && 
           <li>
             <span>Username</span>
-            <div>{props.user.username}</div>
+            <div>{props.users[props.userId].username}</div>
           </li>
           }
           <li>
             <span>Local time</span>
             <div>3:54 AM</div>
           </li>
-          {props.user.phone && 
+          {props.users[props.userId].phone && 
             <li>
               <span>Phone number</span>
-              <div>{`(${props.user.phone.slice(0, 3)}) ${props.user.phone.slice(3, 6)}-${props.user.phone.slice(6, 10)}`}</div>
+              <div>{`(${props.users[props.userId].phone.slice(0, 3)}) ${props.users[props.userId].phone.slice(3, 6)}-${props.users[props.userId].phone.slice(6, 10)}`}</div>
             </li>
           }
           <li>
             <span>Email address</span>
-            <div>{props.user.email}</div>
+            <div>{props.users[props.userId].email}</div>
           </li>
-          {props.user.location && 
+          {props.users[props.userId].location && 
           <li>
             <span>Location</span>
             <div>New York City - ADD TO DB</div>
           </li>
           }
-          {props.user.birthday && 
+          {props.users[props.userId].birthday && 
           <li>
             <span>Birthday</span>
             <div>February 23rd, 1994 - ADD TO DB</div>
@@ -87,12 +88,12 @@ function Profile(props) {
 
 // export default Profile;
 import { openModal } from "../../actions/modal_actions";
-
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
   return {
     currentUserId: state.session.id,
+    users: state.entities.users
   }
 }
 

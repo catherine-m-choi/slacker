@@ -61,7 +61,7 @@
 
 
 .ChatRoomInfo__pinned-message {
-  position: relative;
+  position: absolute;
   background-color: $main-white;
   width: 100%;
   height: 5vh;
@@ -71,6 +71,7 @@
   border-bottom: 1px solid $border-light-gray;
   box-shadow: 0 2px 5px -1px $box-shadow-gray;
   color: $text--light-gray;
+  z-index: 1;
 }
 
 .ChatRoomInfo__pinned-btn {

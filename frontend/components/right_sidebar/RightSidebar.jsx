@@ -17,7 +17,7 @@ function RightSideBar({rightSidebar, closeRightSidebar}) {
       break;
     case 'Profile':
       console.log("It's a profile!")
-      component = <Profile closeRightSidebar={closeRightSidebar} user={rightSidebar.user}/>
+      component = <Profile closeRightSidebar={closeRightSidebar} userId={rightSidebar.user.id}/>
       break;
     default:
       return null;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditProfile({currentUser, updateUser}) {
+function EditProfile({currentUser, updateUser, closeModal}) {
 
   const [email, setEmail] = useState(currentUser.email);
   const [username, setUsername] = useState(currentUser.username);
@@ -22,7 +22,7 @@ function EditProfile({currentUser, updateUser}) {
       profile_picture_url: profilePic
     }
 
-    updateUser(updatedDetails)
+    updateUser(updatedDetails).then( () => closeModal() )
   }
 
   const update = (field) => {
@@ -45,42 +45,53 @@ function EditProfile({currentUser, updateUser}) {
   }
   
   return (
-    <div>Edit Profile
+    <>
+      <h3>Edit your profile</h3>
       <form onSubmit={handleSubmit} >
-        <label htmlFor="edit-email">Email: </label>
-        <input type="email" id="edit-email" value={email} onChange={update("email")} required />
+        <div className="EditProfile__left">
 
-        <br />
+          <div>
+            <label htmlFor="edit-display-name">Display name: </label>
+            <input type="text" id="edit-display-name" value={displayName} onChange={update("displayName")} required />
+            <p>This could be your first name, or a nickname — however you’d like people to refer to you in Slack.</p>
+          </div>
 
-        <label htmlFor="edit-display-name">Display name: </label>
-        <input type="text" id="edit-display-name" value={displayName} onChange={update("displayName")} required />
+          <div>
+            <label htmlFor="edit-title">Title: </label>
+            <input type="text" id="edit-title" value={title} onChange={update("title")} />
+            <p>Let people know what you do at Parks and Recreation.</p>
+          </div>
 
-        <br />
+          <div>
+            <label htmlFor="edit-username">Username: </label>
+            <input type="text" id="edit-username" value={username} onChange={update("username")} required />
+          </div>
 
-        <label htmlFor="edit-title">Title: </label>
-        <input type="text" id="edit-title" value={title} onChange={update("title")} />
+          <div>
+            <label htmlFor="edit-phone">Phone number: </label>
+            <input type="tel" id="edit-phone" value={phone} onChange={update("phone")} />
+            <p>Enter a phone number.</p>
+          </div>
 
-        <br />
+          <div>
+            <label htmlFor="edit-email">Email: </label>
+            <input type="email" id="edit-email" value={email} onChange={update("email")} required />
+          </div>
+        </div>
 
-        <label htmlFor="edit-username">Username: </label>
-        <input type="text" id="edit-username" value={username} onChange={update("username")} required />
+        <div className="EditProfile__right">
+          <img src={currentUser.profilePictureUrl} />
+          <label htmlFor="edit-profile-pic">Enter photo url: </label>
+          <input type="url" id="edit-profile-pic" value={profilePic} onChange={update("profilePic")} />
+        </div>
 
-        <br />
-
-        <label htmlFor="edit-phone">Phone number: </label>
-        <input type="tel" id="edit-phone" value={phone} onChange={update("phone")} />
-
-        <br />
-
-        <label htmlFor="edit-profile-pic">Profile pic url: </label>
-        <input type="url" id="edit-profile-pic" value={profilePic} onChange={update("profilePic")} />
-
-        <br />
-
-        {/* <input type="submit" value="submit" /> */}
-        <button type="submit" >Update your profile details</button>
       </form>
-    </div>
+        
+      <div className="EditProfile__btns">
+        <button className="EditProfile__btn-not-solid" onClick={() => closeModal() } >Cancel</button>
+        <button className="EditProfile__btn-solid" type="submit" onClick={(e) => handleSubmit(e)} >Save Changes</button>
+      </div>
+    </>
   )
 }
 
@@ -88,8 +99,10 @@ function EditProfile({currentUser, updateUser}) {
 
 import { connect } from "react-redux";
 import { updateUser } from "../../actions/user_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => {
+  // debugger
   return {
     currentUser: state.entities.users[state.session.id],
   }
@@ -97,7 +110,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateUser: (user) => dispatch(updateUser(user))
+    updateUser: (user) => dispatch(updateUser(user)),
+    closeModal: () => dispatch(closeModal()),
   }
 }
 

@@ -178,6 +178,7 @@ function MainSearchBar(props) {
         onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={ () => props.setShowSearch(true) }
         onKeyDown={onKeyDown}
+        autoComplete="off"
       />
 
       {searchResults}

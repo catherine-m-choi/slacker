@@ -12,7 +12,7 @@ const usersReducer = (state={}, action) => {
       return nextState;
     case UPDATE_USER:
       nextState =  Object.assign({}, state);
-      nextState[action.user.id] = action.user;
+      nextState[action.payload.id] = action.payload;
       return nextState;
     case RECEIVE_ALL_USERS:
       return action.payload

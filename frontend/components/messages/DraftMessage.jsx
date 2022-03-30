@@ -86,6 +86,7 @@ function DraftMessage(props) {
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={onKeyDown}
               onFocus={expand}
+              autoComplete="off"
             />
           </div>
 

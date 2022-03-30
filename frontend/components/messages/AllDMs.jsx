@@ -52,6 +52,7 @@ function AllDMs(props) {
             placeholder="Find members" 
             onChange={(e) => setSearchQuery(e.target.value) } 
             onFocus={expand} 
+            autoComplete="off"
           />
         </div>
 
