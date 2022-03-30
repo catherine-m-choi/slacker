@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createConsumer } from "@rails/actioncable"
 import MessageItemContainer from "./MessageItemContainer";
 import MessageFormContainer from "./MessageFormContainer";
-
+import NoMatch from "./NoMatch";
 
 function ChatRoom(props) {
 
@@ -151,6 +151,16 @@ function ChatRoom(props) {
       />
     )
   })
+
+  let currentChat;
+  if (props.match.path === '/app/conversations/:id') {
+    currentChat = props.conversations[props.match.params.id]
+    if (!currentChat) {
+      return <NoMatch />
+    }
+  } else if (props.match.path === '/app/channels/:id') {
+    currentChat = props.channels[props.match.params.id]
+  }
 
   return (
     <div>

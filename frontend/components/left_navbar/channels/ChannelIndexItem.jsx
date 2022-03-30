@@ -6,7 +6,7 @@ function ChannelIndexItem(props) {
 
   const display = props.channel.members && props.channel.members.map((userId) => {
     let user = props.users[userId]
-    if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
+    if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
   })
 
   const displayIcon = (props.channel.private) ?
