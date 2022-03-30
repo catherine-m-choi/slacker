@@ -37,8 +37,12 @@ function PinnedMessages({pinnedMessages, pinnedMessagesId, filteredUsers, patchM
               <div className="MessageItemCard">
                 <ul className="MessageItemCard__content">
                   <div className="MessageItemCard__info">
-                    <img onClick={() => handleProfile() } className="MessageItemCard__sender-profile-img" src={filteredUsers[msg.userId].profilePictureUrl} />
-                    <li onClick={() => handleProfile() } className="MessageItemCard__sender-name">{filteredUsers[msg.userId].displayName}</li>
+                    {filteredUsers[msg.userId] &&
+                    <>
+                      <img onClick={() => handleProfile() } className="MessageItemCard__sender-profile-img" src={filteredUsers[msg.userId].profilePictureUrl} />
+                      <li onClick={() => handleProfile() } className="MessageItemCard__sender-name">{filteredUsers[msg.userId].displayName}</li>
+                    </>
+                    }
                   </div>
                   <li className="MessageItemCard__body">{msg.body}</li>
                   <li className="MessageItemCard__date">{`${beautifyDate(msg.createdAt)} at ${beautifyTime(msg.createdAt)}`}</li>

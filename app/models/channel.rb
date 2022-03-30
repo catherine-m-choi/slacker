@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class Channel < ApplicationRecord
+  validates :name, presence: true
   has_many :messages, as: :messageable
   has_many :channel_memberships
   has_many :members, through: :channel_memberships, source: :user

@@ -490,3 +490,172 @@
   font-size: .8rem;
   cursor: pointer;
 }
+
+// Add channel modal
+
+.channel-addChannel .modal-child {
+  padding: 30px;
+  height: auto;
+  height: min(70vh,480px);
+  width: min(70vw,480px);
+}
+
+.channel-addChannel h3 {
+  font-size: 1.7rem;
+  margin-bottom: 0;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+.AddChannelModal__sub-heading {
+  font-size: .95rem;
+  color: $text--light-gray;
+  padding: 15px 0;
+}
+
+.channel-addChannel label {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.channel-addChannel p {
+  font-size: .85rem;
+  color: $text--light-gray;
+}
+
+
+.channel-addChannel input {
+  width: 95%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.channel-addChannel input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid $border-gray;
+  border-radius: 5px;
+  color: $text--light-gray
+}
+
+.channel-addChannel input[type="text"]:focus, 
+.channel-addChannel .toggle:focus {
+  outline: .3px solid $text--light-gray;
+  box-shadow: 0px 0px 0px 4px $box-shadow-blue;
+  transition: height .5s;
+  color: $text-black;
+}
+
+.AddChannelModal__form-field {
+  margin-bottom: 20px;
+}
+
+.channel-addChannel .modal-private-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.channel-addChannel .toggle {
+  margin-left: 20px;
+  width: 65px;
+  height: 35px;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+}
+
+.channel-addChannel .toggle-false {
+  background-color: gainsboro;
+}
+
+.channel-addChannel .toggle-true {
+  background-color: $button-green;
+}
+
+.channel-addChannel .toggle.toggle-false {
+  justify-content: flex-start;
+}
+// .channel-addChannel .toggle.toggle-false:hover {
+// }
+
+.channel-addChannel .toggle.toggle-true {
+  justify-content: flex-end;
+}
+
+.channel-addChannel .toggle div {
+  margin: 0px 4px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+
+.channel-addChannel .toggle-false div {
+  background-color: gray;
+}
+
+.channel-addChannel .toggle-true div {
+  background-color: $main-white;
+}
+
+.toggle-true-content {
+  color: $main-white;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-true-content span {
+  font-size: 1.2rem;
+  margin: 0 3px 0 7px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.AddChannelModal button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  border: none;
+  padding: 0px 16px;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: $button-green;
+  color: $main-white;
+}
+
+.EditProfile__btns .EditProfile__btn-solid {
+  background-color: $button-green-hover;
+}
+
+.AddChannelModal__form-field .has-icon {
+  position: relative;
+}
+
+.AddChannelModal__form-field .has-icon input {
+  padding-left: 40px;
+  width: calc(95% - 33px)
+}
+
+.AddChannelModal__form-field .input-icon {
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  height: 34.5px;
+  width: 20px;
+  // transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text--light-gray;
+}
+
