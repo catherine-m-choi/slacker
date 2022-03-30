@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
+import { withRouter } from "react-router-dom";
 import MainNavBar from "./MainNavBar";
 
 const mapStateToProps = (state) => {
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainNavBar));

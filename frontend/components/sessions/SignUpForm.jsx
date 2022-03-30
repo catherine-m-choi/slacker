@@ -15,7 +15,7 @@ function SignupForm(props) {
     e.preventDefault();
     const user = Object.assign({}, {email, password});
     // Prob need to change redirect to App home page
-    props.signup(user).then( () => props.history.push('/') , () => {
+    props.signup(user).then( () => props.history.push('/welcome') , () => {
       setErrors(props.errors);
     })
   }
@@ -37,7 +37,7 @@ function SignupForm(props) {
       password: "password"
     }
 
-    props.login(demoUser).then( () => props.history.push('/') , () => {
+    props.login(demoUser).then( () => props.history.push('/welcome') , () => {
       setErrors(props.errors);
     })
   }
@@ -98,7 +98,7 @@ function SignupForm(props) {
 
                 <div className="SessionForm__demo">
                   <p>&#10024;</p>
-                  <p><Link to="/demo" className="link-bold" onClick={demoSubmit}>Log in as a demo user</Link> for a hassle free tour of what Slacker has to offer.</p>
+                  <p><a className="link-bold" onClick={demoSubmit}>Log in as a demo user</a> for a hassle free tour of what Slacker has to offer.</p>
                 </div>
                   
               </form>

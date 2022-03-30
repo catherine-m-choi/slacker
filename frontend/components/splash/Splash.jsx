@@ -5,7 +5,8 @@ import SplashLoggedIn from "./SplashLoggedIn";
 import SplashLoggedOut from "./SplashLoggedOut";
 
 const Splash = (props) => (
-  <div className={`Splash ${(props.currentUser) ? "logged-in" : "logged-out"}`}>
+  // <div className={`Splash ${(props.currentUser) ? "logged-in" : "logged-out"}`}>
+  <div className="Splash logged-out">
     <div className="Splash__nav-wrapper">
       <MainNavBarContainer />
       <div className="BillboardV2__background-decoration"></div>
@@ -13,7 +14,8 @@ const Splash = (props) => (
 
     
     <div className="Splash__body-container">
-      {(props.currentUser) ? (<SplashLoggedIn currentUser={props.currentUser} />) : (<SplashLoggedOut />)}
+      {/* {(props.currentUser) ? (<SplashLoggedIn currentUser={props.currentUser} />) : (<SplashLoggedOut />)} */}
+      <SplashLoggedOut />)
     </div>
   </div>
 );

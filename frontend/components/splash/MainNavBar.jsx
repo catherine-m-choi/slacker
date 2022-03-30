@@ -40,9 +40,18 @@ function MainNavBar(props) {
     }
   }
 
+  const handleLogout = () => {
+    if (props.location.pathname === "/welcome") {
+      props.history.push("/")
+      props.logout()
+    } else {
+      props.logout()
+    }
+  }
+
   const display = (props.currentUser) ? (
     <div className="MainNavBar__right-menu">
-      <button className="btn purple-transparent" onClick={props.logout}>Log out</button>
+      <button className="btn purple-transparent" onClick={handleLogout}>Log out</button>
     </div>
   ) : (
     <div className="MainNavBar__right-menu">
