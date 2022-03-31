@@ -153,23 +153,13 @@ function ChatRoom(props) {
     )
   })
 
-  let currentChat;
-  if (props.match.path === '/app/conversations/:id') {
-    currentChat = props.conversations[props.match.params.id]
-    if (!currentChat) {
-      return <NoMatch />
-    }
-  } else if (props.match.path === '/app/channels/:id') {
-    currentChat = props.channels[props.match.params.id]
-  }
-
   return (
     <div>
       <div className="ChatRoom__container">
         <div className="ChatRoom">
           <ul>
             {displayMessages}
-            {props.parent && <MessageFormContainer />}
+            {props.parent && <MessageFormContainer placeholderMsg={placeholderMsg} />}
           </ul>
         </div>
       </div>

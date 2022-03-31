@@ -19,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
     conversations: state.entities.conversations,
     channels: state.entities.channels,
     currentUser: state.entities.users[state.session.id],
+    users: state.entities.users,
   }
 }
 

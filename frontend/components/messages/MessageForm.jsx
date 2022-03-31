@@ -5,8 +5,9 @@ function MessageForm(props) {
 
   const [body, setBody] = useState(props.message.body);
   const [sent, setSent] = useState(false);
-  // const [showGiphy, setShowGiphy] = useState(false);
-  const [showGiphy, setShowGiphy] = useState(true); // set to true for easier testing
+
+  // set to true for easier testing
+  const [showGiphy, setShowGiphy] = useState(false);
   const [giphySearchQuery, setGiphySearchQuery] = useState("");
 
   let newMessage;
@@ -15,7 +16,6 @@ function MessageForm(props) {
     setSent(true);
 
     if (giphySearchQuery.length > 0) {
-      // <GiphySearch giphySearchQuery={giphySearchQuery} />
       setShowGiphy(true);
     } else {
 
@@ -60,9 +60,7 @@ function MessageForm(props) {
 
             props.addConvo()
               .then((res) => {
-                // debugger
                 props.recipients.forEach((userId) => {
-                  // debugger
                   props.addMember(userId, res.payload.id)
                 })
 
@@ -121,7 +119,35 @@ function MessageForm(props) {
       setBody("");
     }
   }, [props.location])
-  
+
+  // let currentChat;
+  // let placeholderMsg = ""
+  // if (props.match.path === '/app/conversations/:id') {
+  //   currentChat = props.conversations[props.match.params.id]
+
+  //   if (!currentChat) {
+  //     return <NoMatch />
+  //   }
+
+  //   let memberNames = []
+  //   currentChat.members.map((userId) => {
+  //     if (props.users) {
+  //       let user = props.users[userId]
+  //       if (user && userId !== props.currentUser.id) {
+  //         memberNames.push((user.displayName))
+  //       } 
+  //     }
+  //     // const slicedNames = members.slice(0, members.length - 1)
+  //     // const prettyNames = slicedNames.join(", ") + ((members.length > 2) ? "," : "") + ` and ${members[members.length - 1]}`
+  //     placeholderMsg = memberNames.join(", ")
+  //     // debugger
+  //   })
+  // } else if (props.match.path === '/app/channels/:id') {
+  //   currentChat = props.channels[props.match.params.id]
+  //   placeholderMsg = currentChat.name
+  // }
+  // debugger
+
   return (
     <div>
 
@@ -136,10 +162,26 @@ function MessageForm(props) {
 
       <div className={`MessageForm__container ${(props.parentMessage) ? "thread" : ""}`}>
         <form className="MessageForm">
-          [This is the textbox area]
-          <br />
-          <input type="text" value={body} onChange={(e) => setBody(e.target.value) }/>
-          <button onClick={handleSubmit}>Send</button>
+          <div className="MessageForm__format-btns" ></div>
+          <textarea 
+            // rows="10"
+            type="text" 
+            value={body} 
+            onChange={(e) => setBody(e.target.value) }
+            placeholder={`Message ${props.placeholderMsg}`}
+          >
+          </textarea>
+          {/* <input 
+            type="text" 
+            value={body} 
+            onChange={(e) => setBody(e.target.value) }
+            placeholder={`Message ${props.placeholderMsg}`}
+          /> */}
+          <button onClick={handleSubmit}>
+            <span class="material-icons noselect">
+              send
+            </span>
+          </button>
         </form>
       </div>
     </div>

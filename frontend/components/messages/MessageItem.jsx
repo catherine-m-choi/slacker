@@ -141,11 +141,6 @@ function MessageItem({
       </div>
   }
 
-  // if (message && message.giphy) {
-    //   const { data } = gf.gifs(['06IBHnG3CezngfNeqVPVMjggyqL1FLpJ'])
-    //   // .random({ tag: props.giphySearchQuery, type: 'gifs' })
-    //   setGif(data);
-    // }
     useEffect(() => {
       const gf = new GiphyFetch('06IBHnG3CezngfNeqVPVMjggyqL1FLpJ')
       const fetchGif = async () => {
@@ -159,20 +154,6 @@ function MessageItem({
   }, [message]);
   
   return (
-    // (message.giphy) ? (
-    //   <div>
-    //     It's a gif!
-    //     {gif && 
-    //       <Gif 
-    //         gif={gif} 
-    //         width={300} 
-    //         height={300} 
-    //         hideAttribution={true} 
-    //         noLink={true} 
-    //       />
-    //     }
-    //   </div>
-    // ) : (
       (!editStatus) ? (
         <div className={`MessageItem__container ${displayDate ? "has-date" : "no-date" } ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
           
