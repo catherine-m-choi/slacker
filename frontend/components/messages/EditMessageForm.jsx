@@ -4,30 +4,37 @@ function EditMessageForm({message, patchMessageDB, setEditStatus}) {
   const [body, setBody] = useState(message.body)
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     const updatedMessage = Object.assign({}, message);
     updatedMessage.body = body;
     patchMessageDB(updatedMessage);
     setEditStatus(false);
   }
 
+
+  const onKeyDown = (e) => {
+    console.log("pressed enter")
+    if (body !== "" && e.keyCode === 13) {
+      handleSubmit()
+    }
+  }
+
   return (
     <div className="MessageForm__container" >
-      <form onSubmit={e => e.preventDefault()} className="MessageForm" >
+      <form className="MessageForm" >
         <div className="MessageForm__format-btns" ></div>
-        {/* <input type="text" value={body} onChange={(e) => setBody(e.target.value) }/> */}
 
         <textarea 
-            // rows="10"
           type="text" 
           value={body} 
           onChange={(e) => setBody(e.target.value) }
           id="MessageForm__body"
+          onKeyDown={onKeyDown}
         ></textarea>
         
         <div id="EditMessageForm__btns" >
           <button type="button" onClick={() => setEditStatus(false) }>Cancel</button>
-          <button type="submit" onClick={ e => handleSubmit(e)}>Save</button>
+          <button type="button" onClick={ e => handleSubmit(e)}>Save</button>
         </div>
 
         <div className="MessageForm__format-btns no-background" ></div>

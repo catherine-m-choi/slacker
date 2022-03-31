@@ -119,33 +119,12 @@ function MessageForm(props) {
     }
   }, [props.location])
 
-  // let currentChat;
-  // let placeholderMsg = ""
-  // if (props.match.path === '/app/conversations/:id') {
-  //   currentChat = props.conversations[props.match.params.id]
-
-  //   if (!currentChat) {
-  //     return <NoMatch />
-  //   }
-
-  //   let memberNames = []
-  //   currentChat.members.map((userId) => {
-  //     if (props.users) {
-  //       let user = props.users[userId]
-  //       if (user && userId !== props.currentUser.id) {
-  //         memberNames.push((user.displayName))
-  //       } 
-  //     }
-  //     // const slicedNames = members.slice(0, members.length - 1)
-  //     // const prettyNames = slicedNames.join(", ") + ((members.length > 2) ? "," : "") + ` and ${members[members.length - 1]}`
-  //     placeholderMsg = memberNames.join(", ")
-  //     // debugger
-  //   })
-  // } else if (props.match.path === '/app/channels/:id') {
-  //   currentChat = props.channels[props.match.params.id]
-  //   placeholderMsg = currentChat.name
-  // }
-  // debugger
+  const onKeyDown = (e) => {
+    console.log("pressed enter")
+    if (body !== "" && e.keyCode === 13) {
+      handleSubmit()
+    }
+  }
 
   return (
     <div>
@@ -163,19 +142,14 @@ function MessageForm(props) {
         <form className="MessageForm">
           <div className="MessageForm__format-btns" ></div>
           <textarea 
-            // rows="10"
             type="text" 
             value={body} 
             onChange={(e) => setBody(e.target.value) }
             placeholder={`Message ${props.placeholderMsg}`}
+            onKeyDown={onKeyDown}
           >
           </textarea>
-          {/* <input 
-            type="text" 
-            value={body} 
-            onChange={(e) => setBody(e.target.value) }
-            placeholder={`Message ${props.placeholderMsg}`}
-          /> */}
+
           <button onClick={handleSubmit}>
             <span className="material-icons noselect">
               send
