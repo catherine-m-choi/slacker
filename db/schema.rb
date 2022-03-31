@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_30_230811) do
+ActiveRecord::Schema.define(version: 2022_03_31_005535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_03_30_230811) do
     t.datetime "updated_at", null: false
     t.boolean "pinned"
     t.integer "pinner_id"
+    t.boolean "giphy"
     t.index ["messageable_type", "messageable_id"], name: "index_messages_on_messageable_type_and_messageable_id"
     t.index ["parent_message_id"], name: "index_messages_on_parent_message_id"
     t.index ["user_id"], name: "index_messages_on_user_id"

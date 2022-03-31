@@ -12,6 +12,7 @@
 #  updated_at        :datetime         not null
 #  pinned            :boolean
 #  pinner_id         :integer
+#  giphy             :boolean
 #
 require 'test_helper'
 

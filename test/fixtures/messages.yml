@@ -12,6 +12,7 @@
 #  updated_at        :datetime         not null
 #  pinned            :boolean
 #  pinner_id         :integer
+#  giphy             :boolean
 #
 
 # This model initially had no columns defined. If you add columns to the

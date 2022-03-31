@@ -9,6 +9,7 @@ json.extract! message,
   :parent_message_id,
   :pinned,
   :pinner_id,
+  :giphy,
   :created_at,
   :updated_at
 

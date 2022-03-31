@@ -90,7 +90,8 @@ class Api::MessagesController < ApplicationController
       :chat_type,
       :thread,
       :pinned,
-      :pinner_id
+      :pinner_id,
+      :giphy
     )
   end
 end

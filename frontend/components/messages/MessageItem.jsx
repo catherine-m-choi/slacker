@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import EditMessageForm from "./EditMessageForm";
-import ProfileCard from "../modals/ProfileCard";
+// import ProfileCard from "../modals/ProfileCard";
 import { beautifyDate, beautifyTime } from "../../util/date_util";
+import { Gif } from '@giphy/react-components'
+import { GiphyFetch } from '@giphy/js-fetch-api'
 
 function MessageItem({
   message, 
@@ -23,6 +25,7 @@ function MessageItem({
   const [editStatus, setEditStatus] = useState(false);
   const [saveStatus, setSaveStatus] = useState("");
   const [pinStatus, setPinnedStatus] = useState(message.pinned);
+  const [gif, setGif] = useState("");
 
   useEffect(() => {
     let mounted = true
@@ -138,77 +141,109 @@ function MessageItem({
       </div>
   }
 
-  return (
-    (!editStatus) ? (
-      <div className={`MessageItem__container ${displayDate ? "has-date" : "no-date" } ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
-        
-        {displayDate && 
-          <div className="MessageItem__date-container">
-            <div className="MessageItem__date">
-              {prettyDate}
-            </div>
-          </div>
+  // if (message && message.giphy) {
+    //   const { data } = gf.gifs(['06IBHnG3CezngfNeqVPVMjggyqL1FLpJ'])
+    //   // .random({ tag: props.giphySearchQuery, type: 'gifs' })
+    //   setGif(data);
+    // }
+    useEffect(() => {
+      const gf = new GiphyFetch('06IBHnG3CezngfNeqVPVMjggyqL1FLpJ')
+      const fetchGif = async () => {
+        if (message.giphy && message.body) {
+          console.log("fetching gif")
+          const { data } = await gf.gif(message.body)
+          setGif(data);
         }
-
-        <div className="MessageItem__actions-container">
-          <div className="MessageItem__actions">
-            <i className="material-icons-outlined">add_reaction</i>
-            <i onClick={() => handlePin() } className={`material-icons${ pinStatus ? " pinned" : "-outlined not-pinned"}`} >push_pin</i>
-            { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
-            <i onClick={() => handleSave() } className={`material-icons-outlined ${ saveStatus ? "saved" : "not-saved"}`}>{ saveStatus ? "bookmark" : "bookmark_border"}</i>
-            <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
-            <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
-          </div>
-        </div>
-
-        <div className="MessageItem">
-
-          {/* { saveStatus &&
-            <div className="MessageItem__saved-message">
-              <i className="material-icons-outlined">bookmark</i>
-              <div>Added to your saved items</div>
-            </div>
-          } */}
-          {savedPinnedMessage}
-          
-          <div className="MessageItem__content">
-            <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
-            <ul>
-              <div className="MessageItem__info">
-                <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
-                <li className="MessageItem__time">{msgTime}</li>
-              </div>
-              <li className="MessageItem__body">
-                {message.body}
-                {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
-              </li>
-              
-            {(replyCount > 0) && 
-              <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
-                <div className="MessageItem__reply-info" >
-                  {message.userRepliesIds.map((userId) => {
-                    // debugger
-                    return (
-                      <img key={userId} src={
-                        (users[userId].profilePictureUrl) ? 
-                          users[userId].profilePictureUrl : 
-                          "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
-                        alt="User profile picture" 
-                      />
-                      )
-                  })}
-                  <div className="MessageItem__reply-count">{replyCount} {(replyCount === 1) ? "reply" : "replies" } </div>
-                </div>
-                <span className="material-icons-outlined">chevron_right</span>
-              </div>
-              }
-
-            </ul>
-          </div>
-        </div>
+      }
+      fetchGif();
+  }, [message]);
+  
+  return (
+    (message.giphy) ? (
+      <div>
+        It's a gif!
+        {gif && 
+          <Gif 
+            gif={gif} 
+            width={300} 
+            height={300} 
+            hideAttribution={true} 
+            noLink={true} 
+          />
+        }
       </div>
     ) : (
-      <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
+      (!editStatus) ? (
+        <div className={`MessageItem__container ${displayDate ? "has-date" : "no-date" } ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
+          
+          {displayDate && 
+            <div className="MessageItem__date-container">
+              <div className="MessageItem__date">
+                {prettyDate}
+              </div>
+            </div>
+          }
+
+          <div className="MessageItem__actions-container">
+            <div className="MessageItem__actions">
+              <i className="material-icons-outlined">add_reaction</i>
+              <i onClick={() => handlePin() } className={`material-icons${ pinStatus ? " pinned" : "-outlined not-pinned"}`} >push_pin</i>
+              { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
+              <i onClick={() => handleSave() } className={`material-icons-outlined ${ saveStatus ? "saved" : "not-saved"}`}>{ saveStatus ? "bookmark" : "bookmark_border"}</i>
+              <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
+              <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
+            </div>
+          </div>
+
+          <div className="MessageItem">
+
+            {/* { saveStatus &&
+              <div className="MessageItem__saved-message">
+                <i className="material-icons-outlined">bookmark</i>
+                <div>Added to your saved items</div>
+              </div>
+            } */}
+            {savedPinnedMessage}
+            
+            <div className="MessageItem__content">
+              <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
+              <ul>
+                <div className="MessageItem__info">
+                  <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+                  <li className="MessageItem__time">{msgTime}</li>
+                </div>
+                <li className="MessageItem__body">
+                  {message.body}
+                  {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
+                </li>
+                
+              {(replyCount > 0) && 
+                <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
+                  <div className="MessageItem__reply-info" >
+                    {message.userRepliesIds.map((userId) => {
+                      // debugger
+                      return (
+                        <img key={userId} src={
+                          (users[userId].profilePictureUrl) ? 
+                            users[userId].profilePictureUrl : 
+                            "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
+                          alt="User profile picture" 
+                        />
+                        )
+                    })}
+                    <div className="MessageItem__reply-count">{replyCount} {(replyCount === 1) ? "reply" : "replies" } </div>
+                  </div>
+                  <span className="material-icons-outlined">chevron_right</span>
+                </div>
+                }
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
+      )
     )
   )
 }

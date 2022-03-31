@@ -12,6 +12,7 @@
 #  updated_at        :datetime         not null
 #  pinned            :boolean
 #  pinner_id         :integer
+#  giphy             :boolean
 #
 class Message < ApplicationRecord
   validates :body, :messageable_type, :messageable_id, :user_id, presence: true

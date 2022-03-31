@@ -113,6 +113,7 @@ function ChatRoom(props) {
         pinnerId: message.pinner_id,
         createdAt: message.created_at,
         updatedAt: message.updated_at,
+        giphy: message.giphy
       }
     }
 
