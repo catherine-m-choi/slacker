@@ -159,20 +159,20 @@ function MessageItem({
   }, [message]);
   
   return (
-    (message.giphy) ? (
-      <div>
-        It's a gif!
-        {gif && 
-          <Gif 
-            gif={gif} 
-            width={300} 
-            height={300} 
-            hideAttribution={true} 
-            noLink={true} 
-          />
-        }
-      </div>
-    ) : (
+    // (message.giphy) ? (
+    //   <div>
+    //     It's a gif!
+    //     {gif && 
+    //       <Gif 
+    //         gif={gif} 
+    //         width={300} 
+    //         height={300} 
+    //         hideAttribution={true} 
+    //         noLink={true} 
+    //       />
+    //     }
+    //   </div>
+    // ) : (
       (!editStatus) ? (
         <div className={`MessageItem__container ${displayDate ? "has-date" : "no-date" } ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
           
@@ -190,7 +190,9 @@ function MessageItem({
               <i onClick={() => handlePin() } className={`material-icons${ pinStatus ? " pinned" : "-outlined not-pinned"}`} >push_pin</i>
               { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
               <i onClick={() => handleSave() } className={`material-icons-outlined ${ saveStatus ? "saved" : "not-saved"}`}>{ saveStatus ? "bookmark" : "bookmark_border"}</i>
-              <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
+              {(message.giphy) ? null : 
+                <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
+              }
               <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
             </div>
           </div>
@@ -212,10 +214,24 @@ function MessageItem({
                   <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
                   <li className="MessageItem__time">{msgTime}</li>
                 </div>
-                <li className="MessageItem__body">
-                  {message.body}
-                  {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
-                </li>
+                {(message.giphy) ? (
+                  <div>
+                    {gif && 
+                      <Gif 
+                        gif={gif} 
+                        width={300} 
+                        height={300} 
+                        hideAttribution={true} 
+                        noLink={true} 
+                      />
+                    }
+                  </div>
+                ) : (
+                  <li className="MessageItem__body">
+                    {message.body}
+                    {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
+                  </li>
+                )}
                 
               {(replyCount > 0) && 
                 <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
@@ -244,7 +260,6 @@ function MessageItem({
       ) : (
         <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
       )
-    )
   )
 }
 
