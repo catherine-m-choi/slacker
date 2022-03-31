@@ -1,7 +1,8 @@
 .AppLeftBar__container {
   background-color: $monument-column-bg;
   color: $monument-text-color;
-  flex: 0 0 min(15vw, 200px); 
+  // flex: 0 0 min(15vw, 200px); 
+  flex: 0 0 min(20vw, 250px);
   // When changing this, also need to change width for
   // .ConversationIndexItems__member-names
 }
@@ -71,6 +72,12 @@
   align-items: center;
   justify-content: space-between;
   flex-grow: 1;
+  -webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
 }
 
 .AppLeftBar__section-header:hover span {
