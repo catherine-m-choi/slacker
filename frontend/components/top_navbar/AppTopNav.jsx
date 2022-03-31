@@ -15,7 +15,6 @@ function AppTopNav(props) {
   }
 
   let history = useHistory();
-  console.log(showSearch)
   
   return (
     <div className="AppTopNav__container">

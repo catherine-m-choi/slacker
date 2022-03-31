@@ -1,9 +1,23 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import SplashBottomCTA from "./BottomCTA";
 import SplashFooter from "./Footer";
 
 function SplashLoggedIn(props) {
+
+  const [defaultChannel, setDefaultChannel] = useState("")
+  
+  useEffect(() => {
+    // props.fetchUsers();
+    // props.fetchMessagesDB();
+    // props.fetchSavedMessages();
+    props.fetchChannels()
+      .then( (res) => {
+        setDefaultChannel(Object.keys(res.payload)[0])
+      })
+    ;
+  }, [])
+
   return (
     <div className="SplashLoggedIn__container">
       <div className="SplashLoggedIn">
@@ -20,7 +34,7 @@ function SplashLoggedIn(props) {
                   <div className="SplashLoggedIn__workspace-members">46 members</div>
                 </div>
                 {/* Change this to whatever the #general channel is for production  */}
-                <Link to="/app/channels/1">
+                <Link to={`/app/channels/${defaultChannel}`}>
                   <button className="purple-solid btn">LAUNCH SLACK</button>
                 </Link>
               </div>
@@ -34,4 +48,20 @@ function SplashLoggedIn(props) {
   )
 }
 
-export default SplashLoggedIn;
+import { connect } from "react-redux";
+// import { fetchUsers } from "../../actions/user_actions";
+// import { fetchMessagesDB, fetchSavedMessages } from "../../actions/message_actions";
+import { fetchChannels } from "../../actions/channel_actions";
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // fetchUsers: () => dispatch(fetchUsers()),
+    // fetchMessagesDB: () => dispatch(fetchMessagesDB()),
+    // fetchConvos: () => dispatch(fetchConvos()),
+    fetchChannels: () => dispatch(fetchChannels()),
+    // fetchSavedMessages: () => dispatch(fetchSavedMessages()),
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(SplashLoggedIn);

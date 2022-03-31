@@ -9,16 +9,19 @@ const mapStateToProps = state => {
 }
 
 // <AuthRoute path="" component={} />
-const Auth = ({ loggedIn, path, component: Component}) => {
+function Auth({ loggedIn, path, component: Component, fetchChannels}) {
+
   return (
     <Route 
       path={path} 
       render={ (props) => (
-        loggedIn ? <Redirect to="/app" /> : <Component {...props} />
+        loggedIn ? <Redirect to="/welcome" /> : <Component {...props} />
       )} 
     />
   )
 }
+
+
 // <ProtectedRoute path="" component={} />
 const Protected = ({ loggedIn, path, component: Component}) => {
   return (
