@@ -6,12 +6,18 @@ function ChatRoomInfo(props) {
 
   if (!props.currentChat) return <div></div>
   
-  const displayPics = props.currentChat.members && props.currentChat.members.map((userId) => {
+  let placeholderCount = 0;
+  const displayPics = props.currentChat.members && props.currentChat.members.slice(0,3).map((userId) => {
     let user = props.users[userId]
     if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
     // return <div key={user.id}>{user.displayName}</div> 
-    return <img  key={user.id} src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  alt="User profile picture" />
-  })
+    if (user) {
+      return <img  key={user.id} src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  alt="User profile picture" />
+    } else {
+      placeholderCount += 1;
+      return <React.Fragment key={placeholderCount}></React.Fragment>
+    }
+    })
 
   const displayIcon = (props.currentChat.private) ?
   (<span className="material-icons-outlined">lock</span>) :

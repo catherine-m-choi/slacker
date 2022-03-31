@@ -7,7 +7,7 @@ function ConversationIndexItem(props) {
 
   const display = props.conversation.members && props.conversation.members.map((convo) => {
     let user = props.users[convo]
-    if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
+    if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
   })
 
   let displayImage;
