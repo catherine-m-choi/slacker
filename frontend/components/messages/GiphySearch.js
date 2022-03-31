@@ -59,20 +59,24 @@ function GiphySearch(props) {
   // debugger
   
   return (
-    <div style={{zIndex: 100}} >
-      {gif && 
-        <Gif 
-          gif={gif} 
-          width={300} 
-          height={300} 
-          hideAttribution={true} 
-          noLink={true} 
-        />
-      }
-
-      <button onClick={handleSubmit} >Send</button>
-      <button onClick={handleSearch}>Shuffle</button>
-      <button onClick={() => props.setShowGiphy(false) } >Cancel</button>
+    <div className="GiphySearch__container" >
+      <div className="GiphySearch" >
+        {gif && 
+          <Gif 
+            gif={gif} 
+            width={280} 
+            height={280} 
+            hideAttribution={true} 
+            noLink={true} 
+          />
+        }
+          
+        <div className="GiphySearch-btns" >
+          <button onClick={handleSubmit} >Send</button>
+          <button onClick={handleSearch}>Shuffle</button>
+          <button onClick={() => props.setShowGiphy(false) } >Cancel</button>
+        </div>
+      </div>
     </div>
   );
 }

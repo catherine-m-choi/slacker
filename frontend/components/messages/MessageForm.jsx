@@ -5,7 +5,8 @@ function MessageForm(props) {
 
   const [body, setBody] = useState(props.message.body);
   const [sent, setSent] = useState(false);
-  const [showGiphy, setShowGiphy] = useState(false);
+  // const [showGiphy, setShowGiphy] = useState(false);
+  const [showGiphy, setShowGiphy] = useState(true); // set to true for easier testing
   const [giphySearchQuery, setGiphySearchQuery] = useState("");
 
   let newMessage;
