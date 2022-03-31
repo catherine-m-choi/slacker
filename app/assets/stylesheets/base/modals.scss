@@ -23,6 +23,8 @@
 .ConversationModal {
   position: relative;
   height: 78vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .ConversationModal__close {
@@ -35,7 +37,8 @@
 }
 
 .ConversationModal h2 {
-  padding: 1.5vw;
+  // padding: 1.5vw;
+  padding: 20px 30px;
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 17px;
@@ -52,6 +55,9 @@
   border: 1px solid $border-dark-blue;
   border-radius: 6px;
   box-shadow: 0px 0px 0px 4px $box-shadow-light-blue;
+  margin-top: 5px;
+  margin-left: 30px;
+  margin-bottom: 10px;
 }
 
 .ConversationModal__search-bar span {
@@ -82,7 +88,8 @@
 }
 
 .ConversationModal__search-display-users {
-  padding: .5vh 1.5vw;
+  // padding: .5vh 1.5vw;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
 }
@@ -98,6 +105,7 @@
   border-radius: 5px;
   height:35px;
   width: 35px;
+  object-fit: cover;
 }
 
 .ConversationModal__search-display-users:hover {
@@ -118,19 +126,28 @@
 }
 
 .ConversationModal h3 {
-  padding: 1vh 1.5vw;
+  // padding: 1vh 1.5vw;
+  padding: 10px 30px;
   font-size: .8rem;
   color: $text--light-gray;
 }
 
-.SearchResults ul {
-  padding-bottom: 1.5vh;
+.ConversationModal__search-display-users:last-child {
+  margin-bottom: 20px;
 }
 
 .SearchResults {
-  height: 64vh;
+  // height: 64vh;
+  // display: flex;
+  // flex-direction: column;
+  height: 61vh;
   display: flex;
   flex-direction: column;
+  justify-content: stretch;
+  // overflow-y: scroll;
+  // flex: 1;
+  overflow-y: overlay;
+  border-radius: 10px;
 }
 
 .SearchResults.hidden {
@@ -153,7 +170,8 @@
 
 .SearchResults__not-in-channel {
   background-color: aliceblue;
-  height: 100%;
+  // height: 100%;
+  height: 140%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: none;
@@ -404,7 +422,7 @@
 .channel-modal-description .ConversationModal__tabs,
 .channel-modal-members .ConversationModal__tabs {
   border-bottom: 1px solid rgba(29, 28, 29, 0.3);
-  padding-left: 20px;
+  padding-left: 30px;
   padding-bottom: 10px;
 }
 
@@ -418,6 +436,11 @@
   font-weight: bold;
   color: $text--light-gray;
   cursor: pointer;
+}
+
+.ConversationModal__tab-content {
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .channel-modal-description .ConversationModal__tabs .active,
@@ -463,11 +486,14 @@
   font-size: .95rem;
 }
 
+//HERE
 .ChannelModal__tab-content-container {
   padding-top: 2vw;
   background-color: $callout-box-gray;
   border-radius: 10px;
   height: 80%;
+  flex: 1;
+  overflow: auto;
 }
 
 .channel-modal-description .ConversationModal,
@@ -475,11 +501,11 @@
   border-radius: 10px;
 }
 
-.channel-modal-description .SearchResults__not-in-channel,
-.channel-modal-members .SearchResults__not-in-channel {
-  height:65%;
-  // height: 55vh;
-}
+// .channel-modal-description .SearchResults__not-in-channel,
+// .channel-modal-members .SearchResults__not-in-channel {
+//   height:65%;
+//   // height: 55vh;
+// }
 
 .ChannelModal__tab-content .ChannelModal__tab-edit {
   color: $link-blue;

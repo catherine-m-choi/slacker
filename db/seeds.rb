@@ -532,3 +532,52 @@ Message.all.each do |msg|
   msg.created_at = rand(5.days).seconds.ago
   msg.updated_at = msg.created_at
 end
+
+giphys = [
+  "ANb0d49iqiDnj97j1w",
+  "gIGiyaW0IZq4t0MOFX",
+  "VkdsbvJeEThoA",
+  "p7JlL9v8mH6Gup4EPU",
+  "JuWT34QY0AodfuweLa",
+  "BOzWmpTE3WNsSoGZIU",
+  "W0c3xcZ3F1d0EYYb0f",
+  "NiHfvQknH419ko84cf",
+  "HZa5at4wXr2QcpX0SG",
+  "BLxXUtWhyttI2QOMVm",
+  "l396E41Lr1DMI8f04",
+  "iZFdIlFIUEi0h0oCub",
+  "6rAb8qljsWvANx6ij2",
+  "wssDoM3tnhNfpD80hG",
+  "NRcDXleOhjLmhPVM55",
+  "yltGOJQBMBn7W",
+  "xbH6UeGdW2LzksnNay",
+  "C1tWTNs9tf70qXTJ5c",
+  "eKDp7xvUdbCrC",
+  # Each gif twice since too lazy to find more relevant gifs
+  "ANb0d49iqiDnj97j1w",
+  "gIGiyaW0IZq4t0MOFX",
+  "VkdsbvJeEThoA",
+  "p7JlL9v8mH6Gup4EPU",
+  "JuWT34QY0AodfuweLa",
+  "BOzWmpTE3WNsSoGZIU",
+  "W0c3xcZ3F1d0EYYb0f",
+  "NiHfvQknH419ko84cf",
+  "HZa5at4wXr2QcpX0SG",
+  "BLxXUtWhyttI2QOMVm",
+  "l396E41Lr1DMI8f04",
+  "iZFdIlFIUEi0h0oCub",
+  "6rAb8qljsWvANx6ij2",
+  "wssDoM3tnhNfpD80hG",
+  "NRcDXleOhjLmhPVM55",
+  "yltGOJQBMBn7W",
+  "xbH6UeGdW2LzksnNay",
+  "C1tWTNs9tf70qXTJ5c",
+  "eKDp7xvUdbCrC",
+]
+
+giphys.each do |gif|
+  msg = Message.all.sample
+  msg.body = gif
+  msg.giphy = true
+  msg.save!
+end
