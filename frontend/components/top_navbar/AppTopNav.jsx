@@ -7,7 +7,6 @@ function AppTopNav(props) {
   const [showSearch, setShowSearch] = useState(false);
     
   const handleClick = (e) => {
-    console.log("Opening profile!")
     props.openRightSidebar({
       type: "Profile",
       user: props.currentUser

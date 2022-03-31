@@ -42,7 +42,6 @@ function ThreadChatRoom(props) {
     // creating actual subscription
     const chat = cable.subscriptions.create(chatParams, {
       connected: () => {
-        console.log("connected to websocket");
         // Broadcast that I joined
       },
       disconnected: () => {
@@ -50,8 +49,6 @@ function ThreadChatRoom(props) {
       },
       received: (data) => {
         // Called when there's incoming data on the websocket for this channel
-        console.log("websocket received data!")
-        console.log(data)
 
         // Preventing repeated action for user who broadcasts, since they will
         // also receive the data they themselves broadcast out.
@@ -64,7 +61,6 @@ function ThreadChatRoom(props) {
           case "create":
             if (data.message.user_id === props.currentUser.id) return;
             if (data.message.parent_message_id === props.parentMessage.id) {
-              console.log("yesssssss")
               // debugger
               props.receiveMessage(camelizeMessage(data.message))
             }

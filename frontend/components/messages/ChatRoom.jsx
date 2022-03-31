@@ -38,7 +38,7 @@ function ChatRoom(props) {
 
 
   useEffect(() => {
-    console.log("mounting websocket")
+    // console.log("mounting websocket")
     let isMounted = true;       
     
     props.fetchMessagesDB().then( (res) => {
@@ -67,7 +67,7 @@ function ChatRoom(props) {
     // creating actual subscription
     const chat = cable.subscriptions.create(chatParams, {
       connected: () => {
-        console.log("connected to websocket");
+        // console.log("connected to websocket");
         // Broadcast that I joined
       },
       disconnected: () => {
@@ -75,8 +75,8 @@ function ChatRoom(props) {
       },
       received: (data) => {
         // Called when there's incoming data on the websocket for this channel
-        console.log("websocket received data!")
-        console.log(data)
+        // console.log("websocket received data!")
+        // console.log(data)
 
         // Preventing repeated action for user who broadcasts, since they will
         // also receive the data they themselves broadcast out.

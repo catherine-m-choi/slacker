@@ -10,7 +10,7 @@ function DraftMessage(props) {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    console.log(recipients)
+    // console.log(recipients)
     if (recipients.length === 0) {
       console.log("should redirect to dm search")
     }
@@ -23,12 +23,10 @@ function DraftMessage(props) {
   }
 
   const expand = () => {
-    console.log("expand/focus")
     setExpanded(true);
   }
   
   const close = () => {
-    console.log("closing")
     setExpanded(false);
   }
 

@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 function MainSearchBar(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchParams, setSearchParams] = useState("")
-  const [searchChat, setSearchChat] = useState("");
 
-  console.log(searchQuery);
-  
   let displayChat = "";
   if (props.chatType === "Channel") {
     displayChat = <div>Find in {props.currentChat.name}</div>
@@ -26,7 +23,6 @@ function MainSearchBar(props) {
   }
 
   const handleProfile = (user) => {
-    console.log("profile")
     props.openRightSidebar({
       type: "Profile",
       user: user

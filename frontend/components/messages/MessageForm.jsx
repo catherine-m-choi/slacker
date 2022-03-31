@@ -20,8 +20,6 @@ function MessageForm(props) {
     } else {
 
       if (props.parentMessage) {
-        console.log("thread reply")
-        console.log("not a new convo")
         messageType = props.parentMessage.messageableType;
 
         newMessage = {
@@ -77,7 +75,6 @@ function MessageForm(props) {
                 .then( (res) => props.updateRecentConvoMessage(convoId, res.payload.id))
                 .then( () => {
                   props.history.push(`/app/conversations/${convoId}`)
-                  console.log("pushing to new convoid")
                 })
 
               })
@@ -114,13 +111,12 @@ function MessageForm(props) {
 
   useEffect(() => {
     if (body !== "" && sent === false) {
-      console.log("SAVE DRAFT!")
+      // console.log("SAVE DRAFT!")
       setBody("");
     }
   }, [props.location])
 
   const onKeyDown = (e) => {
-    console.log("pressed enter")
     if (body !== "" && e.keyCode === 13) {
       handleSubmit()
     }

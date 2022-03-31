@@ -18,8 +18,7 @@ export const createMessage = (message) => {
     url: "/api/messages/",
     data: {
       message: message
-    },
-    error: (err) => console.log(err)
+    }
   })
 }
 

@@ -16,8 +16,6 @@ function PinnedMessages({pinnedMessages, pinnedMessagesId, filteredUsers, patchM
       if (index > -1) {
         updatedPinMsg.splice(index, 1); // 2nd parameter means remove one item only
       }
-      console.log(updatedPinMsg) ;
-      // debugger
 
       updatePinnedMessages(msg.messageableId, updatedPinMsg)
 

@@ -13,7 +13,6 @@ function EditMessageForm({message, patchMessageDB, setEditStatus}) {
 
 
   const onKeyDown = (e) => {
-    console.log("pressed enter")
     if (body !== "" && e.keyCode === 13) {
       handleSubmit()
     }

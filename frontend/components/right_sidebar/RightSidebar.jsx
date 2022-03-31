@@ -12,11 +12,9 @@ function RightSideBar({rightSidebar, closeRightSidebar}) {
   let component;
   switch (rightSidebar.type) {
     case 'Thread':
-      console.log("It's a thread!")
       component = <Thread closeRightSidebar={closeRightSidebar} message={rightSidebar.message} />
       break;
     case 'Profile':
-      console.log("It's a profile!")
       component = <Profile closeRightSidebar={closeRightSidebar} userId={rightSidebar.user.id}/>
       break;
     default:

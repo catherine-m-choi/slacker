@@ -45,7 +45,6 @@ function MessageItem({
   const msgTime = beautifyTime(message.createdAt)
   
   const handleReply = (e) => {
-    console.log("Reply!")
     openRightSidebar({
       type: "Thread",
       message: message
@@ -54,7 +53,6 @@ function MessageItem({
 
   const handleSave = (e) => {
     if (!saveStatus) {
-      console.log("Saved!")
       const saveData = {
         userId: currentUserId,
         messageId: message.id
@@ -62,7 +60,6 @@ function MessageItem({
       saveMessage(saveData)
       setSaveStatus(true);
     } else {
-      console.log("Unsaved!")
       unsaveMessage(savedMessages[message.id])
       setSaveStatus(false);
     }
@@ -73,22 +70,18 @@ function MessageItem({
     const updatedMessage = Object.assign({}, message);
     if (mounted) {
       if (!pinStatus) {
-        console.log("Pinned!")
         updatedMessage.pinned = true;
         updatedMessage.pinner_id = currentUserId;
         setPinnedStatus(true);
         patchMessageDB(updatedMessage)
         .then( (res) => { 
           const updatedPinMsgs = [...pinnedMessagesId]
-          console.log(res)
           updatedPinMsgs.push(res.payload.id)
-          console.log(updatedPinMsgs);
           
           updatePinnedMessages(message.messageableId, updatedPinMsgs)
           
         })
       } else {
-        console.log("Unpinned!")
         updatedMessage.pinned = false;
         updatedMessage.pinner_id = null;
         setPinnedStatus(false);
@@ -110,7 +103,6 @@ function MessageItem({
   }
     
   const handleProfile = (e) => {
-    console.log("Opening profile!")
     openRightSidebar({
       type: "Profile",
       user: sender
@@ -145,7 +137,6 @@ function MessageItem({
       const gf = new GiphyFetch('06IBHnG3CezngfNeqVPVMjggyqL1FLpJ')
       const fetchGif = async () => {
         if (message.giphy && message.body) {
-          console.log("fetching gif")
           const { data } = await gf.gif(message.body)
           setGif(data);
         }

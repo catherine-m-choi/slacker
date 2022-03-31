@@ -42,8 +42,6 @@ function AddChannelModal(props) {
       }
       props.addChannel(channelParams)
         .then((res) => {
-          console.log("res")
-          console.log(res)
           props.addMember(props.currentUserId, res.payload.id)
           props.closeModal();
         })

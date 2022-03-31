@@ -52,7 +52,7 @@ users_arr = [
   ["Ryan Howard", "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Ryan_Howard_%28The_Office%29.jpg/235px-Ryan_Howard_%28The_Office%29.jpg"],
   ["Stanley Hudson", "https://static3.srcdn.com/wordpress/wp-content/uploads/2020/03/stanely-feature-the-office.jpg"],
   ["Kevin Malone", "https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Office-1200-baumgartner1.jpg/260px-Office-1200-baumgartner1.jpg"],
-  ["Meredith Palmer", "http://pm1.narvii.com/6410/8b11643ddcc8f5b3b21973e35d120ee3b856dd0b_00.jpg"],
+  ["Meredith Palmer", "https://pm1.narvii.com/6410/8b11643ddcc8f5b3b21973e35d120ee3b856dd0b_00.jpg"],
   ["Angela Martin", "https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Angela_Martin.jpg/220px-Angela_Martin.jpg"],
   ["Oscar Martinez", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc9v3lcGAR3YFVN-iv3TSEayeVXMN7Y-SEekUXlbLBN6cEnOij463_7bUZxRpgoQjbDY8&usqp=CAU"],
   ["Phyllis Vance", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Phyllis_Smith_FOX_2_St._Louis.JPG/478px-Phyllis_Smith_FOX_2_St._Louis.JPG"],

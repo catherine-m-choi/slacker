@@ -10,7 +10,6 @@ function MessageItemCard({message, sender, users, currentUserId}) {
   const msgTime = beautifyTime(message.createdAt)
 
   const handleProfile = (e) => {
-    console.log("Opening profile!")
     openRightSidebar({
       type: "Profile",
       user: sender
