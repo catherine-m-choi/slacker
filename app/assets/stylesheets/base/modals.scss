@@ -607,7 +607,7 @@
 
 .toggle-true-content span {
   font-size: 1.2rem;
-  margin: 0 3px 0 7px;
+  // margin: 0 3px 0 7px;
 }
 
 .noselect {
@@ -631,6 +631,8 @@
   font-weight: 600;
   background-color: $button-green;
   color: $main-white;
+  font-size: .95rem;
+  letter-spacing: .02rem;
 }
 
 .EditProfile__btns .EditProfile__btn-solid {
