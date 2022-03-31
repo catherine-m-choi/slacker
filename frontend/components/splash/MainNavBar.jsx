@@ -69,10 +69,10 @@ function MainNavBar(props) {
 
         <div className="MainNavBar__content">
           <ul className="MainNavBar__left-menu">
-            <li>Placeholder1</li>
-            <li>Placeholder2</li>
-            <li>Placeholder3</li>
-            <li>Placeholder4</li>
+            <li><a href="https://github.com/catherine-m-choi/slacker" >Github</a></li>
+            <li><a href="https://linkedin.com/in/catherine-margaret-choi/">LinkedIn</a></li>
+            {/* <li>Placeholder3</li> */}
+            {/* <li>Placeholder4</li> */}
           </ul>
 
           {display}

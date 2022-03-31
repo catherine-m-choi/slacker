@@ -53,6 +53,15 @@
   cursor: pointer;
 }
 
+.MainNavBar a {
+  color: $main-white;
+}
+
+.MainNavBar.sticky-nav a {
+  color: $text-black;
+}
+
+
 .MainNavBar__left-menu li:hover {
   text-decoration: underline;
   text-underline-offset: 0.2em;
