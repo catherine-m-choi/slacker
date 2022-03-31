@@ -84,7 +84,6 @@ function MessageForm(props) {
             break;
           case '/app/channels/:id':
             messageType = "Channel"
-            debugger
 
             newMessage = {
               body: body,
@@ -178,10 +177,11 @@ function MessageForm(props) {
             placeholder={`Message ${props.placeholderMsg}`}
           /> */}
           <button onClick={handleSubmit}>
-            <span class="material-icons noselect">
+            <span className="material-icons noselect">
               send
             </span>
           </button>
+
         </form>
       </div>
     </div>

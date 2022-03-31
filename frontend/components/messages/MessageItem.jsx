@@ -154,7 +154,7 @@ function MessageItem({
   }, [message]);
   
   return (
-      (!editStatus) ? (
+      // (!editStatus) ? (
         <div className={`MessageItem__container ${displayDate ? "has-date" : "no-date" } ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
           
           {displayDate && 
@@ -180,67 +180,75 @@ function MessageItem({
 
           <div className="MessageItem">
 
-            {/* { saveStatus &&
-              <div className="MessageItem__saved-message">
-                <i className="material-icons-outlined">bookmark</i>
-                <div>Added to your saved items</div>
-              </div>
-            } */}
             {savedPinnedMessage}
             
             <div className="MessageItem__content">
               <img onClick={() => handleProfile() } className="MessageItem__sender-profile-img" src={(sender.profilePictureUrl) ? sender.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"} />
-              <ul>
-                <div className="MessageItem__info">
-                  <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
-                  <li className="MessageItem__time">{msgTime}</li>
-                </div>
-                {(message.giphy) ? (
-                  <div>
-                    {gif && 
-                      <Gif 
-                        gif={gif} 
-                        width={300} 
-                        height={300} 
-                        hideAttribution={true} 
-                        noLink={true} 
-                      />
-                    }
+              {/* {(!editStatus) ? ( */}
+              
+                <ul>
+                  <div className="MessageItem__info">
+                    <li onClick={() => handleProfile() } className="MessageItem__sender-name">{(sender.displayName) ? sender.displayName : sender.email }</li>
+                    <li className="MessageItem__time">{msgTime}</li>
                   </div>
-                ) : (
-                  <li className="MessageItem__body">
-                    {message.body}
-                    {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
-                  </li>
-                )}
-                
-              {(replyCount > 0) && 
-                <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
-                  <div className="MessageItem__reply-info" >
-                    {message.userRepliesIds.map((userId) => {
-                      // debugger
-                      return (
-                        <img key={userId} src={
-                          (users[userId].profilePictureUrl) ? 
-                            users[userId].profilePictureUrl : 
-                            "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
-                          alt="User profile picture" 
+                  {(message.giphy) ? (
+                    <div>
+                      {gif && 
+                        <Gif 
+                          gif={gif} 
+                          width={300} 
+                          height={300} 
+                          hideAttribution={true} 
+                          noLink={true} 
                         />
-                        )
-                    })}
-                    <div className="MessageItem__reply-count">{replyCount} {(replyCount === 1) ? "reply" : "replies" } </div>
+                      }
+                    </div>
+                  ) : (
+                    (!editStatus) ? (
+                    <li className="MessageItem__body">
+                      {message.body}
+                      {(message.createdAt !== message.updatedAt) && <span className="MessageItem__edited" >(edited)</span> }
+                    </li>
+                    ) : (
+                      <div className="EditMessageForm" >
+                        <div className={`MessageItem__container ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
+                          <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
+                        </div>
+                      </div>
+                    )
+                  )}
+                  
+                {(replyCount > 0) && 
+                  <div className="MessageItem__reply-info-container"  onClick={ handleReply } >
+                    <div className="MessageItem__reply-info" >
+                      {message.userRepliesIds.map((userId) => {
+                        // debugger
+                        return (
+                          <img key={userId} src={
+                            (users[userId].profilePictureUrl) ? 
+                              users[userId].profilePictureUrl : 
+                              "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}  
+                            alt="User profile picture" 
+                          />
+                          )
+                      })}
+                      <div className="MessageItem__reply-count">{replyCount} {(replyCount === 1) ? "reply" : "replies" } </div>
+                    </div>
+                    <span className="material-icons-outlined">chevron_right</span>
                   </div>
-                  <span className="material-icons-outlined">chevron_right</span>
-                </div>
-                }
+                  }
 
-              </ul>
+                </ul> 
+              {/* ) : (
+                <div className="EditMessageForm" >
+                  <div className={`MessageItem__container ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
+                    <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
+                  </div>
+                </div>
+              )} */}
             </div>
           </div>
         </div>
-      ) : (
-        <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
-      )
   )
 }
 

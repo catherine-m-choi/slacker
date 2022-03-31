@@ -61,6 +61,25 @@
   box-shadow: inset 0px -20px 10px 10px $main-white;
 }
 
+.MessageItem__container {
+  height: auto;
+}
+
+.MessageItem {
+  overflow-wrap:break-word;
+  // overflow-x:hidden;
+}
+
+.EditMessageForm .MessageForm__container {
+  width: 100%;
+  padding: 0;
+  position:relative;
+}
+
+#MessageForm__body {
+  width: 100%;
+}
+
 .MessageForm__format-btns {
   background-color: $callout-box-gray;
   height: 32px;
@@ -68,7 +87,6 @@
 }
 
 .MessageForm {
-  // background-color: blanchedalmond;
   background-color: $main-white;
   border: 1px solid $border-gray;
   // width: 56vw;
@@ -77,22 +95,58 @@
   position: relative;
 }
 
-.MessageForm input, .MessageForm textarea {
+.MessageForm textarea {
   padding: 20px;
   border-radius: 10px;
   border: none;
   background: none;
   width: 95%;
+  height: 70%;
   // height: 1.5rem;
   height: 35%;
   font-size: .9rem;
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
   resize: none;
+  // not sure
+  // -webkit-box-sizing: border-box;
+  // -moz-box-sizing: border-box;
+  // box-sizing: border-box;
+  // margin: 0;
 }
 
+.EditMessageForm .MessageForm textarea {
+  height: fit-content;
+}
 
-.MessageForm input:focus, .MessageForm textarea:focus {
+.EditMessageForm .MessageForm__container {
+  height: auto;
+}
+
+#EditMessageForm__btns {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+#EditMessageForm__btns button {
+  // display: block;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  margin-left: 5px;
+}
+
+.MessageForm__format-btns.no-background {
+  background-color: $main-white;
+  border-radius: 10px;
+}
+// .EditMessageForm__btns {
+
+// }
+
+.MessageForm textarea:focus {
   outline: none;
   outline-width: 0;
   outline-style: none!important;
@@ -105,6 +159,7 @@
 .MessageForm button span {
   font-size: 1.2rem;
 }
+
 .MessageForm button {
   position: absolute;
   bottom: 10px;
@@ -140,6 +195,11 @@
   justify-content: center;
 }
 
+.MessageItem__content ul {
+  margin-right: 0;
+  width: 100%;
+}
+
 .MessageForm__container.thread .MessageForm {
   // background-color: blanchedalmond;
   background-color: $main-white;
@@ -154,11 +214,6 @@
   padding-right: 2vw;
 }
 
-.ChatRoom form {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  // background-color: blanchedalmond;
-}
 
 .MessageItem__container.not-saved:hover .MessageItem {
   background-color: $light-message-hover;
