@@ -118,7 +118,9 @@ function MessageForm(props) {
 
   const onKeyDown = (e) => {
     if (body !== "" && e.keyCode === 13) {
-      handleSubmit()
+      handleSubmit();
+      console.log("setting body blank")
+      setBody("");
     }
   }
 
@@ -138,6 +140,7 @@ function MessageForm(props) {
         <form className="MessageForm">
           <div className="MessageForm__format-btns" ></div>
           <textarea 
+            key={placeholderMsg}
             type="text" 
             value={body} 
             onChange={(e) => setBody(e.target.value) }
