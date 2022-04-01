@@ -165,7 +165,9 @@ function MessageItem({
               {(message.giphy || (currentUserId != message.userId)) ? null : 
                 <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
               }
-              <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
+              {(currentUserId != message.userId) ? null : 
+                <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
+              }
             </div>
           </div>
 
