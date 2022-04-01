@@ -180,3 +180,43 @@
 .MainSearchBar__chat-search {
   margin-left: 10px;
 }
+
+.MainSearchBar__searchResults {
+  overflow-y: scroll;
+  max-height: 41vh;
+}
+
+.MainSearchBar__searchResults li {
+  padding: 10px 20px;
+}
+
+.MainSearchBar__searchResults li:hover {
+  background-color: $callout-box-gray;
+  cursor: pointer;
+}
+
+.MainSearchBar__searchResults li {
+  display: flex;
+  align-items: center;
+}
+
+.MainSearchBar__searchResults-users img {
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+.MainSearchBar__searchResults a {
+  color: $text-black;
+}
+
+.MainSearchBar__searchResults-messages span {
+  font-size: 1.2rem;
+  margin-right: 8px;
+  width: 25px;
+}
+
+.MainSearchBar__field span {
+  margin-right: 8px;
+}

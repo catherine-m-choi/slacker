@@ -21,6 +21,10 @@
   overflow: hidden;
   white-space: nowrap;   
 }
+.ChatRoomInfo__members div {
+  display: flex;
+  align-items: center;
+}
 
 
 .ChatRoomInfo__members:hover {

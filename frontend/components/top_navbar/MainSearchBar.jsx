@@ -33,6 +33,8 @@ function MainSearchBar(props) {
     if (!(["", "@", "#"].includes(searchQuery)) && e.keyCode === 13) {
       props.history.push(`/app/search`);
       props.setShowSearch(false);
+    } else if (searchQuery === "" && e.keyCode === 8) {
+      setSearchParams("")
     }
   }
 
@@ -52,13 +54,16 @@ function MainSearchBar(props) {
       }
     })
     searchResults = 
-      <ul>
+      <ul className="MainSearchBar__searchResults">
         {filteredUsers.map((user) => (
           <li key={user.id} onClick={() => {
             handleProfile(user);
             props.setShowSearch(false);
-            }} >
-            {user.displayName}
+            }} 
+            className="MainSearchBar__searchResults-users"
+          >
+              <img src={user.profilePictureUrl} />
+              <div>{user.displayName}</div>
           </li>
         ))}
       </ul>
@@ -77,11 +82,11 @@ function MainSearchBar(props) {
       }
     })
     searchResults = 
-      <ul>
+      <ul className="MainSearchBar__searchResults">
         {filteredChannels.map((channel) => (
           <Link  key={channel.id} to={`/app/channels/${channel.id}`} onClick={ () => props.setShowSearch(false)} >
-            <li >
-              {channel.name}
+            <li className="MainSearchBar__searchResults-channels">
+              {`#${channel.name}`}
             </li>
           </Link>
         ))}
@@ -96,11 +101,12 @@ function MainSearchBar(props) {
       }
     })
     searchResults = 
-      <ul>
+      <ul className="MainSearchBar__searchResults">
         {filteredMessages.map((message) => (
           <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
-            <li >
-              {message.body}
+            <li className="MainSearchBar__searchResults-messages">
+              <span class="material-icons-outlined">chat</span>
+              <div>{message.body}</div>
             </li>
           </Link>
         ))}
@@ -137,29 +143,33 @@ function MainSearchBar(props) {
     })
 
     searchResults = 
-      <ul>
+      <ul className="MainSearchBar__searchResults">
         {filteredUsers.map((user) => (
           <li key={user.id} onClick={() => {
-            handleProfile(user); 
-            props.setShowSearch(false);
-          }}>
-            {user.displayName}
+              handleProfile(user); 
+              props.setShowSearch(false);
+            }}
+            className="MainSearchBar__searchResults-users">
+            <img src={user.profilePictureUrl} />
+            <div>{user.displayName}</div>
           </li>
         ))}
         {filteredChannels.map((channel) => (
           <Link  key={channel.id} to={`/app/channels/${channel.id}`} onClick={ () => props.setShowSearch(false)} >
-            <li >
-              {channel.name}
+            <li className="MainSearchBar__searchResults-messages">
+              {`#${channel.name}`}
             </li>
           </Link>
         ))}
         {filteredMessages.map((message) => (
           <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}s/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
-            <li >
-              {message.body}
+            <li className="MainSearchBar__searchResults-messages">
+              <span class="material-icons-outlined">chat</span>
+              <div>{message.body}</div>
             </li>
           </Link>
-        ))}
+        ))
+        }
       </ul>
       
   }
