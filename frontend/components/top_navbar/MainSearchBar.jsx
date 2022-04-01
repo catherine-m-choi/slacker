@@ -180,9 +180,7 @@ function MainSearchBar(props) {
       <div className="MainSearchBar__field">
         {(searchParams !== "") ? (
           <div className="MainSearchBar__btn search-button" >
-            {/* Current filter: {searchParams}  */}
             <button>{searchParams}</button>
-            {/* <div onClick={() => setSearchParams("")}>Remove filter</div>  */}
             <span  onClick={() => setSearchParams("")} className="material-icons-outlined">close</span>
           </div>
         ) : (

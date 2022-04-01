@@ -60,6 +60,7 @@ function GiphySearch(props) {
   
   return (
     <div className="GiphySearch__container" >
+      <div className="SearchUsers__hidden-background" onClick={() => props.setShowGiphy(false)} ></div>
       <div className="GiphySearch" >
         {gif && 
           <Gif 
