@@ -19,7 +19,7 @@ https://user-images.githubusercontent.com/59376544/161308573-e7d23c78-efc5-4bbd-
 ### Channels 
 * Users can create new channels. They can also add other users to channels or remove users from a channel.
 
-https://user-images.githubusercontent.com/59376544/161309307-c78af9fa-695b-4ef3-b5dd-aaee2c8c0489.mov
+https://user-images.githubusercontent.com/59376544/161309655-ec0a3e73-bf00-4c03-ac3a-773c45940afb.mov
 
 ### Conversations
 * Users can use the All DMs tab or New Message button to start new direct messages or group chats.* *
