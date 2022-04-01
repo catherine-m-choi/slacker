@@ -488,3 +488,36 @@
 .MessageItem .giphy-gif-img {
 border-radius: 15px;
 }
+
+#emoji-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: red;
+}
+
+.emoji-selector {
+  position: absolute;
+  bottom: 15vh;
+  left: 4.5vh;
+  z-index: 10;
+}
+
+.emoji-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  color: $text--light-gray;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.emoji-btn:hover {
+  background-color: $box-shadow-gray;
+}
+

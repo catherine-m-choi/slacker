@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import GiphySearch from "./GiphySearch";
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 
 function MessageForm(props) {
 
   const [body, setBody] = useState(props.message.body);
   const [sent, setSent] = useState(false);
+  const [showEmoji, setShowEmoji] = useState(false);
 
   // set to true for easier testing
   const [showGiphy, setShowGiphy] = useState(false);
@@ -124,23 +127,41 @@ function MessageForm(props) {
     }
   }
 
+  const handleEmojiSelect = (e) => {
+    console.log(e);
+    console.log(e.native);
+    setBody(body + e.native);
+  }
+  
   return (
     <div>
 
       {showGiphy &&
         <GiphySearch 
-          giphySearchQuery={giphySearchQuery} 
-          setShowGiphy={setShowGiphy} 
-          currentUser={props.currentUser}
-          messageAction={props.messageAction}
+        giphySearchQuery={giphySearchQuery} 
+        setShowGiphy={setShowGiphy} 
+        currentUser={props.currentUser}
+        messageAction={props.messageAction}
         />
+      }
+
+      {showEmoji && 
+        <div className="emoji-selector-container">
+          <span className="emoji-selector" >
+            <Picker onSelect={handleEmojiSelect} />
+          </span>
+          <div className="SearchUsers__hidden-background" onClick={() => setShowEmoji(false)} ></div>
+        </div>
       }
 
       <div className={`MessageForm__container ${(props.parentMessage) ? "thread" : ""}`}>
         <form className="MessageForm">
+
+          {/* <span id="emoji-button" onClick={() => setShowEmoji(!showEmoji)} >Click to add emoji</span> */}
+
           <div className="MessageForm__format-btns" ></div>
           <textarea 
-            key={placeholderMsg}
+            key={props.placeholderMsg}
             type="text" 
             value={body} 
             onChange={(e) => setBody(e.target.value) }
@@ -154,6 +175,10 @@ function MessageForm(props) {
               send
             </span>
           </button>
+
+          <div className="emoji-btn" onClick={() => setShowEmoji(!showEmoji)} >
+            <i className="material-icons-outlined noselect">add_reaction</i>
+          </div>
 
         </form>
       </div>
