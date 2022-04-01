@@ -7,7 +7,7 @@ function MainSearchBar(props) {
 
   let displayChat = "";
   if (props.chatType === "Channel") {
-    displayChat = <div>Find in {props.currentChat.name}</div>
+    displayChat = <div className="MainSearchBar__chat-search">Find in #{props.currentChat.name}</div>
   } else if (props.chatType === "Conversation") {
     let memberNames = props.currentChat.members
     let members = [];
@@ -19,7 +19,7 @@ function MainSearchBar(props) {
     // debugger
     const slicedNames = members.slice(0, members.length - 1)
     const prettyNames = slicedNames.join(", ") + ((members.length > 2) ? "," : "") + ` and ${members[members.length - 1]}`
-    displayChat = <div>Find in direct messages with {prettyNames}</div>
+    displayChat = <div className="MainSearchBar__chat-search">Find in direct messages with {prettyNames}</div>
   }
 
   const handleProfile = (user) => {
@@ -166,33 +166,60 @@ function MainSearchBar(props) {
   
   return (
     <div className="MainSearchBar">
-      {(searchParams !== "") && <div>Current filter: {searchParams} <div onClick={() => setSearchParams("")}>Remove filter</div> </div> }
-      <input id="DraftMessage__search-input"
-        type="text" 
-        placeholder="Search because it's faster than scrolling" 
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        onFocus={ () => props.setShowSearch(true) }
-        onKeyDown={onKeyDown}
-        autoComplete="off"
-      />
-
-      {searchResults}
+        
+      <div className="MainSearchBar__field">
+        {(searchParams !== "") ? (
+          <div className="MainSearchBar__btn search-button" >
+            {/* Current filter: {searchParams}  */}
+            <button>{searchParams}</button>
+            {/* <div onClick={() => setSearchParams("")}>Remove filter</div>  */}
+            <span  onClick={() => setSearchParams("")} className="material-icons-outlined">close</span>
+          </div>
+        ) : (
+          <span className="material-icons-outlined">search</span>
+        )}
+        <input id="DraftMessage__search-input"
+          type="text" 
+          placeholder="Input search. Beep boop." 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={ () => props.setShowSearch(true) }
+          onKeyDown={onKeyDown}
+          autoComplete="off"
+          />
+      </div>
 
       {(searchQuery === "") && 
-        <div>
+        <div >
 
-          <div>{displayChat}</div>
-          <div>I'm looking for...</div>
+          <div className="MainSearchBar__search-chat">
+            <span className="material-icons-outlined">manage_search</span>
+            {displayChat}
+          </div>
 
-          <br />
+          <div className="MainSearchBar__helper-text" >I'm looking for...</div>
 
-          <button onClick={() => setSearchParams("messages")} >Messages</button>
-          <button onClick={() => setSearchParams("channels")} >Channels</button>
-          <button onClick={() => setSearchParams("people")} >People</button>
+
+          <div className="MainSearchBar__btns" >
+            <div className="MainSearchBar__btn" onClick={() => setSearchParams("messages")} >
+              <span className="material-icons-outlined">question_answer</span>
+              <button >Messages</button>
+            </div>
+
+            <div className="MainSearchBar__btn" onClick={() => setSearchParams("channels")} >
+              <span className="material-icons-outlined">feed</span>
+              <button  >Channels</button>
+            </div>
+
+            <div className="MainSearchBar__btn"  onClick={() => setSearchParams("people")} >
+              <span className="material-icons-outlined">groups</span>
+              <button>People</button>
+            </div>
+          </div>
         </div>
       }
 
+      {searchResults}
       
     </div>
   )
