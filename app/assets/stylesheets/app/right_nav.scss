@@ -46,3 +46,7 @@
   color: $text--light-gray;
   font-weight: 400;
 }
+
+.Thread .MessageItem__reply-info-container {
+  display: none;
+}
