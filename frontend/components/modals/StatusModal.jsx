@@ -23,8 +23,8 @@ function StatusModal(props) {
         status_text: body
       }
 
-      // props.updateUser(updatedDetails)
-      // props.closeModal()
+      props.updateUser(updatedDetails)
+      props.closeModal()
     }
   }
   
