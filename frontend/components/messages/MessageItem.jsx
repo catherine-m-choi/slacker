@@ -162,7 +162,7 @@ function MessageItem({
               <i onClick={() => handlePin() } className={`material-icons${ pinStatus ? " pinned" : "-outlined not-pinned"}`} >push_pin</i>
               { (!message.parentMessageId) && <i onClick={ () => handleReply() } className="material-icons-outlined">comment</i>}
               <i onClick={() => handleSave() } className={`material-icons-outlined ${ saveStatus ? "saved" : "not-saved"}`}>{ saveStatus ? "bookmark" : "bookmark_border"}</i>
-              {(message.giphy) ? null : 
+              {(message.giphy || (currentUserId != message.userId)) ? null : 
                 <i onClick={() => setEditStatus(true) } className="material-icons-outlined">edit</i>
               }
               <i onClick={() => deleteMessageDB(message.id)} className="material-icons-outlined">delete</i>
@@ -230,13 +230,6 @@ function MessageItem({
                   }
 
                 </ul> 
-              {/* ) : (
-                <div className="EditMessageForm" >
-                  <div className={`MessageItem__container ${ savedPinnedMessage ? "saved" : "not-saved"}` }>
-                    <EditMessageForm message={message} patchMessageDB={patchMessageDB} setEditStatus={setEditStatus} />
-                  </div>
-                </div>
-              )} */}
             </div>
           </div>
         </div>
