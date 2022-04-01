@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   # To listen for WebSocket requests
   mount ActionCable.server => '/cable'
-
   root :to => "static_pages#root"
+  
   namespace :api, defaults: {format: :json} do 
     resources :users, only: [:index, :create, :update]
     resource :session, only: [:create, :destroy]
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     resources :channels, only: [:index, :create, :update, :destroy]
     resources :channel_memberships, only: [:create, :destroy]
   end
+  
 end
