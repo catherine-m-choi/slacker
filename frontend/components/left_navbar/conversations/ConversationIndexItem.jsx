@@ -5,13 +5,26 @@ import { withRouter } from "react-router-dom";
 function ConversationIndexItem(props) {
   let memberNames = []
 
-  const display = props.conversation.members && props.conversation.members.map((convo) => {
-    let user = props.users[convo]
-    if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
-  })
+  let display;
+  if (props.conversation.members && props.conversation.members.length === 1) {
+    if (props.users[props.currentUserId].displayName) {
+      display = props.users[props.currentUserId].displayName
+    } else {
+      display = props.users[props.currentUserId].email
+    }
+    memberNames.push(`${display} (you)`)
+  } else {
+    display = props.conversation.members && props.conversation.members.map((userId) => {
+      let user = props.users[userId]
+      if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
+    })
+  }
 
   let displayImage;
-  if (memberNames.length > 1) {
+  if (memberNames.length === 1) {
+    displayImage = <img  src={(props.users[props.currentUserId].profilePictureUrl) ? props.users[props.currentUserId].profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"}alt="User profile picture" />
+  }
+  else if (memberNames.length > 1) {
     displayImage = <div className="ConversationIndexItems__member-count" >
       <div>
         {memberNames.length}

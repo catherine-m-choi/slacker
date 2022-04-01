@@ -32,10 +32,19 @@ function ChatRoomInfo(props) {
   let memberNames = []
   let prettyNames;
   if (props.chatType === "Conversation") {
-    const displayPics = props.currentChat.members && props.currentChat.members.map((userId) => {
-      let user = props.users[userId]
-      if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
-    })
+    if (props.currentChat.members && props.currentChat.members.length === 1) {
+      if (props.users[props.currentUserId].displayName) {
+        memberNames = [`${props.users[props.currentUserId].displayName} (you)`];
+      } else {
+        memberNames = [`${props.users[props.currentUserId].email} (you)`];
+      }
+      // debugger
+    } else {
+      props.currentChat.members && props.currentChat.members.map((userId) => {
+        let user = props.users[userId]
+        if (user && user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
+      })
+    }
 
     if (memberNames.length === 1 ) {
       prettyNames = memberNames
