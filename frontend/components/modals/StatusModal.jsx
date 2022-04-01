@@ -17,9 +17,16 @@ function StatusModal(props) {
     } else {
       setBodyError(false)
       
+      let submitEmoji
+      if (emoji === "") {
+        submitEmoji = "😄"
+      } else {
+        submitEmoji = emoji
+      }
+
       const updatedDetails = {
         id: props.currentUserId,
-        status_emoji: emoji,
+        status_emoji: submitEmoji,
         status_text: body
       }
 
