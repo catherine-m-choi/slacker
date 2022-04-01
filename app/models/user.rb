@@ -93,5 +93,67 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def add_default_channels
+    default_channels = [
+      Channel.find_by(name: "general"),
+      Channel.find_by(name: "friday-hangouts"),
+      Channel.find_by(name: "adorable-pets"),
+      Channel.find_by(name: "memes"),
+      Channel.find_by(name: "dunder-mifflin"),
+      Channel.find_by(name: "pawnee-rocks"),
+      Channel.find_by(name: "eagleton-sucks"),
+    ]
+
+    default_channels.each do |channel|
+      ChannelMembership.create!(
+        user_id: self.id,
+        channel_id: channel.id
+      )
+    end
+  end
+
+  def add_default_convo
+    if !self.profile_picture_url 
+      self.profile_picture_url = "	https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg"
+    end
+    
+    @convo = Conversation.create()
+    @catbot = User.find_by(username: 'cat_bot')
+
+    ConversationMembership.create!(
+      user_id: self.id,
+      conversation_id: @convo.id
+    )
+
+    ConversationMembership.create!(
+      user_id: @catbot.id,
+      conversation_id: @convo.id
+    )
+    
+    Message.create(
+      user_id: @catbot.id,
+      body: "Welcome to Slacker! To begin, type a message in the chat.",
+      messageable_type: 'Conversation',
+      messageable_id: @convo.id,
+      parent_message_id: nil
+    )
+
+    Message.create(
+      user_id: @catbot.id,
+      body: "You can send a gif by typing in '/giphy' followed by text in the chat box.  ",
+      messageable_type: 'Conversation',
+      messageable_id: @convo.id,
+      parent_message_id: nil
+    )
+
+    Message.create(
+      user_id: @catbot.id,
+      body: "To edit your profile details, click on your profile button on the upper right corner of the screen.",
+      messageable_type: 'Conversation',
+      messageable_id: @convo.id,
+      parent_message_id: nil
+    )
+  end
   
 end

@@ -30,6 +30,19 @@ user1 = User.create(
   profile_picture_url: 'https://cdn.britannica.com/60/176360-050-33D949F8/oil-Catherine-II-canvas-collection-Richard-Brompton-1782.jpg?w=400&h=300&c=crop'
 )
 
+catbot = User.create(
+  display_name: 'CatBot 🐈',
+  username: 'cat_bot',
+  email: 'catbot3@gmail.com',
+  password: "password",
+  title: 'Catbot',
+  phone: Faker::PhoneNumber.phone_number,
+  skype: nil,
+  status_text: nil,
+  status_expiration: nil,
+  profile_picture_url: 'https://media.wired.co.uk/photos/60c8730fa81eb7f50b44037e/3:2/w_3329,h_2219,c_limit/1521-WIRED-Cat.jpeg'
+)
+
 # Users
 users_arr = [
   ["Leslie Knope", "https://media.glamour.com/photos/569580c38fa134644ec26260/master/pass/entertainment-2015-01-leslie-knope-final-season-main.jpg"],
