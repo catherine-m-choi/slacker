@@ -23,7 +23,7 @@ user1 = User.create(
   email: 'fake_cat23@gmail.com',
   password: "password",
   title: 'Software Engineer',
-  phone: '6464163937',
+  phone: Faker::PhoneNumber.phone_number,
   skype: nil,
   status_text: nil,
   status_expiration: nil,

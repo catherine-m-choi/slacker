@@ -54,14 +54,15 @@ function Profile(props) {
             <div>{props.users[props.userId].username}</div>
           </li>
           }
-          <li>
+          {/* <li>
             <span>Local time</span>
             <div>3:54 AM</div>
-          </li>
+          </li> */}
           {props.users[props.userId].phone && 
             <li>
               <span>Phone number</span>
-              <div>{`(${props.users[props.userId].phone.slice(0, 3)}) ${props.users[props.userId].phone.slice(3, 6)}-${props.users[props.userId].phone.slice(6, 10)}`}</div>
+              {/* <div>{`(${props.users[props.userId].phone.slice(0, 3)}) ${props.users[props.userId].phone.slice(3, 6)}-${props.users[props.userId].phone.slice(6, 10)}`}</div> */}
+              <div>{props.users[props.userId].phone}</div>
             </li>
           }
           <li>
