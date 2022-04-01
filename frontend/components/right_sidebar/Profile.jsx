@@ -16,12 +16,16 @@ function Profile(props) {
         <img src={props.users[props.userId].profilePictureUrl} />
           <div className="Profile__name">{props.users[props.userId].displayName}</div>
           <div className="Profile__title">{props.users[props.userId].title}</div>
-          <div className="Profile__status">On vacation</div>
+          {props.users[props.userId].statusEmoji && 
+            <div className="Profile__status">
+              <span>{props.users[props.userId].statusEmoji}</span>
+              <p>{props.users[props.userId].statusText}</p>
+            </div>}
 
         {(props.users[props.userId].id === props.currentUserId) ? 
           <ul className="Profile__buttons">
             <li>
-              <span className="material-icons-outlined">sentiment_satisfied_alt</span>
+              <span onClick={() => props.openModal("profile/status") } className="material-icons-outlined">sentiment_satisfied_alt</span>
               <div>Set status</div>
             </li>
             <li>

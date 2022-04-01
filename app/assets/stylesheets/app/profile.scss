@@ -86,3 +86,11 @@
 .Profile__details span {
   font-weight: bold;
 }
+
+.Profile__status {
+  display: flex;
+}
+
+.Profile__status span {
+  margin-right: 10px;
+}

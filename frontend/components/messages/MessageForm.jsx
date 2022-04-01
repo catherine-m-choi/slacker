@@ -122,15 +122,14 @@ function MessageForm(props) {
   const onKeyDown = (e) => {
     if (body !== "" && e.keyCode === 13) {
       handleSubmit();
-      console.log("setting body blank")
+      // console.log("setting body blank")
       setBody("");
     }
   }
 
   const handleEmojiSelect = (e) => {
-    console.log(e);
-    console.log(e.native);
     setBody(body + e.native);
+    setShowEmoji(false);
   }
   
   return (

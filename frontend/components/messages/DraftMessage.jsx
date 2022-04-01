@@ -12,7 +12,7 @@ function DraftMessage(props) {
   useEffect(() => {
     // console.log(recipients)
     if (recipients.length === 0) {
-      console.log("should redirect to dm search")
+      // console.log("should redirect to dm search")
     }
   }, [recipients])
 

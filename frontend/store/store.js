@@ -11,7 +11,7 @@ const configureStore = (preloadedState = {}) =>
     preloadedState, 
     // composeEnhancers(applyMiddleware(thunk, logger)));
     // switch later for production!!!
-    applyMiddleware(thunk, logger));
-    // applyMiddleware(thunk));
+    // applyMiddleware(thunk, logger));
+    applyMiddleware(thunk));
 
 export default configureStore;

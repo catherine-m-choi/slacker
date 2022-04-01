@@ -7,7 +7,7 @@ import PinnedMessageModalContainer from './PinnedMessageModalContainer';
 import ProfileCard from './ProfileCard';
 import EditProfile from './EditProfile';
 import AddChannelModal from './AddChannelModal';
-// import SearchUsers from '../messages/SearchUsers';
+import StatusModal from './StatusModal';
 
 function Modal({modal, closeModal}) {
   if (!modal) {
@@ -32,6 +32,9 @@ function Modal({modal, closeModal}) {
       break;
     case 'profile/edit':
       component = <EditProfile />
+      break;
+    case 'profile/status':
+      component = <StatusModal />
       break;
     case 'convo/profileCard':
       component = <ProfileCard />
