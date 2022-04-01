@@ -28,8 +28,8 @@ function ThreadChatRoom(props) {
     
     // setting up websocket:
     // switch later for production!!!
-    const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
-    // const cable = createConsumer("ws://localhost:3000/cable")
+    // const cable = createConsumer("wss://cat-slacker.herokuapp.com/cable")
+    const cable = createConsumer("ws://localhost:3000/cable")
 
     // channel is necessary for connection to be established. category and id are params 
     // passed to ChatChannel

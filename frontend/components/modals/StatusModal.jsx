@@ -46,7 +46,7 @@ function StatusModal(props) {
         </div>
       }
 
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)} >
         <div className="AddChannelModal__form-field">
           <div className="has-icon">
             <input 
@@ -66,7 +66,7 @@ function StatusModal(props) {
         </div>
 
         <div className="StatusModal__btns">
-          <button className="StatusModal__btn-not-solid" onClick={(e) => props.closeModal()} >Cancel</button>
+          <button className="StatusModal__btn-not-solid" type="button" onClick={(e) => props.closeModal()} >Cancel</button>
           <button className="StatusModal__btn-solid" type="submit" onClick={(e) => handleSubmit(e)} >Create</button>
         </div>
         
