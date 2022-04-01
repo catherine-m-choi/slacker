@@ -13,8 +13,9 @@ function GiphySearch(props) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const fetchGif = () => {
-      const { data } = gf.random({ tag: props.giphySearchQuery, type: 'gifs' }).then(() => setGif(data))
+    const fetchGif = async () => {
+      const { data } = await gf.random({ tag: props.giphySearchQuery, type: 'gifs' })
+      setGif(data)
     }
     fetchGif();
   }, [count]);
