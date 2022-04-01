@@ -4,6 +4,7 @@ import { closeModal } from "../../actions/modal_actions";
 import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
 import { addMember, removeMember } from "../../actions/conversation_actions";
+import { openRightSidebar } from "../../actions/right_sidebar_actions";
 
 const mapStateToProps = (state, ownProps) => {
   // debugger
@@ -30,6 +31,7 @@ const mapDispatchToProps = state => {
     closeModal: () => dispatch(closeModal()),
     addMember: (userId, convoId) => dispatch(addMember(userId, convoId)),
     removeMember: (userId, convoId) => dispatch(removeMember(userId, convoId)),
+    openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo)),
   }
 }
 

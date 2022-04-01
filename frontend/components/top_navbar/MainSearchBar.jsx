@@ -105,7 +105,7 @@ function MainSearchBar(props) {
         {filteredMessages.map((message) => (
           <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
             <li className="MainSearchBar__searchResults-messages">
-              <span class="material-icons-outlined">chat</span>
+              <span className="material-icons-outlined">chat</span>
               <div>{message.body}</div>
             </li>
           </Link>
@@ -164,7 +164,7 @@ function MainSearchBar(props) {
         {filteredMessages.map((message) => (
           <Link  key={message.id} to={`/app/${message.messageableType.toLowerCase()}s/${message.messageableId}`} onClick={ () => props.setShowSearch(false)} >
             <li className="MainSearchBar__searchResults-messages">
-              <span class="material-icons-outlined">chat</span>
+              <span className="material-icons-outlined">chat</span>
               <div>{message.body}</div>
             </li>
           </Link>

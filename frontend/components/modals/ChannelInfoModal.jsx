@@ -11,7 +11,7 @@ function ChannelModal(props) {
   const displayPics = Object.values(props.filteredUsers).map((user) => {
     if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
     return (
-      <li key={user.id} className="ConversationModal__search-display-users" >
+      <li key={user.id} className="ConversationModal__search-display-users" onClick={() => handleProfile(user)} >
         <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
         <span>{`${(user.displayName) ? user.displayName : user.email} ${(user.id === props.currentUserId) ? "(you)" : "" }`}</span>
       </li>)
@@ -74,6 +74,14 @@ function ChannelModal(props) {
       break;
     default:
       break;
+  }
+
+  const handleProfile = (user) => {
+    props.openRightSidebar({
+      type: "Profile",
+      user: user
+    }) 
+    props.closeModal()
   }
 
   return (

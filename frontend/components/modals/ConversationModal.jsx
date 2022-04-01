@@ -9,11 +9,19 @@ function ConversationModal(props) {
   const displayPics = Object.values(props.filteredUsers).map((user) => {
     if (user.id !== props.currentUserId) memberNames.push((user.displayName) ? user.displayName : user.email)
     return (
-      <li key={user.id} className="ConversationModal__search-display-users" >
+      <li key={user.id} className="ConversationModal__search-display-users" onClick={() => handleProfile(user)} >
         <img src={(user.profilePictureUrl) ? user.profilePictureUrl : "https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" } alt="User profile picture" />
         <span>{`${(user.displayName) ? user.displayName : user.email} ${(user.id === props.currentUserId) ? "(you)" : "" }`}</span>
       </li>)
   })
+
+  const handleProfile = (user) => {
+    props.openRightSidebar({
+      type: "Profile",
+      user: user
+    }) 
+    props.closeModal()
+  }
 
   return (
     <div className="ConversationModal">
@@ -46,7 +54,6 @@ function ConversationModal(props) {
 
       {(searchQuery === "") && 
         <ul className="ConversationModal__members">
-          {/* <li className="ConversationModal__search-display-users" ><img src="https://templesinaidc.org/wp-content/uploads/sites/57/2019/12/gray-square.jpg" /><button>Add people</button></li> */}
           {displayPics && displayPics}
         </ul>
       }

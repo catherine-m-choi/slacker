@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { getFilteredUsers } from "../../reducers/selectors/selectors";
 // import { addMember } from "../../actions/conversation_actions";
 import { addChannelMember, removeChannelMember } from "../../actions/channel_actions";
+import { openRightSidebar } from "../../actions/right_sidebar_actions";
 
 const mapStateToProps = (state, ownProps) => {
   if (ownProps.match.path === '/app/conversations/:id') {
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     addMember: (userId, channelId) => dispatch(addChannelMember(userId, channelId)),
     removeMember: (userId, channelId) => dispatch(removeChannelMember(userId, channelId)),
+    openRightSidebar: (sidebarInfo) => dispatch(openRightSidebar(sidebarInfo))
   }
 }
 
